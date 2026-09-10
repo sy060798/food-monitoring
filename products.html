@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Food Monitoring - Produk</title>
+
+    <meta
+        name="description"
+        content="Kelola produk, harga jual, status produk, dan resep Food Monitoring."
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+
+            <a href="index.html" class="brand">
+                <span class="brand-icon">🍴</span>
+
+                <span class="brand-text">
+                    <strong>FOOD</strong>
+                    <small>MONITOR</small>
+                </span>
+            </a>
+
+            <button
+                type="button"
+                class="sidebar-close"
+                id="sidebarClose"
+                aria-label="Tutup menu"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+            <div class="nav-section">
+
+                <span class="nav-section-title">
+                    Menu Utama
+                </span>
+
+
+                <a href="index.html" class="nav-item">
+                    <span class="nav-icon">▦</span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+
+
+                <a
+                    href="products.html"
+                    class="nav-item active"
+                >
+                    <span class="nav-icon">📦</span>
+                    <span class="nav-text">Produk</span>
+                </a>
+
+
+                <a
+                    href="ingredients.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">🥩</span>
+                    <span class="nav-text">Bahan</span>
+                </a>
+
+
+                <a
+                    href="sales.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">🧾</span>
+                    <span class="nav-text">Penjualan</span>
+                </a>
+
+
+                <a
+                    href="reports.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">Laporan</span>
+                </a>
+
+
+                <a
+                    href="#"
+                    class="nav-item"
+                    id="historyMenu"
+                >
+                    <span class="nav-icon">📜</span>
+                    <span class="nav-text">History</span>
+                </a>
+
+
+                <a
+                    href="#"
+                    class="nav-item"
+                    id="supplierMenu"
+                >
+                    <span class="nav-icon">🚚</span>
+                    <span class="nav-text">Supplier</span>
+                </a>
+
+
+                <a
+                    href="#"
+                    class="nav-item"
+                    id="settingsMenu"
+                >
+                    <span class="nav-icon">⚙</span>
+                    <span class="nav-text">Pengaturan</span>
+                </a>
+
+            </div>
+
+        </nav>
+
+
+        <div class="sidebar-footer">
+
+            <div class="system-status">
+                <span class="status-dot"></span>
+                <span>Sistem aktif</span>
+            </div>
+
+            <small>
+                Food Monitoring v1.0
+            </small>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MOBILE OVERLAY
+    ====================================================== -->
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+    <main class="main">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="menu-toggle"
+                    id="menuToggle"
+                    aria-label="Buka menu"
+                >
+                    ☰
+                </button>
+
+                <div class="page-title">
+
+                    <h1>Produk</h1>
+
+                    <p>
+                        Kelola produk dan resep makanan
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button
+                    type="button"
+                    class="icon-button notification-button"
+                    id="notificationButton"
+                    aria-label="Notifikasi"
+                >
+                    🔔
+
+                    <span
+                        class="notification-badge"
+                        id="notificationBadge"
+                    >
+                        0
+                    </span>
+                </button>
+
+
+                <div class="admin-profile">
+
+                    <div class="admin-avatar">
+                        A
+                    </div>
+
+                    <div class="admin-info">
+
+                        <strong>
+                            Admin
+                        </strong>
+
+                        <small>
+                            Administrator
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             CONTENT
+        ================================================== -->
+        <div class="content">
+
+
+            <!-- =================================================
+                 PAGE HEADER
+            ================================================== -->
+            <section class="page-header">
+
+                <div>
+
+                    <div class="breadcrumb">
+                        <a href="index.html">
+                            Dashboard
+                        </a>
+
+                        <span>›</span>
+
+                        <span>Produk</span>
+                    </div>
+
+                    <h2>
+                        Daftar Produk
+                    </h2>
+
+                    <p>
+                        Tambahkan dan kelola produk yang dijual.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="primary-button"
+                    id="addProductButton"
+                >
+                    <span>＋</span>
+                    Tambah Produk
+                </button>
+
+            </section>
+
+
+            <!-- =================================================
+                 PRODUCT SUMMARY
+            ================================================== -->
+            <section class="summary-grid product-summary-grid">
+
+
+                <div class="summary-card">
+
+                    <div class="summary-card-top">
+
+                        <div>
+
+                            <span class="summary-label">
+                                TOTAL PRODUK
+                            </span>
+
+                            <h3 id="totalProductCount">
+                                0
+                            </h3>
+
+                        </div>
+
+                        <div class="summary-icon blue">
+                            📦
+                        </div>
+
+                    </div>
+
+                    <div class="summary-card-bottom">
+
+                        <span>
+                            Semua produk
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <div class="summary-card-top">
+
+                        <div>
+
+                            <span class="summary-label">
+                                PRODUK AKTIF
+                            </span>
+
+                            <h3 id="activeProductCount">
+                                0
+                            </h3>
+
+                        </div>
+
+                        <div class="summary-icon green">
+                            ✓
+                        </div>
+
+                    </div>
+
+                    <div class="summary-card-bottom">
+
+                        <span>
+                            Sedang dijual
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <div class="summary-card-top">
+
+                        <div>
+
+                            <span class="summary-label">
+                                PRODUK NONAKTIF
+                            </span>
+
+                            <h3 id="inactiveProductCount">
+                                0
+                            </h3>
+
+                        </div>
+
+                        <div class="summary-icon red">
+                            ×
+                        </div>
+
+                    </div>
+
+                    <div class="summary-card-bottom">
+
+                        <span>
+                            Tidak dijual
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <div class="summary-card">
+
+                    <div class="summary-card-top">
+
+                        <div>
+
+                            <span class="summary-label">
+                                RATA-RATA HARGA
+                            </span>
+
+                            <h3 id="averageProductPrice">
+                                Rp0
+                            </h3>
+
+                        </div>
+
+                        <div class="summary-icon orange">
+                            💰
+                        </div>
+
+                    </div>
+
+                    <div class="summary-card-bottom">
+
+                        <span>
+                            Harga jual produk
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 PRODUCT TABLE CARD
+            ================================================== -->
+            <section class="dashboard-card">
+
+
+                <!-- TABLE HEADER -->
+                <div class="card-header product-table-header">
+
+                    <div>
+
+                        <h3>
+                            Daftar Produk
+                        </h3>
+
+                        <p>
+                            Kelola informasi produk, harga, dan resep.
+                        </p>
+
+                    </div>
+
+
+                    <div class="table-actions">
+
+                        <!-- Search -->
+                        <div class="search-box">
+
+                            <span class="search-icon">
+                                🔍
+                            </span>
+
+                            <input
+                                type="search"
+                                id="productSearch"
+                                placeholder="Cari produk..."
+                                autocomplete="off"
+                            >
+
+                        </div>
+
+
+                        <!-- Filter -->
+                        <select
+                            id="productStatusFilter"
+                            class="select-control"
+                        >
+                            <option value="all">
+                                Semua Status
+                            </option>
+
+                            <option value="active">
+                                Aktif
+                            </option>
+
+                            <option value="inactive">
+                                Nonaktif
+                            </option>
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TABLE -->
+                <div class="table-wrapper">
+
+                    <table class="data-table product-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th width="60">
+                                    #
+                                </th>
+
+                                <th>
+                                    Produk
+                                </th>
+
+                                <th>
+                                    Kategori
+                                </th>
+
+                                <th>
+                                    Harga Jual
+                                </th>
+
+                                <th>
+                                    HPP
+                                </th>
+
+                                <th>
+                                    Margin
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th class="text-right">
+                                    Aksi
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="productTableBody">
+
+                            <!--
+                                Data produk akan diisi
+                                oleh products.js
+                            -->
+
+                            <tr>
+
+                                <td colspan="8">
+
+                                    <div class="loading-state">
+
+                                        <div class="loading-spinner"></div>
+
+                                        <span>
+                                            Memuat data produk...
+                                        </span>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- =================================================
+                     TABLE FOOTER / PAGINATION
+                ================================================== -->
+                <div class="table-footer">
+
+                    <div class="table-info">
+
+                        Menampilkan
+                        <strong id="productShowingFrom">
+                            0
+                        </strong>
+
+                        -
+                        <strong id="productShowingTo">
+                            0
+                        </strong>
+
+                        dari
+                        <strong id="productTotalItems">
+                            0
+                        </strong>
+
+                        produk
+
+                    </div>
+
+
+                    <div
+                        class="pagination"
+                        id="productPagination"
+                    >
+
+                        <button
+                            type="button"
+                            class="pagination-button"
+                            id="productPrevPage"
+                            disabled
+                        >
+                            ‹
+                        </button>
+
+                        <span
+                            class="pagination-current"
+                            id="productCurrentPage"
+                        >
+                            1
+                        </span>
+
+                        <button
+                            type="button"
+                            class="pagination-button"
+                            id="productNextPage"
+                        >
+                            ›
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+        <footer class="footer">
+
+            <span>
+                ©
+                <span id="currentYear"></span>
+                Food Monitoring
+            </span>
+
+            <span>
+                Sistem Monitoring Bisnis Kuliner
+            </span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================================
+     PRODUCT MODAL
+========================================================= -->
+<div
+    class="modal-overlay"
+    id="productModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal modal-large"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="productModalTitle"
+    >
+
+
+        <!-- MODAL HEADER -->
+        <div class="modal-header">
+
+            <div>
+
+                <h3 id="productModalTitle">
+                    Tambah Produk
+                </h3>
+
+                <p>
+                    Masukkan informasi produk.
+                </p>
+
+            </div>
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeProductModal"
+                aria-label="Tutup"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <!-- MODAL BODY -->
+        <form id="productForm">
+
+            <div class="modal-body">
+
+
+                <!-- Hidden ID -->
+                <input
+                    type="hidden"
+                    id="productId"
+                    name="id"
+                >
+
+
+                <!-- =================================================
+                     BASIC INFORMATION
+                ================================================== -->
+                <div class="form-section">
+
+                    <div class="form-section-title">
+
+                        <span class="form-section-icon">
+                            📦
+                        </span>
+
+                        <div>
+
+                            <h4>
+                                Informasi Produk
+                            </h4>
+
+                            <p>
+                                Informasi dasar produk yang dijual.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+
+                        <!-- Nama -->
+                        <div class="form-group form-group-full">
+
+                            <label for="productName">
+                                Nama Produk
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="productName"
+                                name="name"
+                                placeholder="Contoh: Nasi Ayam Geprek"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- Kategori -->
+                        <div class="form-group">
+
+                            <label for="productCategory">
+                                Kategori
+                            </label>
+
+                            <select
+                                id="productCategory"
+                                name="category"
+                            >
+
+                                <option value="">
+                                    Pilih kategori
+                                </option>
+
+                                <option value="makanan">
+                                    Makanan
+                                </option>
+
+                                <option value="minuman">
+                                    Minuman
+                                </option>
+
+                                <option value="snack">
+                                    Snack
+                                </option>
+
+                                <option value="paket">
+                                    Paket
+                                </option>
+
+                                <option value="lainnya">
+                                    Lainnya
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- Satuan -->
+                        <div class="form-group">
+
+                            <label for="productUnit">
+                                Satuan
+                            </label>
+
+                            <select
+                                id="productUnit"
+                                name="unit"
+                            >
+
+                                <option value="pcs">
+                                    Pcs
+                                </option>
+
+                                <option value="porsi">
+                                    Porsi
+                                </option>
+
+                                <option value="gelas">
+                                    Gelas
+                                </option>
+
+                                <option value="botol">
+                                    Botol
+                                </option>
+
+                                <option value="paket">
+                                    Paket
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- Harga -->
+                        <div class="form-group">
+
+                            <label for="productPrice">
+                                Harga Jual
+                                <span class="required">*</span>
+                            </label>
+
+                            <div class="input-prefix">
+
+                                <span>
+                                    Rp
+                                </span>
+
+                                <input
+                                    type="number"
+                                    id="productPrice"
+                                    name="price"
+                                    min="0"
+                                    step="100"
+                                    placeholder="0"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- Status -->
+                        <div class="form-group">
+
+                            <label for="productStatus">
+                                Status
+                            </label>
+
+                            <select
+                                id="productStatus"
+                                name="status"
+                            >
+
+                                <option value="active">
+                                    Aktif
+                                </option>
+
+                                <option value="inactive">
+                                    Nonaktif
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- Deskripsi -->
+                        <div class="form-group form-group-full">
+
+                            <label for="productDescription">
+                                Deskripsi
+                            </label>
+
+                            <textarea
+                                id="productDescription"
+                                name="description"
+                                rows="3"
+                                placeholder="Deskripsi produk..."
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     RECIPE
+                ================================================== -->
+                <div class="form-section">
+
+                    <div class="form-section-title">
+
+                        <span class="form-section-icon">
+                            🥩
+                        </span>
+
+                        <div>
+
+                            <h4>
+                                Resep Produk
+                            </h4>
+
+                            <p>
+                                Tentukan bahan yang digunakan untuk satu produk.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="recipe-container">
+
+
+                        <div class="recipe-header">
+
+                            <div>
+                                <strong>
+                                    Bahan Resep
+                                </strong>
+
+                                <small>
+                                    HPP akan dihitung berdasarkan bahan yang digunakan.
+                                </small>
+                            </div>
+
+
+                            <button
+                                type="button"
+                                class="secondary-button"
+                                id="addRecipeItem"
+                            >
+                                ＋ Tambah Bahan
+                            </button>
+
+                        </div>
+
+
+                        <div class="recipe-table-wrapper">
+
+                            <table class="data-table recipe-table">
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>
+                                            Bahan
+                                        </th>
+
+                                        <th width="150">
+                                            Jumlah
+                                        </th>
+
+                                        <th width="130">
+                                            Satuan
+                                        </th>
+
+                                        <th width="160">
+                                            Estimasi Biaya
+                                        </th>
+
+                                        <th width="60">
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody id="recipeTableBody">
+
+                                    <tr class="recipe-empty">
+
+                                        <td colspan="5">
+
+                                            <div class="empty-state">
+
+                                                <span>
+                                                    🥩
+                                                </span>
+
+                                                <strong>
+                                                    Belum ada bahan
+                                                </strong>
+
+                                                <small>
+                                                    Tambahkan bahan untuk membuat resep.
+                                                </small>
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+
+                        <!-- HPP PREVIEW -->
+                        <div class="hpp-preview">
+
+                            <div>
+
+                                <span>
+                                    Estimasi HPP
+                                </span>
+
+                                <small>
+                                    Biaya bahan per produk
+                                </small>
+
+                            </div>
+
+                            <strong id="recipeHpp">
+                                Rp0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     PROFIT PREVIEW
+                ================================================== -->
+                <div class="profit-preview">
+
+                    <div class="profit-preview-item">
+
+                        <span>
+                            Harga Jual
+                        </span>
+
+                        <strong id="previewSellingPrice">
+                            Rp0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profit-preview-item">
+
+                        <span>
+                            HPP
+                        </span>
+
+                        <strong id="previewHpp">
+                            Rp0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profit-preview-item highlight">
+
+                        <span>
+                            Estimasi Laba
+                        </span>
+
+                        <strong id="previewProfit">
+                            Rp0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="profit-preview-item">
+
+                        <span>
+                            Margin
+                        </span>
+
+                        <strong id="previewMargin">
+                            0%
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =================================================
+                 MODAL FOOTER
+            ================================================== -->
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    id="cancelProductForm"
+                >
+                    Batal
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                    id="saveProductButton"
+                >
+                    <span>
+                        💾
+                    </span>
+
+                    Simpan Produk
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     DELETE CONFIRMATION MODAL
+========================================================= -->
+<div
+    class="modal-overlay"
+    id="deleteProductModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal modal-small"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="deleteProductTitle"
+    >
+
+        <div class="modal-body delete-confirmation">
+
+            <div class="delete-icon">
+                🗑️
+            </div>
+
+            <h3 id="deleteProductTitle">
+                Hapus Produk?
+            </h3>
+
+            <p>
+                Produk
+                <strong id="deleteProductName">
+                    -
+                </strong>
+                akan dihapus dari sistem.
+            </p>
+
+            <p class="warning-text">
+                Tindakan ini tidak dapat dibatalkan.
+            </p>
+
+        </div>
+
+
+        <div class="modal-footer">
+
+            <button
+                type="button"
+                class="secondary-button"
+                id="cancelDeleteProduct"
+            >
+                Batal
+            </button>
+
+            <button
+                type="button"
+                class="danger-button"
+                id="confirmDeleteProduct"
+            >
+                Hapus Produk
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     NOTIFICATION PANEL
+========================================================= -->
+<div
+    class="notification-panel"
+    id="notificationPanel"
+    aria-hidden="true"
+>
+
+    <div class="notification-header">
+
+        <div>
+
+            <h3>
+                Notifikasi
+            </h3>
+
+            <span id="notificationCount">
+                0 notifikasi
+            </span>
+
+        </div>
+
+        <button
+            type="button"
+            class="panel-close"
+            id="closeNotification"
+            aria-label="Tutup notifikasi"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <div
+        class="notification-list"
+        id="notificationList"
+    >
+
+        <div class="empty-notification">
+
+            <span>
+                🔔
+            </span>
+
+            <strong>
+                Tidak ada notifikasi
+            </strong>
+
+            <small>
+                Semua kondisi terlihat baik.
+            </small>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     TOAST
+========================================================= -->
+<div
+    class="toast-container"
+    id="toastContainer"
+    aria-live="polite"
+></div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+<script src="js/products.js"></script>
+
+</body>
+</html>
