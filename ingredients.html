@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Food Monitoring - Bahan</title>
+
+    <meta
+        name="description"
+        content="Kelola bahan baku, stok, harga bahan, minimum stok, supplier, dan riwayat penggunaan."
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+
+            <a href="index.html" class="brand">
+                <span class="brand-icon">🍴</span>
+
+                <span class="brand-text">
+                    <strong>FOOD</strong>
+                    <small>MONITOR</small>
+                </span>
+            </a>
+
+            <button
+                type="button"
+                class="sidebar-close"
+                id="sidebarClose"
+                aria-label="Tutup menu"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+        <nav class="sidebar-nav">
+
+            <div class="nav-section">
+
+                <span class="nav-section-title">
+                    Menu Utama
+                </span>
+
+
+                <a
+                    href="index.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">▦</span>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+
+
+                <a
+                    href="products.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">📦</span>
+                    <span class="nav-text">Produk</span>
+                </a>
+
+
+                <a
+                    href="ingredients.html"
+                    class="nav-item active"
+                >
+                    <span class="nav-icon">🥩</span>
+                    <span class="nav-text">Bahan</span>
+                </a>
+
+
+                <a
+                    href="sales.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">🧾</span>
+                    <span class="nav-text">Penjualan</span>
+                </a>
+
+
+                <a
+                    href="reports.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">Laporan</span>
+                </a>
+
+
+                <a
+                    href="#"
+                    class="nav-item"
+                    id="historyMenu"
+                >
+                    <span class="nav-icon">📜</span>
+                    <span class="nav-text">History</span>
+                </a>
+
+
+                <a
+                    href="#"
+                    class="nav-item"
+                    id="supplierMenu"
+                >
+                    <span class="nav-icon">🚚</span>
+                    <span class="nav-text">Supplier</span>
+                </a>
+
+
+                <a
+                    href="#"
+                    class="nav-item"
+                    id="settingsMenu"
+                >
+                    <span class="nav-icon">⚙</span>
+                    <span class="nav-text">Pengaturan</span>
+                </a>
+
+            </div>
+
+        </nav>
+
+
+        <!-- SIDEBAR FOOTER -->
+        <div class="sidebar-footer">
+
+            <div class="system-status">
+                <span class="status-dot"></span>
+                <span>Sistem aktif</span>
+            </div>
+
+            <small>
+                Food Monitoring v1.0
+            </small>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MOBILE OVERLAY
+    ====================================================== -->
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+    <main class="main">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="menu-toggle"
+                    id="menuToggle"
+                    aria-label="Buka menu"
+                >
+                    ☰
+                </button>
+
+                <div class="page-title">
+
+                    <h1>Bahan</h1>
+
+                    <p>
+                        Kelola bahan baku dan stok
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button
+                    type="button"
+                    class="icon-button notification-button"
+                    id="notificationButton"
+                    aria-label="Notifikasi"
+                >
+                    🔔
+
+                    <span
+                        class="notification-badge"
+                        id="notificationBadge"
+                    >
+                        0
+                    </span>
+                </button>
+
+
+                <div class="admin-profile">
+
+                    <div class="admin-avatar">
+                        A
+                    </div>
+
+                    <div class="admin-info">
+
+                        <strong>
+                            Admin
+                        </strong>
+
+                        <small>
+                            Administrator
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             CONTENT
+        ================================================== -->
+        <div class="content">
+
+
+            <!-- =================================================
+                 PAGE HEADER
+            ================================================== -->
+            <section class="page-header">
+
+                <div>
+
+                    <div class="breadcrumb">
+
+                        <a href="index.html">
+                            Dashboard
+                        </a>
+
+                        <span>›</span>
+
+                        <span>
+                            Bahan
+                        </span>
+
+                    </div>
+
+
+                    <h2>
+                        Daftar Bahan
+                    </h2>
+
+                    <p>
+                        Kelola bahan baku, stok, harga, dan minimum stok.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="primary-button"
+                    id="addIngredientButton"
+                >
+                    <span>＋</span>
+                    Tambah Bahan
+                </button>
+
+            </section>
+
+
+            <!-- =================================================
+                 SUMMARY CARDS
+            ================================================== -->
+            <section class="summary-grid ingredient-summary-grid">
+
+
+                <!-- TOTAL BAHAN -->
+                <div class="summary-card">
+
+                    <div class="summary-card-top">
+
+                        <div>
+
+                            <span class="summary-label">
+                                TOTAL BAHAN
+                            </span>
+
+                            <h3 id="totalIngredientCount">
+                                0
+                            </h3>
+
+                        </div>
+
+                        <div class="summary-icon blue">
+                            🥩
+                        </div>
+
+                    </div>
+
+                    <div class="summary-card-bottom">
+
+                        <span>
+                            Semua bahan
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STOK AMAN -->
+                <div class="summary-card">
+
+                    <div class="summary-card-top">
+
+                        <div>
+
+                            <span class="summary-label">
+                                STOK AMAN
+                            </span>
+
+                            <h3 id="safeStockCount">
+                                0
+                            </h3>
+
+                        </div>
+
+                        <div class="summary-icon green">
+                            ✓
+                        </div>
+
+                    </div>
+
+                    <div class="summary-card-bottom">
+
+                        <span>
+                            Di atas minimum
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STOK MENIPIS -->
+                <div class="summary-card">
+
+                    <div class="summary-card-top">
+
+                        <div>
+
+                            <span class="summary-label">
+                                STOK MENIPIS
+                            </span>
+
+                            <h3 id="lowStockIngredientCount">
+                                0
+                            </h3>
+
+                        </div>
+
+                        <div class="summary-icon orange">
+                            ⚠
+                        </div>
+
+                    </div>
+
+                    <div class="summary-card-bottom">
+
+                        <span>
+                            Perlu segera dibeli
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HABIS -->
+                <div class="summary-card">
+
+                    <div class="summary-card-top">
+
+                        <div>
+
+                            <span class="summary-label">
+                                STOK HABIS
+                            </span>
+
+                            <h3 id="outOfStockCount">
+                                0
+                            </h3>
+
+                        </div>
+
+                        <div class="summary-icon red">
+                            !
+                        </div>
+
+                    </div>
+
+                    <div class="summary-card-bottom">
+
+                        <span>
+                            Stok = 0
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 STOCK TABLE
+            ================================================== -->
+            <section class="dashboard-card">
+
+                <!-- CARD HEADER -->
+                <div class="card-header ingredient-table-header">
+
+                    <div>
+
+                        <h3>
+                            Daftar Bahan
+                        </h3>
+
+                        <p>
+                            Pantau stok dan harga setiap bahan.
+                        </p>
+
+                    </div>
+
+
+                    <div class="table-actions">
+
+                        <!-- SEARCH -->
+                        <div class="search-box">
+
+                            <span class="search-icon">
+                                🔍
+                            </span>
+
+                            <input
+                                type="search"
+                                id="ingredientSearch"
+                                placeholder="Cari bahan..."
+                                autocomplete="off"
+                            >
+
+                        </div>
+
+
+                        <!-- STOCK FILTER -->
+                        <select
+                            id="ingredientStockFilter"
+                            class="select-control"
+                        >
+
+                            <option value="all">
+                                Semua Stok
+                            </option>
+
+                            <option value="safe">
+                                Stok Aman
+                            </option>
+
+                            <option value="low">
+                                Stok Menipis
+                            </option>
+
+                            <option value="out">
+                                Stok Habis
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TABLE -->
+                <div class="table-wrapper">
+
+                    <table class="data-table ingredient-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th width="60">
+                                    #
+                                </th>
+
+                                <th>
+                                    Nama Bahan
+                                </th>
+
+                                <th>
+                                    Stok
+                                </th>
+
+                                <th>
+                                    Minimum
+                                </th>
+
+                                <th>
+                                    Harga / Satuan
+                                </th>
+
+                                <th>
+                                    Supplier
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th class="text-right">
+                                    Aksi
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="ingredientTableBody">
+
+                            <tr>
+
+                                <td colspan="8">
+
+                                    <div class="loading-state">
+
+                                        <div class="loading-spinner"></div>
+
+                                        <span>
+                                            Memuat data bahan...
+                                        </span>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- TABLE FOOTER -->
+                <div class="table-footer">
+
+                    <div class="table-info">
+
+                        Menampilkan
+
+                        <strong id="ingredientShowingFrom">
+                            0
+                        </strong>
+
+                        -
+
+                        <strong id="ingredientShowingTo">
+                            0
+                        </strong>
+
+                        dari
+
+                        <strong id="ingredientTotalItems">
+                            0
+                        </strong>
+
+                        bahan
+
+                    </div>
+
+
+                    <div class="pagination">
+
+                        <button
+                            type="button"
+                            class="pagination-button"
+                            id="ingredientPrevPage"
+                            disabled
+                        >
+                            ‹
+                        </button>
+
+
+                        <span
+                            class="pagination-current"
+                            id="ingredientCurrentPage"
+                        >
+                            1
+                        </span>
+
+
+                        <button
+                            type="button"
+                            class="pagination-button"
+                            id="ingredientNextPage"
+                        >
+                            ›
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 STOCK MOVEMENT
+            ================================================== -->
+            <section class="dashboard-grid secondary-grid">
+
+
+                <!-- STOCK IN -->
+                <div class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>
+                                📥 Stok Masuk
+                            </h3>
+
+                            <p>
+                                Tambahkan stok bahan dari pembelian.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <form id="stockInForm">
+
+                        <div class="form-grid">
+
+
+                            <div class="form-group form-group-full">
+
+                                <label for="stockInIngredient">
+                                    Bahan
+                                    <span class="required">*</span>
+                                </label>
+
+                                <select
+                                    id="stockInIngredient"
+                                    name="ingredientId"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Pilih bahan
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="stockInQuantity">
+                                    Jumlah
+                                    <span class="required">*</span>
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="stockInQuantity"
+                                    name="quantity"
+                                    min="0"
+                                    step="0.01"
+                                    placeholder="0"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="stockInDate">
+                                    Tanggal
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="stockInDate"
+                                    name="date"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group form-group-full">
+
+                                <label for="stockInNote">
+                                    Catatan
+                                </label>
+
+                                <textarea
+                                    id="stockInNote"
+                                    name="note"
+                                    rows="2"
+                                    placeholder="Contoh: Pembelian dari supplier..."
+                                ></textarea>
+
+                            </div>
+
+
+                            <div class="form-group form-group-full">
+
+                                <button
+                                    type="submit"
+                                    class="primary-button"
+                                >
+                                    📥 Tambah Stok
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+
+                <!-- STOCK OUT -->
+                <div class="dashboard-card">
+
+                    <div class="card-header">
+
+                        <div>
+
+                            <h3>
+                                📤 Stok Keluar
+                            </h3>
+
+                            <p>
+                                Catat penggunaan atau pengurangan stok.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <form id="stockOutForm">
+
+                        <div class="form-grid">
+
+
+                            <div class="form-group form-group-full">
+
+                                <label for="stockOutIngredient">
+                                    Bahan
+                                    <span class="required">*</span>
+                                </label>
+
+                                <select
+                                    id="stockOutIngredient"
+                                    name="ingredientId"
+                                    required
+                                >
+
+                                    <option value="">
+                                        Pilih bahan
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="stockOutQuantity">
+                                    Jumlah
+                                    <span class="required">*</span>
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="stockOutQuantity"
+                                    name="quantity"
+                                    min="0"
+                                    step="0.01"
+                                    placeholder="0"
+                                    required
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label for="stockOutDate">
+                                    Tanggal
+                                </label>
+
+                                <input
+                                    type="date"
+                                    id="stockOutDate"
+                                    name="date"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group form-group-full">
+
+                                <label for="stockOutNote">
+                                    Catatan
+                                </label>
+
+                                <textarea
+                                    id="stockOutNote"
+                                    name="note"
+                                    rows="2"
+                                    placeholder="Contoh: Penggunaan bahan..."
+                                ></textarea>
+
+                            </div>
+
+
+                            <div class="form-group form-group-full">
+
+                                <button
+                                    type="submit"
+                                    class="secondary-button"
+                                >
+                                    📤 Kurangi Stok
+                                </button>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 RECENT USAGE
+            ================================================== -->
+            <section class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>
+                            History Penggunaan Bahan
+                        </h3>
+
+                        <p>
+                            Aktivitas penggunaan bahan terbaru.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="viewIngredientHistory"
+                    >
+                        Lihat Semua
+                    </button>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table class="data-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Tanggal
+                                </th>
+
+                                <th>
+                                    Bahan
+                                </th>
+
+                                <th>
+                                    Jenis
+                                </th>
+
+                                <th>
+                                    Jumlah
+                                </th>
+
+                                <th>
+                                    Keterangan
+                                </th>
+
+                                <th>
+                                    Oleh
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="ingredientHistoryBody">
+
+                            <tr>
+
+                                <td colspan="6">
+
+                                    <div class="empty-state">
+
+                                        <span>
+                                            📜
+                                        </span>
+
+                                        <strong>
+                                            Belum ada history
+                                        </strong>
+
+                                        <small>
+                                            Riwayat penggunaan bahan akan muncul di sini.
+                                        </small>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+        <footer class="footer">
+
+            <span>
+                ©
+                <span id="currentYear"></span>
+                Food Monitoring
+            </span>
+
+            <span>
+                Sistem Monitoring Bisnis Kuliner
+            </span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================================
+     ADD / EDIT INGREDIENT MODAL
+========================================================= -->
+<div
+    class="modal-overlay"
+    id="ingredientModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal modal-large"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="ingredientModalTitle"
+    >
+
+
+        <!-- MODAL HEADER -->
+        <div class="modal-header">
+
+            <div>
+
+                <h3 id="ingredientModalTitle">
+                    Tambah Bahan
+                </h3>
+
+                <p>
+                    Masukkan informasi bahan baku.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeIngredientModal"
+                aria-label="Tutup"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <!-- FORM -->
+        <form id="ingredientForm">
+
+            <div class="modal-body">
+
+                <input
+                    type="hidden"
+                    id="ingredientId"
+                    name="id"
+                >
+
+
+                <!-- =================================================
+                     BASIC INFORMATION
+                ================================================== -->
+                <div class="form-section">
+
+                    <div class="form-section-title">
+
+                        <span class="form-section-icon">
+                            🥩
+                        </span>
+
+                        <div>
+
+                            <h4>
+                                Informasi Bahan
+                            </h4>
+
+                            <p>
+                                Informasi dasar bahan baku.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+
+                        <!-- NAME -->
+                        <div class="form-group form-group-full">
+
+                            <label for="ingredientName">
+
+                                Nama Bahan
+
+                                <span class="required">
+                                    *
+                                </span>
+
+                            </label>
+
+                            <input
+                                type="text"
+                                id="ingredientName"
+                                name="name"
+                                placeholder="Contoh: Daging Ayam"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- CATEGORY -->
+                        <div class="form-group">
+
+                            <label for="ingredientCategory">
+                                Kategori
+                            </label>
+
+                            <select
+                                id="ingredientCategory"
+                                name="category"
+                            >
+
+                                <option value="">
+                                    Pilih kategori
+                                </option>
+
+                                <option value="daging">
+                                    Daging
+                                </option>
+
+                                <option value="sayuran">
+                                    Sayuran
+                                </option>
+
+                                <option value="bumbu">
+                                    Bumbu
+                                </option>
+
+                                <option value="minyak">
+                                    Minyak
+                                </option>
+
+                                <option value="sembako">
+                                    Sembako
+                                </option>
+
+                                <option value="minuman">
+                                    Minuman
+                                </option>
+
+                                <option value="kemasan">
+                                    Kemasan
+                                </option>
+
+                                <option value="lainnya">
+                                    Lainnya
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- UNIT -->
+                        <div class="form-group">
+
+                            <label for="ingredientUnit">
+                                Satuan
+                                <span class="required">
+                                    *
+                                </span>
+                            </label>
+
+                            <select
+                                id="ingredientUnit"
+                                name="unit"
+                                required
+                            >
+
+                                <option value="kg">
+                                    Kilogram (kg)
+                                </option>
+
+                                <option value="gram">
+                                    Gram (g)
+                                </option>
+
+                                <option value="liter">
+                                    Liter (L)
+                                </option>
+
+                                <option value="ml">
+                                    Mililiter (ml)
+                                </option>
+
+                                <option value="pcs">
+                                    Pcs
+                                </option>
+
+                                <option value="pack">
+                                    Pack
+                                </option>
+
+                                <option value="botol">
+                                    Botol
+                                </option>
+
+                                <option value="dus">
+                                    Dus
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- PRICE -->
+                        <div class="form-group">
+
+                            <label for="ingredientPrice">
+
+                                Harga / Satuan
+
+                                <span class="required">
+                                    *
+                                </span>
+
+                            </label>
+
+                            <div class="input-prefix">
+
+                                <span>
+                                    Rp
+                                </span>
+
+                                <input
+                                    type="number"
+                                    id="ingredientPrice"
+                                    name="price"
+                                    min="0"
+                                    step="1"
+                                    placeholder="0"
+                                    required
+                                >
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- MIN STOCK -->
+                        <div class="form-group">
+
+                            <label for="ingredientMinimumStock">
+
+                                Minimum Stok
+
+                                <span class="required">
+                                    *
+                                </span>
+
+                            </label>
+
+                            <input
+                                type="number"
+                                id="ingredientMinimumStock"
+                                name="minimumStock"
+                                min="0"
+                                step="0.01"
+                                placeholder="0"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- CURRENT STOCK -->
+                        <div class="form-group">
+
+                            <label for="ingredientCurrentStock">
+                                Stok Saat Ini
+                            </label>
+
+                            <input
+                                type="number"
+                                id="ingredientCurrentStock"
+                                name="stock"
+                                min="0"
+                                step="0.01"
+                                placeholder="0"
+                            >
+
+                            <small class="form-help">
+                                Saat edit, nilai ini menunjukkan stok saat ini.
+                            </small>
+
+                        </div>
+
+
+                        <!-- SUPPLIER -->
+                        <div class="form-group">
+
+                            <label for="ingredientSupplier">
+                                Supplier
+                            </label>
+
+                            <select
+                                id="ingredientSupplier"
+                                name="supplierId"
+                            >
+
+                                <option value="">
+                                    Pilih supplier
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- STATUS -->
+                        <div class="form-group">
+
+                            <label for="ingredientStatus">
+                                Status
+                            </label>
+
+                            <select
+                                id="ingredientStatus"
+                                name="status"
+                            >
+
+                                <option value="active">
+                                    Aktif
+                                </option>
+
+                                <option value="inactive">
+                                    Nonaktif
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- NOTE -->
+                        <div class="form-group form-group-full">
+
+                            <label for="ingredientDescription">
+                                Catatan
+                            </label>
+
+                            <textarea
+                                id="ingredientDescription"
+                                name="description"
+                                rows="3"
+                                placeholder="Catatan tentang bahan..."
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     STOCK PREVIEW
+                ================================================== -->
+                <div class="stock-preview">
+
+                    <div class="stock-preview-item">
+
+                        <span>
+                            Stok
+                        </span>
+
+                        <strong id="previewIngredientStock">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stock-preview-item">
+
+                        <span>
+                            Minimum
+                        </span>
+
+                        <strong id="previewIngredientMinimum">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="stock-preview-item">
+
+                        <span>
+                            Harga / Satuan
+                        </span>
+
+                        <strong id="previewIngredientPrice">
+                            Rp0
+                        </strong>
+
+                    </div>
+
+
+                    <div
+                        class="stock-preview-item highlight"
+                        id="ingredientStockStatusPreview"
+                    >
+
+                        <span>
+                            Status Stok
+                        </span>
+
+                        <strong>
+                            -
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- MODAL FOOTER -->
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    id="cancelIngredientForm"
+                >
+                    Batal
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                    id="saveIngredientButton"
+                >
+                    💾 Simpan Bahan
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     DELETE MODAL
+========================================================= -->
+<div
+    class="modal-overlay"
+    id="deleteIngredientModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal modal-small"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="deleteIngredientTitle"
+    >
+
+        <div class="modal-body delete-confirmation">
+
+            <div class="delete-icon">
+                🗑️
+            </div>
+
+
+            <h3 id="deleteIngredientTitle">
+                Hapus Bahan?
+            </h3>
+
+
+            <p>
+
+                Bahan
+
+                <strong id="deleteIngredientName">
+                    -
+                </strong>
+
+                akan dihapus dari sistem.
+
+            </p>
+
+
+            <p class="warning-text">
+
+                Jika bahan sudah digunakan pada resep atau transaksi,
+                sebaiknya nonaktifkan bahan daripada menghapusnya.
+
+            </p>
+
+        </div>
+
+
+        <div class="modal-footer">
+
+            <button
+                type="button"
+                class="secondary-button"
+                id="cancelDeleteIngredient"
+            >
+                Batal
+            </button>
+
+
+            <button
+                type="button"
+                class="danger-button"
+                id="confirmDeleteIngredient"
+            >
+                Hapus Bahan
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     NOTIFICATION PANEL
+========================================================= -->
+<div
+    class="notification-panel"
+    id="notificationPanel"
+    aria-hidden="true"
+>
+
+    <div class="notification-header">
+
+        <div>
+
+            <h3>
+                Notifikasi
+            </h3>
+
+            <span id="notificationCount">
+                0 notifikasi
+            </span>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="panel-close"
+            id="closeNotification"
+            aria-label="Tutup notifikasi"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <div
+        class="notification-list"
+        id="notificationList"
+    >
+
+        <div class="empty-notification">
+
+            <span>
+                🔔
+            </span>
+
+            <strong>
+                Tidak ada notifikasi
+            </strong>
+
+            <small>
+                Semua kondisi terlihat baik.
+            </small>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     TOAST
+========================================================= -->
+<div
+    class="toast-container"
+    id="toastContainer"
+    aria-live="polite"
+></div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+<script src="js/ingredients.js"></script>
+
+</body>
+</html>
