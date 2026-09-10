@@ -1,0 +1,1763 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Food Monitoring - Penjualan</title>
+
+    <meta
+        name="description"
+        content="Kelola transaksi penjualan offline, GrabFood, GoFood, ShopeeFood, diskon, potongan platform, HPP, dan laba."
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+
+            <a href="index.html" class="brand">
+
+                <span class="brand-icon">
+                    🍴
+                </span>
+
+                <span class="brand-text">
+                    <strong>FOOD</strong>
+                    <small>MONITOR</small>
+                </span>
+
+            </a>
+
+
+            <button
+                type="button"
+                class="sidebar-close"
+                id="sidebarClose"
+                aria-label="Tutup menu"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <!-- NAVIGATION -->
+        <nav class="sidebar-nav">
+
+            <div class="nav-section">
+
+                <span class="nav-section-title">
+                    Menu Utama
+                </span>
+
+
+                <a
+                    href="index.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">▦</span>
+                    <span class="nav-text">
+                        Dashboard
+                    </span>
+                </a>
+
+
+                <a
+                    href="products.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">📦</span>
+                    <span class="nav-text">
+                        Produk
+                    </span>
+                </a>
+
+
+                <a
+                    href="ingredients.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">🥩</span>
+                    <span class="nav-text">
+                        Bahan
+                    </span>
+                </a>
+
+
+                <a
+                    href="sales.html"
+                    class="nav-item active"
+                >
+                    <span class="nav-icon">🧾</span>
+                    <span class="nav-text">
+                        Penjualan
+                    </span>
+                </a>
+
+
+                <a
+                    href="reports.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">📊</span>
+                    <span class="nav-text">
+                        Laporan
+                    </span>
+                </a>
+
+
+                <a
+                    href="#"
+                    class="nav-item"
+                    id="historyMenu"
+                >
+                    <span class="nav-icon">📜</span>
+                    <span class="nav-text">
+                        History
+                    </span>
+                </a>
+
+
+                <a
+                    href="#"
+                    class="nav-item"
+                    id="supplierMenu"
+                >
+                    <span class="nav-icon">🚚</span>
+                    <span class="nav-text">
+                        Supplier
+                    </span>
+                </a>
+
+
+                <a
+                    href="#"
+                    class="nav-item"
+                    id="settingsMenu"
+                >
+                    <span class="nav-icon">⚙</span>
+                    <span class="nav-text">
+                        Pengaturan
+                    </span>
+                </a>
+
+            </div>
+
+        </nav>
+
+
+        <!-- SIDEBAR FOOTER -->
+        <div class="sidebar-footer">
+
+            <div class="system-status">
+
+                <span class="status-dot"></span>
+
+                <span>
+                    Sistem aktif
+                </span>
+
+            </div>
+
+            <small>
+                Food Monitoring v1.0
+            </small>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MOBILE OVERLAY
+    ====================================================== -->
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+    <main class="main">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="menu-toggle"
+                    id="menuToggle"
+                    aria-label="Buka menu"
+                >
+                    ☰
+                </button>
+
+
+                <div class="page-title">
+
+                    <h1>
+                        Penjualan
+                    </h1>
+
+                    <p>
+                        Input dan kelola transaksi penjualan
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button
+                    type="button"
+                    class="icon-button notification-button"
+                    id="notificationButton"
+                    aria-label="Notifikasi"
+                >
+                    🔔
+
+                    <span
+                        class="notification-badge"
+                        id="notificationBadge"
+                    >
+                        0
+                    </span>
+
+                </button>
+
+
+                <div class="admin-profile">
+
+                    <div class="admin-avatar">
+                        A
+                    </div>
+
+                    <div class="admin-info">
+
+                        <strong>
+                            Admin
+                        </strong>
+
+                        <small>
+                            Administrator
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             CONTENT
+        ================================================== -->
+        <div class="content">
+
+
+            <!-- =================================================
+                 PAGE HEADER
+            ================================================== -->
+            <section class="page-header">
+
+                <div>
+
+                    <div class="breadcrumb">
+
+                        <a href="index.html">
+                            Dashboard
+                        </a>
+
+                        <span>
+                            ›
+                        </span>
+
+                        <span>
+                            Penjualan
+                        </span>
+
+                    </div>
+
+
+                    <h2>
+                        Penjualan
+                    </h2>
+
+                    <p>
+                        Catat transaksi dan pantau penjualan dari berbagai platform.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="primary-button"
+                    id="newSaleButton"
+                >
+                    <span>
+                        ＋
+                    </span>
+
+                    Input Penjualan
+                </button>
+
+            </section>
+
+
+            <!-- =================================================
+                 SUMMARY
+            ================================================== -->
+            <section class="summary-grid sales-summary-grid">
+
+
+                <!-- TODAY SALES -->
+                <div class="summary-card">
+
+                    <div class="summary-card-top">
+
+                        <div>
+
+                            <span class="summary-label">
+                                PENJUALAN HARI INI
+                            </span>
+
+                            <h3 id="todaySales">
+                                Rp0
+                            </h3>
+
+                            <span
+                                class="summary-change positive"
+                                id="todaySalesChange"
+                            >
+                                ↑ 0%
+                            </span>
+
+                        </div>
+
+
+                        <div class="summary-icon blue">
+                            💰
+                        </div>
+
+                    </div>
+
+
+                    <div class="summary-card-bottom">
+
+                        <span>
+                            Dibanding kemarin
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TRANSACTIONS -->
+                <div class="summary-card">
+
+                    <div class="summary-card-top">
+
+                        <div>
+
+                            <span class="summary-label">
+                                TRANSAKSI HARI INI
+                            </span>
+
+                            <h3 id="todayTransactionCount">
+                                0
+                            </h3>
+
+                            <span class="summary-change neutral">
+                                transaksi
+                            </span>
+
+                        </div>
+
+
+                        <div class="summary-icon purple">
+                            🧾
+                        </div>
+
+                    </div>
+
+
+                    <div class="summary-card-bottom">
+
+                        <span>
+                            Semua platform
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HPP -->
+                <div class="summary-card">
+
+                    <div class="summary-card-top">
+
+                        <div>
+
+                            <span class="summary-label">
+                                HPP HARI INI
+                            </span>
+
+                            <h3 id="todayHpp">
+                                Rp0
+                            </h3>
+
+                            <span
+                                class="summary-change neutral"
+                                id="todayHppPercentage"
+                            >
+                                0%
+                            </span>
+
+                        </div>
+
+
+                        <div class="summary-icon orange">
+                            🧮
+                        </div>
+
+                    </div>
+
+
+                    <div class="summary-card-bottom">
+
+                        <span>
+                            Harga pokok penjualan
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PROFIT -->
+                <div class="summary-card">
+
+                    <div class="summary-card-top">
+
+                        <div>
+
+                            <span class="summary-label">
+                                LABA HARI INI
+                            </span>
+
+                            <h3 id="todayProfit">
+                                Rp0
+                            </h3>
+
+                            <span
+                                class="summary-change positive"
+                                id="todayProfitMargin"
+                            >
+                                Margin 0%
+                            </span>
+
+                        </div>
+
+
+                        <div class="summary-icon dark">
+                            📈
+                        </div>
+
+                    </div>
+
+
+                    <div class="summary-card-bottom">
+
+                        <span>
+                            Setelah potongan platform
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 PLATFORM SUMMARY
+            ================================================== -->
+            <section class="platform-grid">
+
+
+                <!-- OFFLINE -->
+                <div class="platform-card">
+
+                    <div class="platform-icon offline">
+                        🏪
+                    </div>
+
+                    <div class="platform-info">
+
+                        <span>
+                            Offline
+                        </span>
+
+                        <strong id="offlineSales">
+                            Rp0
+                        </strong>
+
+                        <small id="offlineCount">
+                            0 transaksi
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- GRABFOOD -->
+                <div class="platform-card">
+
+                    <div class="platform-icon grab">
+                        🟢
+                    </div>
+
+                    <div class="platform-info">
+
+                        <span>
+                            GrabFood
+                        </span>
+
+                        <strong id="grabSales">
+                            Rp0
+                        </strong>
+
+                        <small id="grabCount">
+                            0 transaksi
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- GOFOOD -->
+                <div class="platform-card">
+
+                    <div class="platform-icon gofood">
+                        🟢
+                    </div>
+
+                    <div class="platform-info">
+
+                        <span>
+                            GoFood
+                        </span>
+
+                        <strong id="gofoodSales">
+                            Rp0
+                        </strong>
+
+                        <small id="gofoodCount">
+                            0 transaksi
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SHOPEEFOOD -->
+                <div class="platform-card">
+
+                    <div class="platform-icon shopee">
+                        🟠
+                    </div>
+
+                    <div class="platform-info">
+
+                        <span>
+                            ShopeeFood
+                        </span>
+
+                        <strong id="shopeeSales">
+                            Rp0
+                        </strong>
+
+                        <small id="shopeeCount">
+                            0 transaksi
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 SALES TABLE
+            ================================================== -->
+            <section class="dashboard-card">
+
+                <div class="card-header sales-table-header">
+
+                    <div>
+
+                        <h3>
+                            History Penjualan
+                        </h3>
+
+                        <p>
+                            Semua transaksi penjualan terbaru.
+                        </p>
+
+                    </div>
+
+
+                    <div class="table-actions">
+
+                        <!-- SEARCH -->
+                        <div class="search-box">
+
+                            <span class="search-icon">
+                                🔍
+                            </span>
+
+                            <input
+                                type="search"
+                                id="salesSearch"
+                                placeholder="Cari transaksi..."
+                                autocomplete="off"
+                            >
+
+                        </div>
+
+
+                        <!-- PLATFORM -->
+                        <select
+                            id="salesPlatformFilter"
+                            class="select-control"
+                        >
+
+                            <option value="all">
+                                Semua Platform
+                            </option>
+
+                            <option value="offline">
+                                Offline
+                            </option>
+
+                            <option value="grabfood">
+                                GrabFood
+                            </option>
+
+                            <option value="gofood">
+                                GoFood
+                            </option>
+
+                            <option value="shopeefood">
+                                ShopeeFood
+                            </option>
+
+                        </select>
+
+
+                        <!-- DATE -->
+                        <input
+                            type="date"
+                            id="salesDateFilter"
+                            class="date-control"
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- TABLE -->
+                <div class="table-wrapper">
+
+                    <table class="data-table sales-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    No. Transaksi
+                                </th>
+
+                                <th>
+                                    Tanggal
+                                </th>
+
+                                <th>
+                                    Produk
+                                </th>
+
+                                <th>
+                                    Platform
+                                </th>
+
+                                <th>
+                                    Subtotal
+                                </th>
+
+                                <th>
+                                    Diskon
+                                </th>
+
+                                <th>
+                                    Potongan
+                                </th>
+
+                                <th>
+                                    Total Bersih
+                                </th>
+
+                                <th>
+                                    Laba
+                                </th>
+
+                                <th class="text-right">
+                                    Aksi
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="salesTableBody">
+
+                            <tr>
+
+                                <td colspan="10">
+
+                                    <div class="loading-state">
+
+                                        <div class="loading-spinner"></div>
+
+                                        <span>
+                                            Memuat transaksi...
+                                        </span>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <!-- FOOTER -->
+                <div class="table-footer">
+
+                    <div class="table-info">
+
+                        Menampilkan
+
+                        <strong id="salesShowingFrom">
+                            0
+                        </strong>
+
+                        -
+
+                        <strong id="salesShowingTo">
+                            0
+                        </strong>
+
+                        dari
+
+                        <strong id="salesTotalItems">
+                            0
+                        </strong>
+
+                        transaksi
+
+                    </div>
+
+
+                    <div class="pagination">
+
+                        <button
+                            type="button"
+                            class="pagination-button"
+                            id="salesPrevPage"
+                            disabled
+                        >
+                            ‹
+                        </button>
+
+
+                        <span
+                            class="pagination-current"
+                            id="salesCurrentPage"
+                        >
+                            1
+                        </span>
+
+
+                        <button
+                            type="button"
+                            class="pagination-button"
+                            id="salesNextPage"
+                        >
+                            ›
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+        <footer class="footer">
+
+            <span>
+                ©
+                <span id="currentYear"></span>
+                Food Monitoring
+            </span>
+
+            <span>
+                Sistem Monitoring Bisnis Kuliner
+            </span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================================
+     INPUT SALES MODAL
+========================================================= -->
+<div
+    class="modal-overlay"
+    id="saleModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal modal-extra-large"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="saleModalTitle"
+    >
+
+
+        <!-- MODAL HEADER -->
+        <div class="modal-header">
+
+            <div>
+
+                <h3 id="saleModalTitle">
+                    Input Penjualan
+                </h3>
+
+                <p>
+                    Masukkan detail transaksi penjualan.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeSaleModal"
+                aria-label="Tutup"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <!-- FORM -->
+        <form id="saleForm">
+
+            <div class="modal-body">
+
+
+                <input
+                    type="hidden"
+                    id="saleId"
+                    name="id"
+                >
+
+
+                <!-- =================================================
+                     TRANSACTION INFORMATION
+                ================================================== -->
+                <div class="form-section">
+
+                    <div class="form-section-title">
+
+                        <span class="form-section-icon">
+                            🧾
+                        </span>
+
+                        <div>
+
+                            <h4>
+                                Informasi Transaksi
+                            </h4>
+
+                            <p>
+                                Tentukan tanggal dan platform penjualan.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+
+                        <!-- DATE -->
+                        <div class="form-group">
+
+                            <label for="saleDate">
+
+                                Tanggal
+
+                                <span class="required">
+                                    *
+                                </span>
+
+                            </label>
+
+                            <input
+                                type="date"
+                                id="saleDate"
+                                name="date"
+                                required
+                            >
+
+                        </div>
+
+
+                        <!-- TIME -->
+                        <div class="form-group">
+
+                            <label for="saleTime">
+                                Jam
+                            </label>
+
+                            <input
+                                type="time"
+                                id="saleTime"
+                                name="time"
+                            >
+
+                        </div>
+
+
+                        <!-- PLATFORM -->
+                        <div class="form-group">
+
+                            <label for="salePlatform">
+
+                                Platform
+
+                                <span class="required">
+                                    *
+                                </span>
+
+                            </label>
+
+                            <select
+                                id="salePlatform"
+                                name="platform"
+                                required
+                            >
+
+                                <option value="">
+                                    Pilih platform
+                                </option>
+
+                                <option value="offline">
+                                    Offline
+                                </option>
+
+                                <option value="grabfood">
+                                    GrabFood
+                                </option>
+
+                                <option value="gofood">
+                                    GoFood
+                                </option>
+
+                                <option value="shopeefood">
+                                    ShopeeFood
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- ORDER ID -->
+                        <div class="form-group">
+
+                            <label for="saleOrderNumber">
+                                No. Pesanan
+                            </label>
+
+                            <input
+                                type="text"
+                                id="saleOrderNumber"
+                                name="orderNumber"
+                                placeholder="Contoh: ORD-001"
+                            >
+
+                        </div>
+
+
+                        <!-- CUSTOMER -->
+                        <div class="form-group">
+
+                            <label for="saleCustomer">
+                                Nama Pembeli
+                            </label>
+
+                            <input
+                                type="text"
+                                id="saleCustomer"
+                                name="customer"
+                                placeholder="Opsional"
+                            >
+
+                        </div>
+
+
+                        <!-- PAYMENT -->
+                        <div class="form-group">
+
+                            <label for="salePayment">
+                                Metode Pembayaran
+                            </label>
+
+                            <select
+                                id="salePayment"
+                                name="payment"
+                            >
+
+                                <option value="">
+                                    Pilih pembayaran
+                                </option>
+
+                                <option value="cash">
+                                    Cash
+                                </option>
+
+                                <option value="qris">
+                                    QRIS
+                                </option>
+
+                                <option value="transfer">
+                                    Transfer
+                                </option>
+
+                                <option value="ewallet">
+                                    E-Wallet
+                                </option>
+
+                                <option value="platform">
+                                    Pembayaran Platform
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     PRODUCTS
+                ================================================== -->
+                <div class="form-section">
+
+                    <div class="form-section-title">
+
+                        <span class="form-section-icon">
+                            📦
+                        </span>
+
+                        <div>
+
+                            <h4>
+                                Produk Terjual
+                            </h4>
+
+                            <p>
+                                Tambahkan produk yang dibeli pelanggan.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="sale-products-container">
+
+
+                        <div class="sale-products-header">
+
+                            <strong>
+                                Detail Produk
+                            </strong>
+
+
+                            <button
+                                type="button"
+                                class="secondary-button"
+                                id="addSaleProduct"
+                            >
+                                ＋ Tambah Produk
+                            </button>
+
+                        </div>
+
+
+                        <div class="sale-products-table-wrapper">
+
+                            <table class="data-table sale-products-table">
+
+                                <thead>
+
+                                    <tr>
+
+                                        <th>
+                                            Produk
+                                        </th>
+
+                                        <th width="120">
+                                            Harga
+                                        </th>
+
+                                        <th width="100">
+                                            Qty
+                                        </th>
+
+                                        <th width="150">
+                                            Subtotal
+                                        </th>
+
+                                        <th width="60">
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody id="saleProductsBody">
+
+                                    <tr class="sale-product-empty">
+
+                                        <td colspan="5">
+
+                                            <div class="empty-state">
+
+                                                <span>
+                                                    📦
+                                                </span>
+
+                                                <strong>
+                                                    Belum ada produk
+                                                </strong>
+
+                                                <small>
+                                                    Klik "Tambah Produk" untuk memasukkan produk.
+                                                </small>
+
+                                            </div>
+
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     DISCOUNT & PLATFORM FEE
+                ================================================== -->
+                <div class="form-section">
+
+                    <div class="form-section-title">
+
+                        <span class="form-section-icon">
+                            💸
+                        </span>
+
+                        <div>
+
+                            <h4>
+                                Diskon & Potongan
+                            </h4>
+
+                            <p>
+                                Catat diskon pembeli dan potongan dari platform.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+
+                        <!-- CUSTOMER DISCOUNT TYPE -->
+                        <div class="form-group">
+
+                            <label for="customerDiscountType">
+                                Tipe Diskon Pembeli
+                            </label>
+
+                            <select
+                                id="customerDiscountType"
+                                name="customerDiscountType"
+                            >
+
+                                <option value="nominal">
+                                    Nominal (Rp)
+                                </option>
+
+                                <option value="percentage">
+                                    Persentase (%)
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- CUSTOMER DISCOUNT -->
+                        <div class="form-group">
+
+                            <label for="customerDiscount">
+                                Diskon Pembeli
+                            </label>
+
+                            <input
+                                type="number"
+                                id="customerDiscount"
+                                name="customerDiscount"
+                                min="0"
+                                step="1"
+                                value="0"
+                                placeholder="0"
+                            >
+
+                        </div>
+
+
+                        <!-- PLATFORM FEE TYPE -->
+                        <div class="form-group">
+
+                            <label for="platformFeeType">
+                                Tipe Potongan Platform
+                            </label>
+
+                            <select
+                                id="platformFeeType"
+                                name="platformFeeType"
+                            >
+
+                                <option value="nominal">
+                                    Nominal (Rp)
+                                </option>
+
+                                <option value="percentage">
+                                    Persentase (%)
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- PLATFORM FEE -->
+                        <div class="form-group">
+
+                            <label for="platformFee">
+                                Potongan Platform
+                            </label>
+
+                            <input
+                                type="number"
+                                id="platformFee"
+                                name="platformFee"
+                                min="0"
+                                step="1"
+                                value="0"
+                                placeholder="0"
+                            >
+
+                        </div>
+
+
+                        <!-- PLATFORM FEE NOTE -->
+                        <div class="form-group form-group-full">
+
+                            <label for="platformFeeNote">
+                                Keterangan Potongan
+                            </label>
+
+                            <input
+                                type="text"
+                                id="platformFeeNote"
+                                name="platformFeeNote"
+                                placeholder="Contoh: Komisi platform 20%"
+                            >
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     SALE SUMMARY
+                ================================================== -->
+                <div class="sale-summary">
+
+                    <div class="sale-summary-left">
+
+                        <div class="summary-line">
+
+                            <span>
+                                Subtotal
+                            </span>
+
+                            <strong id="saleSubtotal">
+                                Rp0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-line">
+
+                            <span>
+                                Diskon Pembeli
+                            </span>
+
+                            <strong
+                                class="negative"
+                                id="saleDiscount"
+                            >
+                                - Rp0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-line total">
+
+                            <span>
+                                Total Penjualan
+                            </span>
+
+                            <strong id="saleGrandTotal">
+                                Rp0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="sale-summary-right">
+
+                        <div class="summary-line">
+
+                            <span>
+                                HPP
+                            </span>
+
+                            <strong id="saleHpp">
+                                Rp0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-line">
+
+                            <span>
+                                Potongan Platform
+                            </span>
+
+                            <strong
+                                class="negative"
+                                id="salePlatformFee"
+                            >
+                                - Rp0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="summary-line profit">
+
+                            <span>
+                                Laba Bersih
+                            </span>
+
+                            <strong id="saleNetProfit">
+                                Rp0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     NOTE
+                ================================================== -->
+                <div class="form-group form-group-full">
+
+                    <label for="saleNote">
+                        Catatan Transaksi
+                    </label>
+
+                    <textarea
+                        id="saleNote"
+                        name="note"
+                        rows="3"
+                        placeholder="Catatan tambahan..."
+                    ></textarea>
+
+                </div>
+
+
+            </div>
+
+
+            <!-- =================================================
+                 MODAL FOOTER
+            ================================================== -->
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    id="cancelSaleForm"
+                >
+                    Batal
+                </button>
+
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                    id="saveSaleButton"
+                >
+                    💾 Simpan Penjualan
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     SALE DETAIL MODAL
+========================================================= -->
+<div
+    class="modal-overlay"
+    id="saleDetailModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal modal-large"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="saleDetailTitle"
+    >
+
+        <div class="modal-header">
+
+            <div>
+
+                <h3 id="saleDetailTitle">
+                    Detail Penjualan
+                </h3>
+
+                <p id="saleDetailSubtitle">
+                    -
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeSaleDetailModal"
+                aria-label="Tutup"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="modal-body">
+
+            <div
+                class="sale-detail-content"
+                id="saleDetailContent"
+            >
+
+                <!-- Diisi oleh sales.js -->
+
+                <div class="loading-state">
+
+                    <div class="loading-spinner"></div>
+
+                    <span>
+                        Memuat detail transaksi...
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="modal-footer">
+
+            <button
+                type="button"
+                class="secondary-button"
+                id="closeSaleDetailButton"
+            >
+                Tutup
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     DELETE SALE MODAL
+========================================================= -->
+<div
+    class="modal-overlay"
+    id="deleteSaleModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal modal-small"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="deleteSaleTitle"
+    >
+
+        <div class="modal-body delete-confirmation">
+
+            <div class="delete-icon">
+                🗑️
+            </div>
+
+
+            <h3 id="deleteSaleTitle">
+                Hapus Transaksi?
+            </h3>
+
+
+            <p>
+
+                Transaksi
+
+                <strong id="deleteSaleNumber">
+                    -
+                </strong>
+
+                akan dihapus.
+
+            </p>
+
+
+            <p class="warning-text">
+
+                Stok bahan yang terkait akan dikembalikan
+                apabila transaksi sudah memotong stok.
+
+            </p>
+
+        </div>
+
+
+        <div class="modal-footer">
+
+            <button
+                type="button"
+                class="secondary-button"
+                id="cancelDeleteSale"
+            >
+                Batal
+            </button>
+
+
+            <button
+                type="button"
+                class="danger-button"
+                id="confirmDeleteSale"
+            >
+                Hapus Transaksi
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     NOTIFICATION PANEL
+========================================================= -->
+<div
+    class="notification-panel"
+    id="notificationPanel"
+    aria-hidden="true"
+>
+
+    <div class="notification-header">
+
+        <div>
+
+            <h3>
+                Notifikasi
+            </h3>
+
+            <span id="notificationCount">
+                0 notifikasi
+            </span>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="panel-close"
+            id="closeNotification"
+            aria-label="Tutup notifikasi"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <div
+        class="notification-list"
+        id="notificationList"
+    >
+
+        <div class="empty-notification">
+
+            <span>
+                🔔
+            </span>
+
+            <strong>
+                Tidak ada notifikasi
+            </strong>
+
+            <small>
+                Semua kondisi terlihat baik.
+            </small>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     TOAST
+========================================================= -->
+<div
+    class="toast-container"
+    id="toastContainer"
+    aria-live="polite"
+></div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+<script src="js/sales.js"></script>
+
+</body>
+</html>
