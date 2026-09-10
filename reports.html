@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Laporan & History - Food Monitoring</title>
+    <title>Laporan, History & Pengaturan - Food Monitoring</title>
 
     <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -13,25 +13,33 @@
 
 <div class="app">
 
-    <!-- ================= SIDEBAR ================= -->
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
 
     <aside class="sidebar" id="sidebar">
 
         <div class="sidebar-header">
 
             <a href="index.html" class="brand">
-                <div class="brand-icon">🍴</div>
+
+                <div class="brand-icon">
+                    🍴
+                </div>
 
                 <div class="brand-text">
                     <strong>FOOD</strong>
                     <small>MONITORING</small>
                 </div>
+
             </a>
+
 
             <button
                 type="button"
                 class="sidebar-close"
                 id="sidebarClose"
+                aria-label="Tutup menu"
             >
                 ×
             </button>
@@ -45,20 +53,33 @@
                 Menu Utama
             </span>
 
-            <a href="index.html" class="nav-item">
+
+            <a
+                href="index.html"
+                class="nav-item"
+            >
                 <span class="nav-icon">📊</span>
                 <span class="nav-text">Dashboard</span>
             </a>
 
-            <a href="products.html" class="nav-item">
+
+            <a
+                href="products.html"
+                class="nav-item"
+            >
                 <span class="nav-icon">📦</span>
                 <span class="nav-text">Produk</span>
             </a>
 
-            <a href="ingredients.html" class="nav-item">
+
+            <a
+                href="ingredients.html"
+                class="nav-item"
+            >
                 <span class="nav-icon">🥩</span>
                 <span class="nav-text">Bahan</span>
             </a>
+
 
             <a
                 href="ingredients.html#supplierSection"
@@ -68,28 +89,33 @@
                 <span class="nav-text">Supplier</span>
             </a>
 
-            <a href="sales.html" class="nav-item">
+
+            <a
+                href="sales.html"
+                class="nav-item"
+            >
                 <span class="nav-icon">🧾</span>
                 <span class="nav-text">Penjualan</span>
             </a>
 
+
             <a
                 href="reports.html"
                 class="nav-item active"
-                aria-current="page"
             >
                 <span class="nav-icon">📊</span>
                 <span class="nav-text">Laporan</span>
             </a>
 
+
             <a
                 href="reports.html#history"
                 class="nav-item"
-                id="historyMenu"
             >
                 <span class="nav-icon">📜</span>
                 <span class="nav-text">History</span>
             </a>
+
 
             <a
                 href="reports.html#settings"
@@ -105,8 +131,13 @@
         <div class="sidebar-footer">
 
             <div class="system-status">
+
                 <span class="status-dot"></span>
-                <span>Sistem Online</span>
+
+                <span>
+                    Sistem Online
+                </span>
+
             </div>
 
             <small>
@@ -124,11 +155,16 @@
     ></div>
 
 
-    <!-- ================= MAIN ================= -->
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
 
     <main class="main">
 
-        <!-- TOPBAR -->
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
 
         <header class="topbar">
 
@@ -144,12 +180,15 @@
                     ☰
                 </button>
 
+
                 <div class="page-title">
 
-                    <h1>Laporan & History</h1>
+                    <h1>
+                        Laporan
+                    </h1>
 
                     <p>
-                        Pantau laporan dan aktivitas sistem
+                        Laporan, history dan pengaturan sistem
                     </p>
 
                 </div>
@@ -173,6 +212,7 @@
                     >
                         0
                     </span>
+
                 </button>
 
 
@@ -184,7 +224,9 @@
 
                     <div class="admin-info">
 
-                        <strong>Admin</strong>
+                        <strong>
+                            Admin
+                        </strong>
 
                         <small>
                             Administrator
@@ -199,12 +241,16 @@
         </header>
 
 
-        <!-- ================= CONTENT ================= -->
+        <!-- =================================================
+             CONTENT
+        ================================================== -->
 
         <div class="content">
 
 
-            <!-- PAGE HEADER -->
+            <!-- =================================================
+                 LAPORAN HEADER
+            ================================================== -->
 
             <div class="page-header">
 
@@ -216,7 +262,9 @@
                             Dashboard
                         </a>
 
-                        <span>›</span>
+                        <span>
+                            ›
+                        </span>
 
                         <span>
                             Laporan
@@ -224,12 +272,14 @@
 
                     </div>
 
+
                     <h2>
-                        Laporan
+                        Laporan Penjualan
                     </h2>
 
+
                     <p>
-                        Lihat penjualan, bahan, stok, HPP, dan laba.
+                        Pantau penjualan, HPP, laba dan performa usaha.
                     </p>
 
                 </div>
@@ -251,6 +301,7 @@
                         📜 History
                     </button>
 
+
                     <button
                         type="button"
                         class="primary-button"
@@ -264,7 +315,9 @@
             </div>
 
 
-            <!-- ================= PERIOD ================= -->
+            <!-- =================================================
+                 PERIODE
+            ================================================== -->
 
             <section class="dashboard-card">
 
@@ -277,7 +330,7 @@
                         </h3>
 
                         <p>
-                            Pilih periode untuk melihat laporan.
+                            Tentukan periode laporan yang ingin ditampilkan.
                         </p>
 
                     </div>
@@ -313,7 +366,10 @@
                                 Mingguan
                             </option>
 
-                            <option value="monthly" selected>
+                            <option
+                                value="monthly"
+                                selected
+                            >
                                 Bulanan
                             </option>
 
@@ -369,7 +425,9 @@
             </section>
 
 
-            <!-- ================= SUMMARY ================= -->
+            <!-- =================================================
+                 SUMMARY
+            ================================================== -->
 
             <div class="summary-grid">
 
@@ -388,10 +446,11 @@
                             </h3>
 
                             <span class="summary-change neutral">
-                                Periode dipilih
+                                Total penjualan
                             </span>
 
                         </div>
+
 
                         <div class="summary-icon blue">
                             💰
@@ -417,10 +476,11 @@
                             </h3>
 
                             <span class="summary-change neutral">
-                                Harga pokok
+                                Harga pokok penjualan
                             </span>
 
                         </div>
+
 
                         <div class="summary-icon orange">
                             📦
@@ -451,6 +511,7 @@
 
                         </div>
 
+
                         <div class="summary-icon dark">
                             📈
                         </div>
@@ -480,6 +541,7 @@
 
                         </div>
 
+
                         <div class="summary-icon purple">
                             🧾
                         </div>
@@ -491,7 +553,9 @@
             </div>
 
 
-            <!-- ================= REPORT TABLE ================= -->
+            <!-- =================================================
+                 TABEL LAPORAN
+            ================================================== -->
 
             <section class="dashboard-card">
 
@@ -504,7 +568,7 @@
                         </h3>
 
                         <p>
-                            Performa penjualan berdasarkan periode.
+                            Performa penjualan berdasarkan tanggal.
                         </p>
 
                     </div>
@@ -557,7 +621,9 @@
 
                                     <div class="empty-state">
 
-                                        <span>📊</span>
+                                        <span>
+                                            📊
+                                        </span>
 
                                         <strong>
                                             Belum ada data laporan
@@ -589,9 +655,7 @@
             <section
                 class="dashboard-card"
                 id="history"
-                style="
-                    scroll-margin-top:90px;
-                "
+                style="scroll-margin-top:90px;"
             >
 
                 <div class="card-header">
@@ -599,17 +663,25 @@
                     <div>
 
                         <div class="breadcrumb">
-                            <span>📜</span>
-                            <span>History</span>
+
+                            <span>
+                                📜
+                            </span>
+
+                            <span>
+                                History
+                            </span>
+
                         </div>
+
 
                         <h3>
                             History Aktivitas
                         </h3>
 
+
                         <p>
-                            Semua aktivitas penjualan, stok, bahan,
-                            pembelian, dan perubahan data.
+                            Riwayat semua aktivitas sistem Food Monitoring.
                         </p>
 
                     </div>
@@ -631,12 +703,6 @@
                 <div
                     class="history-tabs"
                     role="tablist"
-                    style="
-                        display:flex;
-                        gap:8px;
-                        flex-wrap:wrap;
-                        margin-bottom:20px;
-                    "
                 >
 
                     <button
@@ -647,6 +713,7 @@
                         Semua
                     </button>
 
+
                     <button
                         type="button"
                         class="history-tab"
@@ -654,6 +721,7 @@
                     >
                         🧾 Penjualan
                     </button>
+
 
                     <button
                         type="button"
@@ -663,6 +731,7 @@
                         📦 Stok
                     </button>
 
+
                     <button
                         type="button"
                         class="history-tab"
@@ -671,6 +740,7 @@
                         🥩 Bahan
                     </button>
 
+
                     <button
                         type="button"
                         class="history-tab"
@@ -678,6 +748,7 @@
                     >
                         🚚 Pembelian
                     </button>
+
 
                     <button
                         type="button"
@@ -690,15 +761,10 @@
                 </div>
 
 
-                <!-- HISTORY SEARCH -->
+                <!-- SEARCH HISTORY -->
 
                 <div
-                    style="
-                        display:flex;
-                        gap:10px;
-                        flex-wrap:wrap;
-                        margin-bottom:20px;
-                    "
+                    class="history-toolbar"
                 >
 
                     <div class="search-box">
@@ -711,7 +777,6 @@
                             type="search"
                             id="historySearch"
                             placeholder="Cari history..."
-                            autocomplete="off"
                         >
 
                     </div>
@@ -815,7 +880,7 @@
                 </div>
 
 
-                <!-- HISTORY FOOTER -->
+                <!-- PAGINATION -->
 
                 <div class="table-footer">
 
@@ -838,12 +903,14 @@
                             ‹
                         </button>
 
+
                         <span
                             class="pagination-current"
                             id="historyPage"
                         >
                             1
                         </span>
+
 
                         <button
                             type="button"
@@ -862,27 +929,39 @@
 
 
             <!-- =================================================
-                 SETTINGS
+                 PENGATURAN
             ================================================== -->
 
             <section
                 class="dashboard-card"
                 id="settings"
-                style="
-                    scroll-margin-top:90px;
-                "
+                style="scroll-margin-top:90px;"
             >
 
                 <div class="card-header">
 
                     <div>
 
+                        <div class="breadcrumb">
+
+                            <span>
+                                ⚙️
+                            </span>
+
+                            <span>
+                                Pengaturan
+                            </span>
+
+                        </div>
+
+
                         <h3>
-                            ⚙️ Pengaturan
+                            Pengaturan Sistem
                         </h3>
 
+
                         <p>
-                            Pengaturan dasar sistem monitoring.
+                            Atur tampilan dan preferensi Food Monitoring.
                         </p>
 
                     </div>
@@ -890,95 +969,338 @@
                 </div>
 
 
-                <div class="form-grid">
+                <!-- ================= TAMPILAN ================= -->
 
-                    <div class="form-group">
+                <div class="settings-section">
 
-                        <label for="restaurantName">
-                            Nama Usaha
-                        </label>
+                    <div class="settings-section-header">
 
-                        <input
-                            type="text"
-                            id="restaurantName"
-                            value="Food Monitoring"
+                        <div class="settings-section-icon">
+                            🎨
+                        </div>
+
+
+                        <div>
+
+                            <h4>
+                                Tampilan
+                            </h4>
+
+                            <p>
+                                Atur tampilan aplikasi sesuai kenyamanan.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="settings-option">
+
+                        <div class="settings-option-info">
+
+                            <strong>
+                                Tema Aplikasi
+                            </strong>
+
+                            <span>
+                                Pilih tampilan terang atau gelap.
+                            </span>
+
+                        </div>
+
+
+                        <div
+                            class="theme-selector"
+                            id="themeSelector"
                         >
 
-                    </div>
+                            <button
+                                type="button"
+                                class="theme-button active"
+                                data-theme="light"
+                                id="lightThemeButton"
+                            >
+                                ☀️ Terang
+                            </button>
 
 
-                    <div class="form-group">
+                            <button
+                                type="button"
+                                class="theme-button"
+                                data-theme="dark"
+                                id="darkThemeButton"
+                            >
+                                🌙 Gelap
+                            </button>
 
-                        <label for="currency">
-                            Mata Uang
-                        </label>
-
-                        <select id="currency">
-
-                            <option value="IDR" selected>
-                                Rupiah (Rp)
-                            </option>
-
-                        </select>
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="lowStockNotification">
-                            Notifikasi Stok Menipis
-                        </label>
-
-                        <select id="lowStockNotification">
-
-                            <option value="on" selected>
-                                Aktif
-                            </option>
-
-                            <option value="off">
-                                Nonaktif
-                            </option>
-
-                        </select>
+                        </div>
 
                     </div>
 
 
-                    <div class="form-group">
+                    <div class="settings-option">
 
-                        <label for="defaultReportPeriod">
-                            Periode Laporan Default
+                        <div class="settings-option-info">
+
+                            <strong>
+                                Ikuti Tema Perangkat
+                            </strong>
+
+                            <span>
+                                Otomatis mengikuti tema HP atau PC.
+                            </span>
+
+                        </div>
+
+
+                        <label class="switch">
+
+                            <input
+                                type="checkbox"
+                                id="systemThemeToggle"
+                            >
+
+                            <span class="switch-slider"></span>
+
                         </label>
-
-                        <select id="defaultReportPeriod">
-
-                            <option value="daily">
-                                Harian
-                            </option>
-
-                            <option value="weekly">
-                                Mingguan
-                            </option>
-
-                            <option value="monthly" selected>
-                                Bulanan
-                            </option>
-
-                        </select>
 
                     </div>
 
                 </div>
 
 
+                <!-- ================= USAHA ================= -->
+
+                <div class="settings-section">
+
+                    <div class="settings-section-header">
+
+                        <div class="settings-section-icon">
+                            🏪
+                        </div>
+
+
+                        <div>
+
+                            <h4>
+                                Informasi Usaha
+                            </h4>
+
+                            <p>
+                                Informasi dasar usaha.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="restaurantName">
+                                Nama Usaha
+                            </label>
+
+                            <input
+                                type="text"
+                                id="restaurantName"
+                                value="Food Monitoring"
+                                placeholder="Nama usaha"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="currency">
+                                Mata Uang
+                            </label>
+
+                            <select id="currency">
+
+                                <option
+                                    value="IDR"
+                                    selected
+                                >
+                                    Rupiah (Rp)
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= NOTIFIKASI ================= -->
+
+                <div class="settings-section">
+
+                    <div class="settings-section-header">
+
+                        <div class="settings-section-icon">
+                            🔔
+                        </div>
+
+
+                        <div>
+
+                            <h4>
+                                Notifikasi
+                            </h4>
+
+                            <p>
+                                Atur pemberitahuan sistem.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="settings-option">
+
+                        <div class="settings-option-info">
+
+                            <strong>
+                                Notifikasi Stok Menipis
+                            </strong>
+
+                            <span>
+                                Beri peringatan ketika stok berada
+                                di bawah batas minimum.
+                            </span>
+
+                        </div>
+
+
+                        <label class="switch">
+
+                            <input
+                                type="checkbox"
+                                id="lowStockNotification"
+                                checked
+                            >
+
+                            <span class="switch-slider"></span>
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="settings-option">
+
+                        <div class="settings-option-info">
+
+                            <strong>
+                                Notifikasi Penjualan
+                            </strong>
+
+                            <span>
+                                Tampilkan notifikasi ketika ada penjualan baru.
+                            </span>
+
+                        </div>
+
+
+                        <label class="switch">
+
+                            <input
+                                type="checkbox"
+                                id="salesNotification"
+                                checked
+                            >
+
+                            <span class="switch-slider"></span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= LAPORAN ================= -->
+
+                <div class="settings-section">
+
+                    <div class="settings-section-header">
+
+                        <div class="settings-section-icon">
+                            📊
+                        </div>
+
+
+                        <div>
+
+                            <h4>
+                                Laporan
+                            </h4>
+
+                            <p>
+                                Atur periode laporan default.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="defaultReportPeriod">
+                                Periode Laporan Default
+                            </label>
+
+                            <select id="defaultReportPeriod">
+
+                                <option value="daily">
+                                    Harian
+                                </option>
+
+                                <option value="weekly">
+                                    Mingguan
+                                </option>
+
+                                <option
+                                    value="monthly"
+                                    selected
+                                >
+                                    Bulanan
+                                </option>
+
+                            </select>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= BUTTON ================= -->
+
                 <div
-                    style="
-                        display:flex;
-                        justify-content:flex-end;
-                        margin-top:20px;
-                    "
+                    class="settings-actions"
                 >
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="resetSettingsButton"
+                    >
+                        ↩ Reset
+                    </button>
+
 
                     <button
                         type="button"
@@ -995,7 +1317,9 @@
         </div>
 
 
-        <!-- FOOTER -->
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
 
         <footer class="footer">
 
@@ -1014,7 +1338,9 @@
 </div>
 
 
-<!-- ================= NOTIFICATION ================= -->
+<!-- =====================================================
+     NOTIFICATION PANEL
+====================================================== -->
 
 <div
     class="notification-panel"
@@ -1035,6 +1361,7 @@
 
         </div>
 
+
         <button
             type="button"
             class="panel-close"
@@ -1053,7 +1380,9 @@
 
         <div class="empty-notification">
 
-            <span>🔔</span>
+            <span>
+                🔔
+            </span>
 
             <strong>
                 Tidak ada notifikasi
@@ -1070,7 +1399,9 @@
 </div>
 
 
-<!-- ================= TOAST ================= -->
+<!-- =====================================================
+     TOAST
+====================================================== -->
 
 <div
     class="toast-container"
@@ -1078,17 +1409,24 @@
 ></div>
 
 
-<!-- ================= JAVASCRIPT ================= -->
+<!-- =====================================================
+     REPORTS JS
+====================================================== -->
 
 <script src="../js/reports.js"></script>
 
+
+<!-- =====================================================
+     NAVIGATION / THEME
+====================================================== -->
 
 <script>
 
 document.addEventListener("DOMContentLoaded", function () {
 
+
     /* =====================================================
-       SIDEBAR MOBILE
+       SIDEBAR
     ====================================================== */
 
     const sidebar =
@@ -1137,10 +1475,12 @@ document.addEventListener("DOMContentLoaded", function () {
         openSidebar
     );
 
+
     sidebarClose?.addEventListener(
         "click",
         closeSidebar
     );
+
 
     sidebarOverlay?.addEventListener(
         "click",
@@ -1149,17 +1489,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       SCROLL KE HISTORY
+       NAVIGASI SECTION
     ====================================================== */
 
-    function showHistory() {
+    function scrollToSection(id) {
 
-        const history =
-            document.getElementById("history");
+        const section =
+            document.getElementById(id);
 
-        if (!history) return;
+        if (!section) return;
 
-        history.scrollIntoView({
+        section.scrollIntoView({
             behavior: "smooth",
             block: "start"
         });
@@ -1167,64 +1507,62 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
+    /* =====================================================
+       HISTORY BUTTON
+    ====================================================== */
+
     document
         .getElementById("historyButton")
         ?.addEventListener(
             "click",
-            showHistory
-        );
-
-
-    document
-        .getElementById("historyMenu")
-        ?.addEventListener(
-            "click",
             function () {
 
-                closeSidebar();
-
-                setTimeout(
-                    showHistory,
-                    50
+                history.replaceState(
+                    null,
+                    "",
+                    "#history"
                 );
+
+                scrollToSection("history");
 
             }
         );
 
 
     /* =====================================================
-       HASH ROUTING
-       reports.html#history
+       HASH
     ====================================================== */
 
-    function checkHash() {
+    function handleHash() {
 
-        if (
-            window.location.hash === "#history"
-        ) {
+        const hash =
+            window.location.hash;
+
+
+        if (hash === "#history") {
 
             setTimeout(
-                showHistory,
+                function () {
+
+                    scrollToSection(
+                        "history"
+                    );
+
+                },
                 100
             );
 
         }
 
-        if (
-            window.location.hash === "#settings"
-        ) {
+
+        if (hash === "#settings") {
 
             setTimeout(
                 function () {
 
-                    document
-                        .getElementById(
-                            "settings"
-                        )
-                        ?.scrollIntoView({
-                            behavior: "smooth",
-                            block: "start"
-                        });
+                    scrollToSection(
+                        "settings"
+                    );
 
                 },
                 100
@@ -1235,206 +1573,249 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
 
-    checkHash();
+    handleHash();
+
 
     window.addEventListener(
         "hashchange",
-        checkHash
+        handleHash
     );
 
 
     /* =====================================================
-       HISTORY TABS
+       TEMA
     ====================================================== */
 
-    document
-        .querySelectorAll(".history-tab")
-        .forEach(function (button) {
-
-            button.addEventListener(
-                "click",
-                function () {
-
-                    document
-                        .querySelectorAll(
-                            ".history-tab"
-                        )
-                        .forEach(function (tab) {
-
-                            tab.classList.remove(
-                                "active"
-                            );
-
-                        });
+    const STORAGE_KEY =
+        "foodMonitoringSettings";
 
 
-                    this.classList.add(
-                        "active"
-                    );
+    const lightButton =
+        document.getElementById(
+            "lightThemeButton"
+        );
+
+    const darkButton =
+        document.getElementById(
+            "darkThemeButton"
+        );
+
+    const systemToggle =
+        document.getElementById(
+            "systemThemeToggle"
+        );
 
 
-                    const type =
-                        this.dataset.historyType;
+    function updateThemeButtons(theme) {
+
+        lightButton?.classList.remove(
+            "active"
+        );
+
+        darkButton?.classList.remove(
+            "active"
+        );
 
 
-                    document.dispatchEvent(
-                        new CustomEvent(
-                            "historyFilter",
-                            {
-                                detail: {
-                                    type: type
-                                }
-                            }
-                        )
-                    );
+        if (theme === "dark") {
 
-                }
+            darkButton?.classList.add(
+                "active"
             );
 
-        });
+        } else {
+
+            lightButton?.classList.add(
+                "active"
+            );
+
+        }
+
+    }
 
 
-    /* =====================================================
-       HISTORY SEARCH
-    ====================================================== */
+    function applyTheme(theme) {
 
-    document
-        .getElementById("historySearch")
-        ?.addEventListener(
-            "input",
-            function () {
-
-                document.dispatchEvent(
-                    new CustomEvent(
-                        "historySearch",
-                        {
-                            detail: {
-                                value:
-                                    this.value
-                            }
-                        }
-                    )
-                );
-
-            }
+        document.documentElement.setAttribute(
+            "data-theme",
+            theme
         );
 
+        updateThemeButtons(theme);
 
-    /* =====================================================
-       HISTORY DATE FILTER
-    ====================================================== */
+    }
 
-    document
-        .getElementById("historyDateFilter")
-        ?.addEventListener(
-            "change",
-            function () {
 
-                document.dispatchEvent(
-                    new CustomEvent(
-                        "historyDateFilter",
-                        {
-                            detail: {
-                                value:
-                                    this.value
-                            }
-                        }
-                    )
-                );
+    function getSettings() {
 
-            }
+        try {
+
+            return JSON.parse(
+                localStorage.getItem(
+                    STORAGE_KEY
+                ) || "{}"
+            );
+
+        } catch {
+
+            return {};
+
+        }
+
+    }
+
+
+    function saveSettings(data) {
+
+        localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(data)
         );
 
+    }
+
 
     /* =====================================================
-       REFRESH HISTORY
+       PILIH TERANG
     ====================================================== */
 
-    document
-        .getElementById(
-            "refreshHistoryButton"
-        )
-        ?.addEventListener(
-            "click",
-            function () {
+    lightButton?.addEventListener(
+        "click",
+        function () {
 
-                document.dispatchEvent(
-                    new CustomEvent(
-                        "refreshHistory"
-                    )
-                );
+            systemToggle.checked = false;
 
-            }
-        );
+            const settings =
+                getSettings();
+
+            settings.theme = "light";
+
+            settings.systemTheme = false;
+
+            saveSettings(settings);
+
+            applyTheme("light");
+
+        }
+    );
 
 
     /* =====================================================
-       EXPORT
+       PILIH GELAP
     ====================================================== */
 
-    document
-        .getElementById("exportButton")
-        ?.addEventListener(
-            "click",
-            function () {
+    darkButton?.addEventListener(
+        "click",
+        function () {
 
-                document.dispatchEvent(
-                    new CustomEvent(
-                        "exportReport"
-                    )
-                );
+            systemToggle.checked = false;
 
-            }
-        );
+            const settings =
+                getSettings();
+
+            settings.theme = "dark";
+
+            settings.systemTheme = false;
+
+            saveSettings(settings);
+
+            applyTheme("dark");
+
+        }
+    );
 
 
     /* =====================================================
-       GENERATE REPORT
+       IKUTI SISTEM
     ====================================================== */
 
-    document
-        .getElementById(
-            "generateReportButton"
-        )
-        ?.addEventListener(
-            "click",
-            function () {
+    systemToggle?.addEventListener(
+        "change",
+        function () {
 
-                document.dispatchEvent(
-                    new CustomEvent(
-                        "generateReport",
-                        {
-                            detail: {
+            const settings =
+                getSettings();
 
-                                period:
-                                    document
-                                        .getElementById(
-                                            "reportPeriod"
-                                        )?.value,
 
-                                start:
-                                    document
-                                        .getElementById(
-                                            "reportStart"
-                                        )?.value,
+            if (this.checked) {
 
-                                end:
-                                    document
-                                        .getElementById(
-                                            "reportEnd"
-                                        )?.value
+                const dark =
+                    window.matchMedia(
+                        "(prefers-color-scheme: dark)"
+                    ).matches;
 
-                            }
-                        }
-                    )
-                );
+
+                const theme =
+                    dark
+                        ? "dark"
+                        : "light";
+
+
+                settings.theme = theme;
+
+                settings.systemTheme = true;
+
+                saveSettings(settings);
+
+                applyTheme(theme);
+
+            } else {
+
+                settings.systemTheme = false;
+
+                saveSettings(settings);
 
             }
-        );
+
+        }
+    );
 
 
     /* =====================================================
-       SETTINGS
+       LOAD TEMA
+    ====================================================== */
+
+    function loadTheme() {
+
+        const settings =
+            getSettings();
+
+
+        if (settings.systemTheme) {
+
+            systemToggle.checked = true;
+
+
+            const dark =
+                window.matchMedia(
+                    "(prefers-color-scheme: dark)"
+                ).matches;
+
+
+            applyTheme(
+                dark
+                    ? "dark"
+                    : "light"
+            );
+
+        } else {
+
+            systemToggle.checked = false;
+
+            applyTheme(
+                settings.theme || "light"
+            );
+
+        }
+
+    }
+
+
+    loadTheme();
+
+
+    /* =====================================================
+       SIMPAN PENGATURAN
     ====================================================== */
 
     document
@@ -1445,39 +1826,51 @@ document.addEventListener("DOMContentLoaded", function () {
             "click",
             function () {
 
-                const settings = {
-
-                    restaurantName:
-                        document
-                            .getElementById(
-                                "restaurantName"
-                            )?.value,
-
-                    currency:
-                        document
-                            .getElementById(
-                                "currency"
-                            )?.value,
-
-                    lowStockNotification:
-                        document
-                            .getElementById(
-                                "lowStockNotification"
-                            )?.value,
-
-                    defaultReportPeriod:
-                        document
-                            .getElementById(
-                                "defaultReportPeriod"
-                            )?.value
-
-                };
+                const settings =
+                    getSettings();
 
 
-                localStorage.setItem(
-                    "foodMonitoringSettings",
-                    JSON.stringify(settings)
-                );
+                settings.restaurantName =
+                    document
+                        .getElementById(
+                            "restaurantName"
+                        )
+                        ?.value || "";
+
+
+                settings.currency =
+                    document
+                        .getElementById(
+                            "currency"
+                        )
+                        ?.value || "IDR";
+
+
+                settings.lowStockNotification =
+                    document
+                        .getElementById(
+                            "lowStockNotification"
+                        )
+                        ?.checked ?? true;
+
+
+                settings.salesNotification =
+                    document
+                        .getElementById(
+                            "salesNotification"
+                        )
+                        ?.checked ?? true;
+
+
+                settings.defaultReportPeriod =
+                    document
+                        .getElementById(
+                            "defaultReportPeriod"
+                        )
+                        ?.value || "monthly";
+
+
+                saveSettings(settings);
 
 
                 if (
@@ -1503,7 +1896,154 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       NOTIFICATION
+       RESET
+    ====================================================== */
+
+    document
+        .getElementById(
+            "resetSettingsButton"
+        )
+        ?.addEventListener(
+            "click",
+            function () {
+
+                const confirmed =
+                    confirm(
+                        "Reset semua pengaturan?"
+                    );
+
+
+                if (!confirmed) {
+                    return;
+                }
+
+
+                localStorage.removeItem(
+                    STORAGE_KEY
+                );
+
+
+                document
+                    .getElementById(
+                        "restaurantName"
+                    ).value =
+                    "Food Monitoring";
+
+
+                document
+                    .getElementById(
+                        "currency"
+                    ).value =
+                    "IDR";
+
+
+                document
+                    .getElementById(
+                        "lowStockNotification"
+                    ).checked =
+                    true;
+
+
+                document
+                    .getElementById(
+                        "salesNotification"
+                    ).checked =
+                    true;
+
+
+                document
+                    .getElementById(
+                        "defaultReportPeriod"
+                    ).value =
+                    "monthly";
+
+
+                systemToggle.checked =
+                    false;
+
+
+                applyTheme("light");
+
+
+                alert(
+                    "Pengaturan berhasil direset."
+                );
+
+            }
+        );
+
+
+    /* =====================================================
+       LOAD DATA PENGATURAN
+    ====================================================== */
+
+    const settings =
+        getSettings();
+
+
+    if (settings.restaurantName) {
+
+        document
+            .getElementById(
+                "restaurantName"
+            ).value =
+            settings.restaurantName;
+
+    }
+
+
+    if (settings.currency) {
+
+        document
+            .getElementById(
+                "currency"
+            ).value =
+            settings.currency;
+
+    }
+
+
+    if (
+        typeof settings.lowStockNotification
+        === "boolean"
+    ) {
+
+        document
+            .getElementById(
+                "lowStockNotification"
+            ).checked =
+            settings.lowStockNotification;
+
+    }
+
+
+    if (
+        typeof settings.salesNotification
+        === "boolean"
+    ) {
+
+        document
+            .getElementById(
+                "salesNotification"
+            ).checked =
+            settings.salesNotification;
+
+    }
+
+
+    if (settings.defaultReportPeriod) {
+
+        document
+            .getElementById(
+                "defaultReportPeriod"
+            ).value =
+            settings.defaultReportPeriod;
+
+    }
+
+
+    /* =====================================================
+       NOTIFICATION PANEL
     ====================================================== */
 
     const notificationButton =
@@ -1547,106 +2087,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
     /* =====================================================
-       CLOSE ESC
+       ESC
     ====================================================== */
 
     document.addEventListener(
         "keydown",
         function (event) {
 
-            if (event.key !== "Escape") {
-                return;
+            if (event.key === "Escape") {
+
+                closeSidebar();
+
+                notificationPanel?.classList.remove(
+                    "show"
+                );
+
             }
-
-            closeSidebar();
-
-            notificationPanel?.classList.remove(
-                "show"
-            );
 
         }
     );
-
-
-    /* =====================================================
-       LOAD SETTINGS
-    ====================================================== */
-
-    try {
-
-        const saved =
-            localStorage.getItem(
-                "foodMonitoringSettings"
-            );
-
-
-        if (saved) {
-
-            const settings =
-                JSON.parse(saved);
-
-
-            if (
-                settings.restaurantName
-            ) {
-
-                document
-                    .getElementById(
-                        "restaurantName"
-                    ).value =
-                    settings.restaurantName;
-
-            }
-
-
-            if (
-                settings.currency
-            ) {
-
-                document
-                    .getElementById(
-                        "currency"
-                    ).value =
-                    settings.currency;
-
-            }
-
-
-            if (
-                settings.lowStockNotification
-            ) {
-
-                document
-                    .getElementById(
-                        "lowStockNotification"
-                    ).value =
-                    settings.lowStockNotification;
-
-            }
-
-
-            if (
-                settings.defaultReportPeriod
-            ) {
-
-                document
-                    .getElementById(
-                        "defaultReportPeriod"
-                    ).value =
-                    settings.defaultReportPeriod;
-
-            }
-
-        }
-
-    } catch (error) {
-
-        console.warn(
-            "Gagal memuat pengaturan:",
-            error
-        );
-
-    }
 
 });
 
