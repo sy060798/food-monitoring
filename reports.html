@@ -4,46 +4,34 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Food Monitoring - Laporan</title>
+    <title>Laporan & History - Food Monitoring</title>
 
-    <meta
-        name="description"
-        content="Laporan penjualan, bahan, stok, HPP, dan laba Food Monitoring."
-    >
-
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
 
 <div class="app">
 
-    <!-- =====================================================
-         SIDEBAR
-    ====================================================== -->
+    <!-- ================= SIDEBAR ================= -->
+
     <aside class="sidebar" id="sidebar">
 
         <div class="sidebar-header">
 
             <a href="index.html" class="brand">
+                <div class="brand-icon">🍴</div>
 
-                <span class="brand-icon">
-                    🍴
-                </span>
-
-                <span class="brand-text">
+                <div class="brand-text">
                     <strong>FOOD</strong>
-                    <small>MONITOR</small>
-                </span>
-
+                    <small>MONITORING</small>
+                </div>
             </a>
-
 
             <button
                 type="button"
                 class="sidebar-close"
                 id="sidebarClose"
-                aria-label="Tutup menu"
             >
                 ×
             </button>
@@ -51,148 +39,74 @@
         </div>
 
 
-        <!-- =================================================
-             NAVIGATION
-        ================================================== -->
         <nav class="sidebar-nav">
 
-            <div class="nav-section">
+            <span class="nav-section-title">
+                Menu Utama
+            </span>
 
-                <span class="nav-section-title">
-                    Menu Utama
-                </span>
+            <a href="index.html" class="nav-item">
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Dashboard</span>
+            </a>
 
+            <a href="products.html" class="nav-item">
+                <span class="nav-icon">📦</span>
+                <span class="nav-text">Produk</span>
+            </a>
 
-                <a
-                    href="index.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">
-                        ▦
-                    </span>
+            <a href="ingredients.html" class="nav-item">
+                <span class="nav-icon">🥩</span>
+                <span class="nav-text">Bahan</span>
+            </a>
 
-                    <span class="nav-text">
-                        Dashboard
-                    </span>
-                </a>
+            <a
+                href="ingredients.html#supplierSection"
+                class="nav-item"
+            >
+                <span class="nav-icon">🚚</span>
+                <span class="nav-text">Supplier</span>
+            </a>
 
+            <a href="sales.html" class="nav-item">
+                <span class="nav-icon">🧾</span>
+                <span class="nav-text">Penjualan</span>
+            </a>
 
-                <a
-                    href="products.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">
-                        📦
-                    </span>
+            <a
+                href="reports.html"
+                class="nav-item active"
+                aria-current="page"
+            >
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Laporan</span>
+            </a>
 
-                    <span class="nav-text">
-                        Produk
-                    </span>
-                </a>
+            <a
+                href="reports.html#history"
+                class="nav-item"
+                id="historyMenu"
+            >
+                <span class="nav-icon">📜</span>
+                <span class="nav-text">History</span>
+            </a>
 
-
-                <a
-                    href="ingredients.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">
-                        🥩
-                    </span>
-
-                    <span class="nav-text">
-                        Bahan
-                    </span>
-                </a>
-
-
-                <a
-                    href="sales.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">
-                        🧾
-                    </span>
-
-                    <span class="nav-text">
-                        Penjualan
-                    </span>
-                </a>
-
-
-                <a
-                    href="reports.html"
-                    class="nav-item active"
-                >
-                    <span class="nav-icon">
-                        📊
-                    </span>
-
-                    <span class="nav-text">
-                        Laporan
-                    </span>
-                </a>
-
-
-                <a
-                    href="#"
-                    class="nav-item"
-                    id="historyMenu"
-                >
-                    <span class="nav-icon">
-                        📜
-                    </span>
-
-                    <span class="nav-text">
-                        History
-                    </span>
-                </a>
-
-
-                <a
-                    href="#"
-                    class="nav-item"
-                    id="supplierMenu"
-                >
-                    <span class="nav-icon">
-                        🚚
-                    </span>
-
-                    <span class="nav-text">
-                        Supplier
-                    </span>
-                </a>
-
-
-                <a
-                    href="#"
-                    class="nav-item"
-                    id="settingsMenu"
-                >
-                    <span class="nav-icon">
-                        ⚙
-                    </span>
-
-                    <span class="nav-text">
-                        Pengaturan
-                    </span>
-                </a>
-
-            </div>
+            <a
+                href="reports.html#settings"
+                class="nav-item"
+            >
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Pengaturan</span>
+            </a>
 
         </nav>
 
 
-        <!-- SIDEBAR FOOTER -->
         <div class="sidebar-footer">
 
             <div class="system-status">
-
                 <span class="status-dot"></span>
-
-                <span>
-                    Sistem aktif
-                </span>
-
+                <span>Sistem Online</span>
             </div>
 
             <small>
@@ -204,24 +118,18 @@
     </aside>
 
 
-    <!-- =====================================================
-         MOBILE OVERLAY
-    ====================================================== -->
     <div
         class="sidebar-overlay"
         id="sidebarOverlay"
     ></div>
 
 
-    <!-- =====================================================
-         MAIN
-    ====================================================== -->
+    <!-- ================= MAIN ================= -->
+
     <main class="main">
 
+        <!-- TOPBAR -->
 
-        <!-- =================================================
-             TOPBAR
-        ================================================== -->
         <header class="topbar">
 
             <div class="topbar-left">
@@ -231,19 +139,17 @@
                     class="menu-toggle"
                     id="menuToggle"
                     aria-label="Buka menu"
+                    aria-expanded="false"
                 >
                     ☰
                 </button>
 
-
                 <div class="page-title">
 
-                    <h1>
-                        Laporan
-                    </h1>
+                    <h1>Laporan & History</h1>
 
                     <p>
-                        Analisis performa bisnis
+                        Pantau laporan dan aktivitas sistem
                     </p>
 
                 </div>
@@ -255,7 +161,7 @@
 
                 <button
                     type="button"
-                    class="icon-button notification-button"
+                    class="icon-button"
                     id="notificationButton"
                     aria-label="Notifikasi"
                 >
@@ -267,21 +173,18 @@
                     >
                         0
                     </span>
-
                 </button>
 
 
                 <div class="admin-profile">
 
                     <div class="admin-avatar">
-                        A
+                        AD
                     </div>
 
                     <div class="admin-info">
 
-                        <strong>
-                            Admin
-                        </strong>
+                        <strong>Admin</strong>
 
                         <small>
                             Administrator
@@ -296,16 +199,14 @@
         </header>
 
 
-        <!-- =================================================
-             CONTENT
-        ================================================== -->
+        <!-- ================= CONTENT ================= -->
+
         <div class="content">
 
 
-            <!-- =================================================
-                 PAGE HEADER
-            ================================================== -->
-            <section class="page-header">
+            <!-- PAGE HEADER -->
+
+            <div class="page-header">
 
                 <div>
 
@@ -315,9 +216,7 @@
                             Dashboard
                         </a>
 
-                        <span>
-                            ›
-                        </span>
+                        <span>›</span>
 
                         <span>
                             Laporan
@@ -325,64 +224,76 @@
 
                     </div>
 
-
                     <h2>
-                        Laporan Bisnis
+                        Laporan
                     </h2>
 
                     <p>
-                        Analisis penjualan, HPP, stok, dan laba bisnis.
+                        Lihat penjualan, bahan, stok, HPP, dan laba.
                     </p>
 
                 </div>
 
 
-                <button
-                    type="button"
-                    class="primary-button"
-                    id="exportExcelButton"
+                <div
+                    style="
+                        display:flex;
+                        gap:8px;
+                        flex-wrap:wrap;
+                    "
                 >
-                    📥 Export Excel
-                </button>
-
-            </section>
-
-
-            <!-- =================================================
-                 REPORT FILTER
-            ================================================== -->
-            <section class="dashboard-card report-filter-card">
-
-                <div class="report-filter-header">
-
-                    <div>
-
-                        <h3>
-                            Filter Laporan
-                        </h3>
-
-                        <p>
-                            Pilih periode laporan yang ingin ditampilkan.
-                        </p>
-
-                    </div>
-
 
                     <button
                         type="button"
                         class="secondary-button"
-                        id="resetReportFilter"
+                        id="historyButton"
                     >
-                        Reset
+                        📜 History
+                    </button>
+
+                    <button
+                        type="button"
+                        class="primary-button"
+                        id="exportButton"
+                    >
+                        📥 Export Excel
                     </button>
 
                 </div>
 
+            </div>
 
-                <div class="report-filter-form">
+
+            <!-- ================= PERIOD ================= -->
+
+            <section class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>
+                            Periode Laporan
+                        </h3>
+
+                        <p>
+                            Pilih periode untuk melihat laporan.
+                        </p>
+
+                    </div>
+
+                </div>
 
 
-                    <!-- PERIOD -->
+                <div
+                    style="
+                        display:flex;
+                        gap:10px;
+                        flex-wrap:wrap;
+                        align-items:end;
+                    "
+                >
+
                     <div class="form-group">
 
                         <label for="reportPeriod">
@@ -394,28 +305,16 @@
                             class="select-control"
                         >
 
-                            <option value="today">
-                                Hari Ini
+                            <option value="daily">
+                                Harian
                             </option>
 
-                            <option value="yesterday">
-                                Kemarin
+                            <option value="weekly">
+                                Mingguan
                             </option>
 
-                            <option value="this-week">
-                                Minggu Ini
-                            </option>
-
-                            <option value="last-week">
-                                Minggu Lalu
-                            </option>
-
-                            <option value="this-month" selected>
-                                Bulan Ini
-                            </option>
-
-                            <option value="last-month">
-                                Bulan Lalu
+                            <option value="monthly" selected>
+                                Bulanan
                             </option>
 
                             <option value="custom">
@@ -427,100 +326,53 @@
                     </div>
 
 
-                    <!-- START DATE -->
                     <div class="form-group">
 
-                        <label for="reportStartDate">
-                            Dari Tanggal
+                        <label for="reportStart">
+                            Mulai
                         </label>
 
                         <input
                             type="date"
-                            id="reportStartDate"
-                            class="date-control"
-                        >
-
-                    </div>
-
-
-                    <!-- END DATE -->
-                    <div class="form-group">
-
-                        <label for="reportEndDate">
-                            Sampai Tanggal
-                        </label>
-
-                        <input
-                            type="date"
-                            id="reportEndDate"
-                            class="date-control"
-                        >
-
-                    </div>
-
-
-                    <!-- PLATFORM -->
-                    <div class="form-group">
-
-                        <label for="reportPlatform">
-                            Platform
-                        </label>
-
-                        <select
-                            id="reportPlatform"
+                            id="reportStart"
                             class="select-control"
                         >
 
-                            <option value="all">
-                                Semua Platform
-                            </option>
-
-                            <option value="offline">
-                                Offline
-                            </option>
-
-                            <option value="grabfood">
-                                GrabFood
-                            </option>
-
-                            <option value="gofood">
-                                GoFood
-                            </option>
-
-                            <option value="shopeefood">
-                                ShopeeFood
-                            </option>
-
-                        </select>
-
                     </div>
 
 
-                    <!-- APPLY -->
-                    <div class="report-filter-action">
+                    <div class="form-group">
 
-                        <button
-                            type="button"
-                            class="primary-button"
-                            id="applyReportFilter"
+                        <label for="reportEnd">
+                            Sampai
+                        </label>
+
+                        <input
+                            type="date"
+                            id="reportEnd"
+                            class="select-control"
                         >
-                            🔍 Tampilkan Laporan
-                        </button>
 
                     </div>
+
+
+                    <button
+                        type="button"
+                        class="primary-button"
+                        id="generateReportButton"
+                    >
+                        🔎 Tampilkan
+                    </button>
 
                 </div>
 
             </section>
 
 
-            <!-- =================================================
-                 REPORT SUMMARY
-            ================================================== -->
-            <section class="summary-grid report-summary-grid">
+            <!-- ================= SUMMARY ================= -->
 
+            <div class="summary-grid">
 
-                <!-- SALES -->
                 <div class="summary-card">
 
                     <div class="summary-card-top">
@@ -528,22 +380,18 @@
                         <div>
 
                             <span class="summary-label">
-                                TOTAL PENJUALAN
+                                PENJUALAN
                             </span>
 
-                            <h3 id="reportTotalSales">
+                            <h3 id="reportSales">
                                 Rp0
                             </h3>
 
-                            <span
-                                class="summary-change positive"
-                                id="reportSalesChange"
-                            >
-                                ↑ 0%
+                            <span class="summary-change neutral">
+                                Periode dipilih
                             </span>
 
                         </div>
-
 
                         <div class="summary-icon blue">
                             💰
@@ -551,23 +399,9 @@
 
                     </div>
 
-
-                    <div class="summary-card-bottom">
-
-                        <span>
-                            Total omzet
-                        </span>
-
-                        <span id="reportTransactionCount">
-                            0 transaksi
-                        </span>
-
-                    </div>
-
                 </div>
 
 
-                <!-- HPP -->
                 <div class="summary-card">
 
                     <div class="summary-card-top">
@@ -575,42 +409,28 @@
                         <div>
 
                             <span class="summary-label">
-                                TOTAL HPP
+                                HPP
                             </span>
 
-                            <h3 id="reportTotalHpp">
+                            <h3 id="reportHpp">
                                 Rp0
                             </h3>
 
-                            <span
-                                class="summary-change neutral"
-                                id="reportHppPercentage"
-                            >
-                                0%
+                            <span class="summary-change neutral">
+                                Harga pokok
                             </span>
 
                         </div>
-
 
                         <div class="summary-icon orange">
-                            🧮
+                            📦
                         </div>
-
-                    </div>
-
-
-                    <div class="summary-card-bottom">
-
-                        <span>
-                            Harga pokok penjualan
-                        </span>
 
                     </div>
 
                 </div>
 
 
-                <!-- PLATFORM FEE -->
                 <div class="summary-card">
 
                     <div class="summary-card-top">
@@ -618,65 +438,18 @@
                         <div>
 
                             <span class="summary-label">
-                                POTONGAN PLATFORM
+                                LABA
                             </span>
 
-                            <h3 id="reportPlatformFee">
+                            <h3 id="reportProfit">
                                 Rp0
                             </h3>
 
-                            <span
-                                class="summary-change neutral"
-                                id="reportPlatformFeePercentage"
-                            >
-                                0%
+                            <span class="summary-change positive">
+                                Keuntungan
                             </span>
 
                         </div>
-
-
-                        <div class="summary-icon purple">
-                            💸
-                        </div>
-
-                    </div>
-
-
-                    <div class="summary-card-bottom">
-
-                        <span>
-                            Komisi dan potongan
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <!-- PROFIT -->
-                <div class="summary-card">
-
-                    <div class="summary-card-top">
-
-                        <div>
-
-                            <span class="summary-label">
-                                LABA BERSIH
-                            </span>
-
-                            <h3 id="reportTotalProfit">
-                                Rp0
-                            </h3>
-
-                            <span
-                                class="summary-change positive"
-                                id="reportProfitMargin"
-                            >
-                                Margin 0%
-                            </span>
-
-                        </div>
-
 
                         <div class="summary-icon dark">
                             📈
@@ -684,507 +457,57 @@
 
                     </div>
 
+                </div>
 
-                    <div class="summary-card-bottom">
 
-                        <span>
-                            Setelah HPP & potongan
-                        </span>
+                <div class="summary-card">
+
+                    <div class="summary-card-top">
+
+                        <div>
+
+                            <span class="summary-label">
+                                TRANSAKSI
+                            </span>
+
+                            <h3 id="reportTransactions">
+                                0
+                            </h3>
+
+                            <span class="summary-change neutral">
+                                Total transaksi
+                            </span>
+
+                        </div>
+
+                        <div class="summary-icon purple">
+                            🧾
+                        </div>
 
                     </div>
 
                 </div>
 
-            </section>
+            </div>
 
 
-            <!-- =================================================
-                 SALES CHART
-            ================================================== -->
-            <section class="dashboard-card report-chart-card">
+            <!-- ================= REPORT TABLE ================= -->
+
+            <section class="dashboard-card">
 
                 <div class="card-header">
 
                     <div>
 
                         <h3>
-                            Grafik Penjualan
+                            Ringkasan Penjualan
                         </h3>
 
-                        <p id="reportChartDescription">
+                        <p>
                             Performa penjualan berdasarkan periode.
                         </p>
 
                     </div>
-
-
-                    <select
-                        id="reportChartType"
-                        class="select-control"
-                    >
-
-                        <option value="sales">
-                            Penjualan
-                        </option>
-
-                        <option value="profit">
-                            Laba
-                        </option>
-
-                        <option value="hpp">
-                            HPP
-                        </option>
-
-                    </select>
-
-                </div>
-
-
-                <div class="chart-container report-chart-container">
-
-                    <div
-                        class="chart-y-axis"
-                        id="reportChartYAxis"
-                    >
-
-                        <span>
-                            Rp5jt
-                        </span>
-
-                        <span>
-                            Rp4jt
-                        </span>
-
-                        <span>
-                            Rp3jt
-                        </span>
-
-                        <span>
-                            Rp2jt
-                        </span>
-
-                        <span>
-                            Rp1jt
-                        </span>
-
-                        <span>
-                            Rp0
-                        </span>
-
-                    </div>
-
-
-                    <div class="chart-area">
-
-                        <div class="chart-grid-lines">
-
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>
-
-                        </div>
-
-
-                        <svg
-                            class="sales-chart"
-                            id="reportChart"
-                            viewBox="0 0 700 280"
-                            preserveAspectRatio="none"
-                            aria-label="Grafik laporan"
-                        >
-
-                            <defs>
-
-                                <linearGradient
-                                    id="reportChartGradient"
-                                    x1="0"
-                                    x2="0"
-                                    y1="0"
-                                    y2="1"
-                                >
-
-                                    <stop
-                                        offset="0%"
-                                        stop-color="#2563eb"
-                                        stop-opacity="0.28"
-                                    />
-
-                                    <stop
-                                        offset="100%"
-                                        stop-color="#2563eb"
-                                        stop-opacity="0"
-                                    />
-
-                                </linearGradient>
-
-                            </defs>
-
-
-                            <path
-                                id="reportChartAreaPath"
-                                d=""
-                                fill="url(#reportChartGradient)"
-                            ></path>
-
-
-                            <path
-                                id="reportChartLinePath"
-                                d=""
-                                fill="none"
-                                stroke="#2563eb"
-                                stroke-width="4"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            ></path>
-
-
-                            <g
-                                id="reportChartPoints"
-                            ></g>
-
-                        </svg>
-
-
-                        <div
-                            class="chart-x-axis"
-                            id="reportChartXAxis"
-                        >
-
-                            <span>
-                                -
-                            </span>
-
-                            <span>
-                                -
-                            </span>
-
-                            <span>
-                                -
-                            </span>
-
-                            <span>
-                                -
-                            </span>
-
-                            <span>
-                                -
-                            </span>
-
-                            <span>
-                                -
-                            </span>
-
-                            <span>
-                                -
-                            </span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="chart-footer">
-
-                    <div class="chart-legend">
-
-                        <span class="legend-item">
-
-                            <span class="legend-dot blue"></span>
-
-                            <span id="reportChartLegend">
-                                Penjualan
-                            </span>
-
-                        </span>
-
-                    </div>
-
-
-                    <div class="chart-total">
-
-                        <span>
-                            Total
-                        </span>
-
-                        <strong id="reportChartTotal">
-                            Rp0
-                        </strong>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                 PLATFORM REPORT
-            ================================================== -->
-            <section class="dashboard-card">
-
-                <div class="card-header">
-
-                    <div>
-
-                        <h3>
-                            Penjualan Berdasarkan Platform
-                        </h3>
-
-                        <p>
-                            Perbandingan omzet dari setiap platform.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="platform-report-grid">
-
-
-                    <!-- OFFLINE -->
-                    <div class="platform-report-item">
-
-                        <div class="platform-report-top">
-
-                            <span class="platform-icon offline">
-                                🏪
-                            </span>
-
-                            <div>
-
-                                <strong>
-                                    Offline
-                                </strong>
-
-                                <small id="reportOfflineCount">
-                                    0 transaksi
-                                </small>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="platform-report-value">
-
-                            <strong id="reportOfflineSales">
-                                Rp0
-                            </strong>
-
-                            <span id="reportOfflinePercentage">
-                                0%
-                            </span>
-
-                        </div>
-
-
-                        <div class="progress-bar">
-
-                            <span
-                                id="reportOfflineProgress"
-                                style="width: 0%"
-                            ></span>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- GRABFOOD -->
-                    <div class="platform-report-item">
-
-                        <div class="platform-report-top">
-
-                            <span class="platform-icon grab">
-                                🟢
-                            </span>
-
-                            <div>
-
-                                <strong>
-                                    GrabFood
-                                </strong>
-
-                                <small id="reportGrabCount">
-                                    0 transaksi
-                                </small>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="platform-report-value">
-
-                            <strong id="reportGrabSales">
-                                Rp0
-                            </strong>
-
-                            <span id="reportGrabPercentage">
-                                0%
-                            </span>
-
-                        </div>
-
-
-                        <div class="progress-bar">
-
-                            <span
-                                id="reportGrabProgress"
-                                style="width: 0%"
-                            ></span>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- GOFOOD -->
-                    <div class="platform-report-item">
-
-                        <div class="platform-report-top">
-
-                            <span class="platform-icon gofood">
-                                🟢
-                            </span>
-
-                            <div>
-
-                                <strong>
-                                    GoFood
-                                </strong>
-
-                                <small id="reportGofoodCount">
-                                    0 transaksi
-                                </small>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="platform-report-value">
-
-                            <strong id="reportGofoodSales">
-                                Rp0
-                            </strong>
-
-                            <span id="reportGofoodPercentage">
-                                0%
-                            </span>
-
-                        </div>
-
-
-                        <div class="progress-bar">
-
-                            <span
-                                id="reportGofoodProgress"
-                                style="width: 0%"
-                            ></span>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- SHOPEEFOOD -->
-                    <div class="platform-report-item">
-
-                        <div class="platform-report-top">
-
-                            <span class="platform-icon shopee">
-                                🟠
-                            </span>
-
-                            <div>
-
-                                <strong>
-                                    ShopeeFood
-                                </strong>
-
-                                <small id="reportShopeeCount">
-                                    0 transaksi
-                                </small>
-
-                            </div>
-
-                        </div>
-
-
-                        <div class="platform-report-value">
-
-                            <strong id="reportShopeeSales">
-                                Rp0
-                            </strong>
-
-                            <span id="reportShopeePercentage">
-                                0%
-                            </span>
-
-                        </div>
-
-
-                        <div class="progress-bar">
-
-                            <span
-                                id="reportShopeeProgress"
-                                style="width: 0%"
-                            ></span>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-            <!-- =================================================
-                 PRODUCT PERFORMANCE
-            ================================================== -->
-            <section class="dashboard-card">
-
-                <div class="card-header">
-
-                    <div>
-
-                        <h3>
-                            Performa Produk
-                        </h3>
-
-                        <p>
-                            Produk dengan penjualan tertinggi pada periode terpilih.
-                        </p>
-
-                    </div>
-
-
-                    <select
-                        id="productReportSort"
-                        class="select-control"
-                    >
-
-                        <option value="sales">
-                            Penjualan Tertinggi
-                        </option>
-
-                        <option value="quantity">
-                            Qty Terbanyak
-                        </option>
-
-                        <option value="profit">
-                            Laba Tertinggi
-                        </option>
-
-                    </select>
 
                 </div>
 
@@ -1198,15 +521,11 @@
                             <tr>
 
                                 <th>
-                                    #
+                                    Tanggal
                                 </th>
 
                                 <th>
-                                    Produk
-                                </th>
-
-                                <th>
-                                    Terjual
+                                    Transaksi
                                 </th>
 
                                 <th>
@@ -1230,19 +549,23 @@
                         </thead>
 
 
-                        <tbody id="productReportBody">
+                        <tbody id="reportTableBody">
 
                             <tr>
 
-                                <td colspan="7">
+                                <td colspan="6">
 
-                                    <div class="loading-state">
+                                    <div class="empty-state">
 
-                                        <div class="loading-spinner"></div>
+                                        <span>📊</span>
 
-                                        <span>
-                                            Memuat laporan produk...
-                                        </span>
+                                        <strong>
+                                            Belum ada data laporan
+                                        </strong>
+
+                                        <small>
+                                            Data akan muncul setelah transaksi tersedia.
+                                        </small>
 
                                     </div>
 
@@ -1260,20 +583,33 @@
 
 
             <!-- =================================================
-                 INGREDIENT REPORT
+                 HISTORY
             ================================================== -->
-            <section class="dashboard-card">
+
+            <section
+                class="dashboard-card"
+                id="history"
+                style="
+                    scroll-margin-top:90px;
+                "
+            >
 
                 <div class="card-header">
 
                     <div>
 
+                        <div class="breadcrumb">
+                            <span>📜</span>
+                            <span>History</span>
+                        </div>
+
                         <h3>
-                            Penggunaan Bahan
+                            History Aktivitas
                         </h3>
 
                         <p>
-                            Ringkasan penggunaan bahan pada periode terpilih.
+                            Semua aktivitas penjualan, stok, bahan,
+                            pembelian, dan perubahan data.
                         </p>
 
                     </div>
@@ -1282,13 +618,132 @@
                     <button
                         type="button"
                         class="secondary-button"
-                        id="viewIngredientReport"
+                        id="refreshHistoryButton"
                     >
-                        Lihat Detail
+                        🔄 Refresh
                     </button>
 
                 </div>
 
+
+                <!-- HISTORY TABS -->
+
+                <div
+                    class="history-tabs"
+                    role="tablist"
+                    style="
+                        display:flex;
+                        gap:8px;
+                        flex-wrap:wrap;
+                        margin-bottom:20px;
+                    "
+                >
+
+                    <button
+                        type="button"
+                        class="history-tab active"
+                        data-history-type="all"
+                    >
+                        Semua
+                    </button>
+
+                    <button
+                        type="button"
+                        class="history-tab"
+                        data-history-type="sales"
+                    >
+                        🧾 Penjualan
+                    </button>
+
+                    <button
+                        type="button"
+                        class="history-tab"
+                        data-history-type="stock"
+                    >
+                        📦 Stok
+                    </button>
+
+                    <button
+                        type="button"
+                        class="history-tab"
+                        data-history-type="ingredient"
+                    >
+                        🥩 Bahan
+                    </button>
+
+                    <button
+                        type="button"
+                        class="history-tab"
+                        data-history-type="purchase"
+                    >
+                        🚚 Pembelian
+                    </button>
+
+                    <button
+                        type="button"
+                        class="history-tab"
+                        data-history-type="change"
+                    >
+                        ⚙️ Perubahan Data
+                    </button>
+
+                </div>
+
+
+                <!-- HISTORY SEARCH -->
+
+                <div
+                    style="
+                        display:flex;
+                        gap:10px;
+                        flex-wrap:wrap;
+                        margin-bottom:20px;
+                    "
+                >
+
+                    <div class="search-box">
+
+                        <span class="search-icon">
+                            🔍
+                        </span>
+
+                        <input
+                            type="search"
+                            id="historySearch"
+                            placeholder="Cari history..."
+                            autocomplete="off"
+                        >
+
+                    </div>
+
+
+                    <select
+                        id="historyDateFilter"
+                        class="select-control"
+                    >
+
+                        <option value="all">
+                            Semua tanggal
+                        </option>
+
+                        <option value="today">
+                            Hari ini
+                        </option>
+
+                        <option value="week">
+                            7 hari terakhir
+                        </option>
+
+                        <option value="month">
+                            30 hari terakhir
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <!-- HISTORY TABLE -->
 
                 <div class="table-wrapper">
 
@@ -1299,27 +754,23 @@
                             <tr>
 
                                 <th>
-                                    #
+                                    Waktu
                                 </th>
 
                                 <th>
-                                    Bahan
+                                    Aktivitas
                                 </th>
 
                                 <th>
-                                    Penggunaan
+                                    Kategori
                                 </th>
 
                                 <th>
-                                    Satuan
+                                    Detail
                                 </th>
 
                                 <th>
-                                    Estimasi Biaya
-                                </th>
-
-                                <th>
-                                    Stok Akhir
+                                    User
                                 </th>
 
                                 <th>
@@ -1331,19 +782,25 @@
                         </thead>
 
 
-                        <tbody id="ingredientReportBody">
+                        <tbody id="historyTableBody">
 
                             <tr>
 
-                                <td colspan="7">
+                                <td colspan="6">
 
-                                    <div class="loading-state">
-
-                                        <div class="loading-spinner"></div>
+                                    <div class="empty-state">
 
                                         <span>
-                                            Memuat laporan bahan...
+                                            📜
                                         </span>
+
+                                        <strong>
+                                            Belum ada history
+                                        </strong>
+
+                                        <small>
+                                            Aktivitas sistem akan muncul di sini.
+                                        </small>
 
                                     </div>
 
@@ -1357,24 +814,75 @@
 
                 </div>
 
+
+                <!-- HISTORY FOOTER -->
+
+                <div class="table-footer">
+
+                    <div
+                        class="table-info"
+                        id="historyTableInfo"
+                    >
+                        0 aktivitas
+                    </div>
+
+
+                    <div class="pagination">
+
+                        <button
+                            type="button"
+                            class="pagination-button"
+                            id="historyPrev"
+                            disabled
+                        >
+                            ‹
+                        </button>
+
+                        <span
+                            class="pagination-current"
+                            id="historyPage"
+                        >
+                            1
+                        </span>
+
+                        <button
+                            type="button"
+                            class="pagination-button"
+                            id="historyNext"
+                            disabled
+                        >
+                            ›
+                        </button>
+
+                    </div>
+
+                </div>
+
             </section>
 
 
             <!-- =================================================
-                 PROFIT ANALYSIS
+                 SETTINGS
             ================================================== -->
-            <section class="dashboard-card profit-analysis-card">
+
+            <section
+                class="dashboard-card"
+                id="settings"
+                style="
+                    scroll-margin-top:90px;
+                "
+            >
 
                 <div class="card-header">
 
                     <div>
 
                         <h3>
-                            Analisis Laba
+                            ⚙️ Pengaturan
                         </h3>
 
                         <p>
-                            Komposisi penjualan dan biaya pada periode terpilih.
+                            Pengaturan dasar sistem monitoring.
                         </p>
 
                     </div>
@@ -1382,154 +890,121 @@
                 </div>
 
 
-                <div class="profit-analysis-grid">
+                <div class="form-grid">
 
+                    <div class="form-group">
 
-                    <!-- VISUAL -->
-                    <div class="profit-visual">
+                        <label for="restaurantName">
+                            Nama Usaha
+                        </label>
 
-                        <div
-                            class="profit-donut"
-                            id="profitDonut"
+                        <input
+                            type="text"
+                            id="restaurantName"
+                            value="Food Monitoring"
                         >
-
-                            <div class="profit-donut-center">
-
-                                <strong id="profitDonutPercentage">
-                                    0%
-                                </strong>
-
-                                <span>
-                                    Margin
-                                </span>
-
-                            </div>
-
-                        </div>
 
                     </div>
 
 
-                    <!-- DETAILS -->
-                    <div class="profit-breakdown">
+                    <div class="form-group">
 
-                        <div class="breakdown-item">
+                        <label for="currency">
+                            Mata Uang
+                        </label>
 
-                            <span class="breakdown-color sales"></span>
+                        <select id="currency">
 
-                            <div>
+                            <option value="IDR" selected>
+                                Rupiah (Rp)
+                            </option>
 
-                                <strong>
-                                    Penjualan
-                                </strong>
+                        </select>
 
-                                <small>
-                                    Total omzet
-                                </small>
-
-                            </div>
-
-                            <strong id="breakdownSales">
-                                Rp0
-                            </strong>
-
-                        </div>
+                    </div>
 
 
-                        <div class="breakdown-item">
+                    <div class="form-group">
 
-                            <span class="breakdown-color hpp"></span>
+                        <label for="lowStockNotification">
+                            Notifikasi Stok Menipis
+                        </label>
 
-                            <div>
+                        <select id="lowStockNotification">
 
-                                <strong>
-                                    HPP
-                                </strong>
+                            <option value="on" selected>
+                                Aktif
+                            </option>
 
-                                <small>
-                                    Biaya bahan
-                                </small>
+                            <option value="off">
+                                Nonaktif
+                            </option>
 
-                            </div>
+                        </select>
 
-                            <strong id="breakdownHpp">
-                                Rp0
-                            </strong>
-
-                        </div>
+                    </div>
 
 
-                        <div class="breakdown-item">
+                    <div class="form-group">
 
-                            <span class="breakdown-color platform"></span>
+                        <label for="defaultReportPeriod">
+                            Periode Laporan Default
+                        </label>
 
-                            <div>
+                        <select id="defaultReportPeriod">
 
-                                <strong>
-                                    Potongan Platform
-                                </strong>
+                            <option value="daily">
+                                Harian
+                            </option>
 
-                                <small>
-                                    Komisi platform
-                                </small>
+                            <option value="weekly">
+                                Mingguan
+                            </option>
 
-                            </div>
+                            <option value="monthly" selected>
+                                Bulanan
+                            </option>
 
-                            <strong id="breakdownPlatform">
-                                Rp0
-                            </strong>
-
-                        </div>
-
-
-                        <div class="breakdown-item total">
-
-                            <span class="breakdown-color profit"></span>
-
-                            <div>
-
-                                <strong>
-                                    Laba Bersih
-                                </strong>
-
-                                <small>
-                                    Setelah biaya
-                                </small>
-
-                            </div>
-
-                            <strong id="breakdownProfit">
-                                Rp0
-                            </strong>
-
-                        </div>
+                        </select>
 
                     </div>
 
                 </div>
 
-            </section>
 
+                <div
+                    style="
+                        display:flex;
+                        justify-content:flex-end;
+                        margin-top:20px;
+                    "
+                >
+
+                    <button
+                        type="button"
+                        class="primary-button"
+                        id="saveSettingsButton"
+                    >
+                        💾 Simpan Pengaturan
+                    </button>
+
+                </div>
+
+            </section>
 
         </div>
 
 
-        <!-- =================================================
-             FOOTER
-        ================================================== -->
+        <!-- FOOTER -->
+
         <footer class="footer">
 
             <span>
-
-                ©
-                <span id="currentYear"></span>
-                Food Monitoring
-
+                © 2026 Food Monitoring
             </span>
 
-
             <span>
-                Sistem Monitoring Bisnis Kuliner
+                Sistem Monitoring Bahan & Penjualan
             </span>
 
         </footer>
@@ -1539,337 +1014,11 @@
 </div>
 
 
-<!-- =========================================================
-     EXPORT MODAL
-========================================================= -->
-<div
-    class="modal-overlay"
-    id="exportModal"
-    aria-hidden="true"
->
+<!-- ================= NOTIFICATION ================= -->
 
-    <div
-        class="modal modal-small"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="exportModalTitle"
-    >
-
-        <div class="modal-header">
-
-            <div>
-
-                <h3 id="exportModalTitle">
-                    Export Laporan
-                </h3>
-
-                <p>
-                    Pilih data yang ingin diekspor.
-                </p>
-
-            </div>
-
-
-            <button
-                type="button"
-                class="modal-close"
-                id="closeExportModal"
-                aria-label="Tutup"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <div class="modal-body">
-
-            <div class="export-options">
-
-
-                <label class="export-option">
-
-                    <input
-                        type="checkbox"
-                        name="exportData"
-                        value="sales"
-                        checked
-                    >
-
-                    <span class="export-option-icon">
-                        🧾
-                    </span>
-
-                    <span class="export-option-info">
-
-                        <strong>
-                            Penjualan
-                        </strong>
-
-                        <small>
-                            Data transaksi penjualan
-                        </small>
-
-                    </span>
-
-                </label>
-
-
-                <label class="export-option">
-
-                    <input
-                        type="checkbox"
-                        name="exportData"
-                        value="products"
-                        checked
-                    >
-
-                    <span class="export-option-icon">
-                        📦
-                    </span>
-
-                    <span class="export-option-info">
-
-                        <strong>
-                            Produk
-                        </strong>
-
-                        <small>
-                            Performa produk
-                        </small>
-
-                    </span>
-
-                </label>
-
-
-                <label class="export-option">
-
-                    <input
-                        type="checkbox"
-                        name="exportData"
-                        value="ingredients"
-                        checked
-                    >
-
-                    <span class="export-option-icon">
-                        🥩
-                    </span>
-
-                    <span class="export-option-info">
-
-                        <strong>
-                            Bahan
-                        </strong>
-
-                        <small>
-                            Penggunaan dan stok bahan
-                        </small>
-
-                    </span>
-
-                </label>
-
-
-                <label class="export-option">
-
-                    <input
-                        type="checkbox"
-                        name="exportData"
-                        value="summary"
-                        checked
-                    >
-
-                    <span class="export-option-icon">
-                        📊
-                    </span>
-
-                    <span class="export-option-info">
-
-                        <strong>
-                            Ringkasan
-                        </strong>
-
-                        <small>
-                            HPP dan laba
-                        </small>
-
-                    </span>
-
-                </label>
-
-            </div>
-
-        </div>
-
-
-        <div class="modal-footer">
-
-            <button
-                type="button"
-                class="secondary-button"
-                id="cancelExport"
-            >
-                Batal
-            </button>
-
-
-            <button
-                type="button"
-                class="primary-button"
-                id="confirmExport"
-            >
-                📥 Download Excel
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     INGREDIENT REPORT DETAIL MODAL
-========================================================= -->
-<div
-    class="modal-overlay"
-    id="ingredientReportModal"
-    aria-hidden="true"
->
-
-    <div
-        class="modal modal-large"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="ingredientReportTitle"
-    >
-
-        <div class="modal-header">
-
-            <div>
-
-                <h3 id="ingredientReportTitle">
-                    Detail Penggunaan Bahan
-                </h3>
-
-                <p>
-                    Rincian penggunaan bahan pada periode laporan.
-                </p>
-
-            </div>
-
-
-            <button
-                type="button"
-                class="modal-close"
-                id="closeIngredientReportModal"
-                aria-label="Tutup"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <div class="modal-body">
-
-            <div class="table-wrapper">
-
-                <table class="data-table">
-
-                    <thead>
-
-                        <tr>
-
-                            <th>
-                                Tanggal
-                            </th>
-
-                            <th>
-                                Bahan
-                            </th>
-
-                            <th>
-                                Produk
-                            </th>
-
-                            <th>
-                                Jumlah
-                            </th>
-
-                            <th>
-                                Satuan
-                            </th>
-
-                            <th>
-                                Biaya
-                            </th>
-
-                        </tr>
-
-                    </thead>
-
-
-                    <tbody id="ingredientReportDetailBody">
-
-                        <tr>
-
-                            <td colspan="6">
-
-                                <div class="empty-state">
-
-                                    <span>
-                                        📊
-                                    </span>
-
-                                    <strong>
-                                        Belum ada data
-                                    </strong>
-
-                                    <small>
-                                        Detail penggunaan bahan akan muncul di sini.
-                                    </small>
-
-                                </div>
-
-                            </td>
-
-                        </tr>
-
-                    </tbody>
-
-                </table>
-
-            </div>
-
-        </div>
-
-
-        <div class="modal-footer">
-
-            <button
-                type="button"
-                class="secondary-button"
-                id="closeIngredientReportButton"
-            >
-                Tutup
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     NOTIFICATION PANEL
-========================================================= -->
 <div
     class="notification-panel"
     id="notificationPanel"
-    aria-hidden="true"
 >
 
     <div class="notification-header">
@@ -1886,12 +1035,10 @@
 
         </div>
 
-
         <button
             type="button"
             class="panel-close"
-            id="closeNotification"
-            aria-label="Tutup notifikasi"
+            id="notificationClose"
         >
             ×
         </button>
@@ -1906,16 +1053,14 @@
 
         <div class="empty-notification">
 
-            <span>
-                🔔
-            </span>
+            <span>🔔</span>
 
             <strong>
                 Tidak ada notifikasi
             </strong>
 
             <small>
-                Semua kondisi terlihat baik.
+                Semua kondisi sistem aman.
             </small>
 
         </div>
@@ -1925,20 +1070,587 @@
 </div>
 
 
-<!-- =========================================================
-     TOAST
-========================================================= -->
+<!-- ================= TOAST ================= -->
+
 <div
     class="toast-container"
     id="toastContainer"
-    aria-live="polite"
 ></div>
 
 
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
-<script src="js/reports.js"></script>
+<!-- ================= JAVASCRIPT ================= -->
+
+<script src="../js/reports.js"></script>
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* =====================================================
+       SIDEBAR MOBILE
+    ====================================================== */
+
+    const sidebar =
+        document.getElementById("sidebar");
+
+    const menuToggle =
+        document.getElementById("menuToggle");
+
+    const sidebarClose =
+        document.getElementById("sidebarClose");
+
+    const sidebarOverlay =
+        document.getElementById("sidebarOverlay");
+
+
+    function openSidebar() {
+
+        sidebar?.classList.add("open");
+
+        sidebarOverlay?.classList.add("show");
+
+        menuToggle?.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+    }
+
+
+    function closeSidebar() {
+
+        sidebar?.classList.remove("open");
+
+        sidebarOverlay?.classList.remove("show");
+
+        menuToggle?.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+    }
+
+
+    menuToggle?.addEventListener(
+        "click",
+        openSidebar
+    );
+
+    sidebarClose?.addEventListener(
+        "click",
+        closeSidebar
+    );
+
+    sidebarOverlay?.addEventListener(
+        "click",
+        closeSidebar
+    );
+
+
+    /* =====================================================
+       SCROLL KE HISTORY
+    ====================================================== */
+
+    function showHistory() {
+
+        const history =
+            document.getElementById("history");
+
+        if (!history) return;
+
+        history.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+
+    }
+
+
+    document
+        .getElementById("historyButton")
+        ?.addEventListener(
+            "click",
+            showHistory
+        );
+
+
+    document
+        .getElementById("historyMenu")
+        ?.addEventListener(
+            "click",
+            function () {
+
+                closeSidebar();
+
+                setTimeout(
+                    showHistory,
+                    50
+                );
+
+            }
+        );
+
+
+    /* =====================================================
+       HASH ROUTING
+       reports.html#history
+    ====================================================== */
+
+    function checkHash() {
+
+        if (
+            window.location.hash === "#history"
+        ) {
+
+            setTimeout(
+                showHistory,
+                100
+            );
+
+        }
+
+        if (
+            window.location.hash === "#settings"
+        ) {
+
+            setTimeout(
+                function () {
+
+                    document
+                        .getElementById(
+                            "settings"
+                        )
+                        ?.scrollIntoView({
+                            behavior: "smooth",
+                            block: "start"
+                        });
+
+                },
+                100
+            );
+
+        }
+
+    }
+
+
+    checkHash();
+
+    window.addEventListener(
+        "hashchange",
+        checkHash
+    );
+
+
+    /* =====================================================
+       HISTORY TABS
+    ====================================================== */
+
+    document
+        .querySelectorAll(".history-tab")
+        .forEach(function (button) {
+
+            button.addEventListener(
+                "click",
+                function () {
+
+                    document
+                        .querySelectorAll(
+                            ".history-tab"
+                        )
+                        .forEach(function (tab) {
+
+                            tab.classList.remove(
+                                "active"
+                            );
+
+                        });
+
+
+                    this.classList.add(
+                        "active"
+                    );
+
+
+                    const type =
+                        this.dataset.historyType;
+
+
+                    document.dispatchEvent(
+                        new CustomEvent(
+                            "historyFilter",
+                            {
+                                detail: {
+                                    type: type
+                                }
+                            }
+                        )
+                    );
+
+                }
+            );
+
+        });
+
+
+    /* =====================================================
+       HISTORY SEARCH
+    ====================================================== */
+
+    document
+        .getElementById("historySearch")
+        ?.addEventListener(
+            "input",
+            function () {
+
+                document.dispatchEvent(
+                    new CustomEvent(
+                        "historySearch",
+                        {
+                            detail: {
+                                value:
+                                    this.value
+                            }
+                        }
+                    )
+                );
+
+            }
+        );
+
+
+    /* =====================================================
+       HISTORY DATE FILTER
+    ====================================================== */
+
+    document
+        .getElementById("historyDateFilter")
+        ?.addEventListener(
+            "change",
+            function () {
+
+                document.dispatchEvent(
+                    new CustomEvent(
+                        "historyDateFilter",
+                        {
+                            detail: {
+                                value:
+                                    this.value
+                            }
+                        }
+                    )
+                );
+
+            }
+        );
+
+
+    /* =====================================================
+       REFRESH HISTORY
+    ====================================================== */
+
+    document
+        .getElementById(
+            "refreshHistoryButton"
+        )
+        ?.addEventListener(
+            "click",
+            function () {
+
+                document.dispatchEvent(
+                    new CustomEvent(
+                        "refreshHistory"
+                    )
+                );
+
+            }
+        );
+
+
+    /* =====================================================
+       EXPORT
+    ====================================================== */
+
+    document
+        .getElementById("exportButton")
+        ?.addEventListener(
+            "click",
+            function () {
+
+                document.dispatchEvent(
+                    new CustomEvent(
+                        "exportReport"
+                    )
+                );
+
+            }
+        );
+
+
+    /* =====================================================
+       GENERATE REPORT
+    ====================================================== */
+
+    document
+        .getElementById(
+            "generateReportButton"
+        )
+        ?.addEventListener(
+            "click",
+            function () {
+
+                document.dispatchEvent(
+                    new CustomEvent(
+                        "generateReport",
+                        {
+                            detail: {
+
+                                period:
+                                    document
+                                        .getElementById(
+                                            "reportPeriod"
+                                        )?.value,
+
+                                start:
+                                    document
+                                        .getElementById(
+                                            "reportStart"
+                                        )?.value,
+
+                                end:
+                                    document
+                                        .getElementById(
+                                            "reportEnd"
+                                        )?.value
+
+                            }
+                        }
+                    )
+                );
+
+            }
+        );
+
+
+    /* =====================================================
+       SETTINGS
+    ====================================================== */
+
+    document
+        .getElementById(
+            "saveSettingsButton"
+        )
+        ?.addEventListener(
+            "click",
+            function () {
+
+                const settings = {
+
+                    restaurantName:
+                        document
+                            .getElementById(
+                                "restaurantName"
+                            )?.value,
+
+                    currency:
+                        document
+                            .getElementById(
+                                "currency"
+                            )?.value,
+
+                    lowStockNotification:
+                        document
+                            .getElementById(
+                                "lowStockNotification"
+                            )?.value,
+
+                    defaultReportPeriod:
+                        document
+                            .getElementById(
+                                "defaultReportPeriod"
+                            )?.value
+
+                };
+
+
+                localStorage.setItem(
+                    "foodMonitoringSettings",
+                    JSON.stringify(settings)
+                );
+
+
+                if (
+                    typeof window.showToast ===
+                    "function"
+                ) {
+
+                    window.showToast(
+                        "Pengaturan berhasil disimpan",
+                        "success"
+                    );
+
+                } else {
+
+                    alert(
+                        "Pengaturan berhasil disimpan."
+                    );
+
+                }
+
+            }
+        );
+
+
+    /* =====================================================
+       NOTIFICATION
+    ====================================================== */
+
+    const notificationButton =
+        document.getElementById(
+            "notificationButton"
+        );
+
+    const notificationPanel =
+        document.getElementById(
+            "notificationPanel"
+        );
+
+    const notificationClose =
+        document.getElementById(
+            "notificationClose"
+        );
+
+
+    notificationButton?.addEventListener(
+        "click",
+        function () {
+
+            notificationPanel?.classList.toggle(
+                "show"
+            );
+
+        }
+    );
+
+
+    notificationClose?.addEventListener(
+        "click",
+        function () {
+
+            notificationPanel?.classList.remove(
+                "show"
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       CLOSE ESC
+    ====================================================== */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key !== "Escape") {
+                return;
+            }
+
+            closeSidebar();
+
+            notificationPanel?.classList.remove(
+                "show"
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       LOAD SETTINGS
+    ====================================================== */
+
+    try {
+
+        const saved =
+            localStorage.getItem(
+                "foodMonitoringSettings"
+            );
+
+
+        if (saved) {
+
+            const settings =
+                JSON.parse(saved);
+
+
+            if (
+                settings.restaurantName
+            ) {
+
+                document
+                    .getElementById(
+                        "restaurantName"
+                    ).value =
+                    settings.restaurantName;
+
+            }
+
+
+            if (
+                settings.currency
+            ) {
+
+                document
+                    .getElementById(
+                        "currency"
+                    ).value =
+                    settings.currency;
+
+            }
+
+
+            if (
+                settings.lowStockNotification
+            ) {
+
+                document
+                    .getElementById(
+                        "lowStockNotification"
+                    ).value =
+                    settings.lowStockNotification;
+
+            }
+
+
+            if (
+                settings.defaultReportPeriod
+            ) {
+
+                document
+                    .getElementById(
+                        "defaultReportPeriod"
+                    ).value =
+                    settings.defaultReportPeriod;
+
+            }
+
+        }
+
+    } catch (error) {
+
+        console.warn(
+            "Gagal memuat pengaturan:",
+            error
+        );
+
+    }
+
+});
+
+</script>
 
 </body>
 </html>
