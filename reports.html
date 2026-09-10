@@ -1,0 +1,1944 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Food Monitoring - Laporan</title>
+
+    <meta
+        name="description"
+        content="Laporan penjualan, bahan, stok, HPP, dan laba Food Monitoring."
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- =====================================================
+         SIDEBAR
+    ====================================================== -->
+    <aside class="sidebar" id="sidebar">
+
+        <div class="sidebar-header">
+
+            <a href="index.html" class="brand">
+
+                <span class="brand-icon">
+                    🍴
+                </span>
+
+                <span class="brand-text">
+                    <strong>FOOD</strong>
+                    <small>MONITOR</small>
+                </span>
+
+            </a>
+
+
+            <button
+                type="button"
+                class="sidebar-close"
+                id="sidebarClose"
+                aria-label="Tutup menu"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <!-- =================================================
+             NAVIGATION
+        ================================================== -->
+        <nav class="sidebar-nav">
+
+            <div class="nav-section">
+
+                <span class="nav-section-title">
+                    Menu Utama
+                </span>
+
+
+                <a
+                    href="index.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">
+                        ▦
+                    </span>
+
+                    <span class="nav-text">
+                        Dashboard
+                    </span>
+                </a>
+
+
+                <a
+                    href="products.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">
+                        📦
+                    </span>
+
+                    <span class="nav-text">
+                        Produk
+                    </span>
+                </a>
+
+
+                <a
+                    href="ingredients.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">
+                        🥩
+                    </span>
+
+                    <span class="nav-text">
+                        Bahan
+                    </span>
+                </a>
+
+
+                <a
+                    href="sales.html"
+                    class="nav-item"
+                >
+                    <span class="nav-icon">
+                        🧾
+                    </span>
+
+                    <span class="nav-text">
+                        Penjualan
+                    </span>
+                </a>
+
+
+                <a
+                    href="reports.html"
+                    class="nav-item active"
+                >
+                    <span class="nav-icon">
+                        📊
+                    </span>
+
+                    <span class="nav-text">
+                        Laporan
+                    </span>
+                </a>
+
+
+                <a
+                    href="#"
+                    class="nav-item"
+                    id="historyMenu"
+                >
+                    <span class="nav-icon">
+                        📜
+                    </span>
+
+                    <span class="nav-text">
+                        History
+                    </span>
+                </a>
+
+
+                <a
+                    href="#"
+                    class="nav-item"
+                    id="supplierMenu"
+                >
+                    <span class="nav-icon">
+                        🚚
+                    </span>
+
+                    <span class="nav-text">
+                        Supplier
+                    </span>
+                </a>
+
+
+                <a
+                    href="#"
+                    class="nav-item"
+                    id="settingsMenu"
+                >
+                    <span class="nav-icon">
+                        ⚙
+                    </span>
+
+                    <span class="nav-text">
+                        Pengaturan
+                    </span>
+                </a>
+
+            </div>
+
+        </nav>
+
+
+        <!-- SIDEBAR FOOTER -->
+        <div class="sidebar-footer">
+
+            <div class="system-status">
+
+                <span class="status-dot"></span>
+
+                <span>
+                    Sistem aktif
+                </span>
+
+            </div>
+
+            <small>
+                Food Monitoring v1.0
+            </small>
+
+        </div>
+
+    </aside>
+
+
+    <!-- =====================================================
+         MOBILE OVERLAY
+    ====================================================== -->
+    <div
+        class="sidebar-overlay"
+        id="sidebarOverlay"
+    ></div>
+
+
+    <!-- =====================================================
+         MAIN
+    ====================================================== -->
+    <main class="main">
+
+
+        <!-- =================================================
+             TOPBAR
+        ================================================== -->
+        <header class="topbar">
+
+            <div class="topbar-left">
+
+                <button
+                    type="button"
+                    class="menu-toggle"
+                    id="menuToggle"
+                    aria-label="Buka menu"
+                >
+                    ☰
+                </button>
+
+
+                <div class="page-title">
+
+                    <h1>
+                        Laporan
+                    </h1>
+
+                    <p>
+                        Analisis performa bisnis
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button
+                    type="button"
+                    class="icon-button notification-button"
+                    id="notificationButton"
+                    aria-label="Notifikasi"
+                >
+                    🔔
+
+                    <span
+                        class="notification-badge"
+                        id="notificationBadge"
+                    >
+                        0
+                    </span>
+
+                </button>
+
+
+                <div class="admin-profile">
+
+                    <div class="admin-avatar">
+                        A
+                    </div>
+
+                    <div class="admin-info">
+
+                        <strong>
+                            Admin
+                        </strong>
+
+                        <small>
+                            Administrator
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- =================================================
+             CONTENT
+        ================================================== -->
+        <div class="content">
+
+
+            <!-- =================================================
+                 PAGE HEADER
+            ================================================== -->
+            <section class="page-header">
+
+                <div>
+
+                    <div class="breadcrumb">
+
+                        <a href="index.html">
+                            Dashboard
+                        </a>
+
+                        <span>
+                            ›
+                        </span>
+
+                        <span>
+                            Laporan
+                        </span>
+
+                    </div>
+
+
+                    <h2>
+                        Laporan Bisnis
+                    </h2>
+
+                    <p>
+                        Analisis penjualan, HPP, stok, dan laba bisnis.
+                    </p>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    class="primary-button"
+                    id="exportExcelButton"
+                >
+                    📥 Export Excel
+                </button>
+
+            </section>
+
+
+            <!-- =================================================
+                 REPORT FILTER
+            ================================================== -->
+            <section class="dashboard-card report-filter-card">
+
+                <div class="report-filter-header">
+
+                    <div>
+
+                        <h3>
+                            Filter Laporan
+                        </h3>
+
+                        <p>
+                            Pilih periode laporan yang ingin ditampilkan.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="resetReportFilter"
+                    >
+                        Reset
+                    </button>
+
+                </div>
+
+
+                <div class="report-filter-form">
+
+
+                    <!-- PERIOD -->
+                    <div class="form-group">
+
+                        <label for="reportPeriod">
+                            Periode
+                        </label>
+
+                        <select
+                            id="reportPeriod"
+                            class="select-control"
+                        >
+
+                            <option value="today">
+                                Hari Ini
+                            </option>
+
+                            <option value="yesterday">
+                                Kemarin
+                            </option>
+
+                            <option value="this-week">
+                                Minggu Ini
+                            </option>
+
+                            <option value="last-week">
+                                Minggu Lalu
+                            </option>
+
+                            <option value="this-month" selected>
+                                Bulan Ini
+                            </option>
+
+                            <option value="last-month">
+                                Bulan Lalu
+                            </option>
+
+                            <option value="custom">
+                                Custom
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- START DATE -->
+                    <div class="form-group">
+
+                        <label for="reportStartDate">
+                            Dari Tanggal
+                        </label>
+
+                        <input
+                            type="date"
+                            id="reportStartDate"
+                            class="date-control"
+                        >
+
+                    </div>
+
+
+                    <!-- END DATE -->
+                    <div class="form-group">
+
+                        <label for="reportEndDate">
+                            Sampai Tanggal
+                        </label>
+
+                        <input
+                            type="date"
+                            id="reportEndDate"
+                            class="date-control"
+                        >
+
+                    </div>
+
+
+                    <!-- PLATFORM -->
+                    <div class="form-group">
+
+                        <label for="reportPlatform">
+                            Platform
+                        </label>
+
+                        <select
+                            id="reportPlatform"
+                            class="select-control"
+                        >
+
+                            <option value="all">
+                                Semua Platform
+                            </option>
+
+                            <option value="offline">
+                                Offline
+                            </option>
+
+                            <option value="grabfood">
+                                GrabFood
+                            </option>
+
+                            <option value="gofood">
+                                GoFood
+                            </option>
+
+                            <option value="shopeefood">
+                                ShopeeFood
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- APPLY -->
+                    <div class="report-filter-action">
+
+                        <button
+                            type="button"
+                            class="primary-button"
+                            id="applyReportFilter"
+                        >
+                            🔍 Tampilkan Laporan
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 REPORT SUMMARY
+            ================================================== -->
+            <section class="summary-grid report-summary-grid">
+
+
+                <!-- SALES -->
+                <div class="summary-card">
+
+                    <div class="summary-card-top">
+
+                        <div>
+
+                            <span class="summary-label">
+                                TOTAL PENJUALAN
+                            </span>
+
+                            <h3 id="reportTotalSales">
+                                Rp0
+                            </h3>
+
+                            <span
+                                class="summary-change positive"
+                                id="reportSalesChange"
+                            >
+                                ↑ 0%
+                            </span>
+
+                        </div>
+
+
+                        <div class="summary-icon blue">
+                            💰
+                        </div>
+
+                    </div>
+
+
+                    <div class="summary-card-bottom">
+
+                        <span>
+                            Total omzet
+                        </span>
+
+                        <span id="reportTransactionCount">
+                            0 transaksi
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HPP -->
+                <div class="summary-card">
+
+                    <div class="summary-card-top">
+
+                        <div>
+
+                            <span class="summary-label">
+                                TOTAL HPP
+                            </span>
+
+                            <h3 id="reportTotalHpp">
+                                Rp0
+                            </h3>
+
+                            <span
+                                class="summary-change neutral"
+                                id="reportHppPercentage"
+                            >
+                                0%
+                            </span>
+
+                        </div>
+
+
+                        <div class="summary-icon orange">
+                            🧮
+                        </div>
+
+                    </div>
+
+
+                    <div class="summary-card-bottom">
+
+                        <span>
+                            Harga pokok penjualan
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PLATFORM FEE -->
+                <div class="summary-card">
+
+                    <div class="summary-card-top">
+
+                        <div>
+
+                            <span class="summary-label">
+                                POTONGAN PLATFORM
+                            </span>
+
+                            <h3 id="reportPlatformFee">
+                                Rp0
+                            </h3>
+
+                            <span
+                                class="summary-change neutral"
+                                id="reportPlatformFeePercentage"
+                            >
+                                0%
+                            </span>
+
+                        </div>
+
+
+                        <div class="summary-icon purple">
+                            💸
+                        </div>
+
+                    </div>
+
+
+                    <div class="summary-card-bottom">
+
+                        <span>
+                            Komisi dan potongan
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- PROFIT -->
+                <div class="summary-card">
+
+                    <div class="summary-card-top">
+
+                        <div>
+
+                            <span class="summary-label">
+                                LABA BERSIH
+                            </span>
+
+                            <h3 id="reportTotalProfit">
+                                Rp0
+                            </h3>
+
+                            <span
+                                class="summary-change positive"
+                                id="reportProfitMargin"
+                            >
+                                Margin 0%
+                            </span>
+
+                        </div>
+
+
+                        <div class="summary-icon dark">
+                            📈
+                        </div>
+
+                    </div>
+
+
+                    <div class="summary-card-bottom">
+
+                        <span>
+                            Setelah HPP & potongan
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 SALES CHART
+            ================================================== -->
+            <section class="dashboard-card report-chart-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>
+                            Grafik Penjualan
+                        </h3>
+
+                        <p id="reportChartDescription">
+                            Performa penjualan berdasarkan periode.
+                        </p>
+
+                    </div>
+
+
+                    <select
+                        id="reportChartType"
+                        class="select-control"
+                    >
+
+                        <option value="sales">
+                            Penjualan
+                        </option>
+
+                        <option value="profit">
+                            Laba
+                        </option>
+
+                        <option value="hpp">
+                            HPP
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="chart-container report-chart-container">
+
+                    <div
+                        class="chart-y-axis"
+                        id="reportChartYAxis"
+                    >
+
+                        <span>
+                            Rp5jt
+                        </span>
+
+                        <span>
+                            Rp4jt
+                        </span>
+
+                        <span>
+                            Rp3jt
+                        </span>
+
+                        <span>
+                            Rp2jt
+                        </span>
+
+                        <span>
+                            Rp1jt
+                        </span>
+
+                        <span>
+                            Rp0
+                        </span>
+
+                    </div>
+
+
+                    <div class="chart-area">
+
+                        <div class="chart-grid-lines">
+
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+
+                        </div>
+
+
+                        <svg
+                            class="sales-chart"
+                            id="reportChart"
+                            viewBox="0 0 700 280"
+                            preserveAspectRatio="none"
+                            aria-label="Grafik laporan"
+                        >
+
+                            <defs>
+
+                                <linearGradient
+                                    id="reportChartGradient"
+                                    x1="0"
+                                    x2="0"
+                                    y1="0"
+                                    y2="1"
+                                >
+
+                                    <stop
+                                        offset="0%"
+                                        stop-color="#2563eb"
+                                        stop-opacity="0.28"
+                                    />
+
+                                    <stop
+                                        offset="100%"
+                                        stop-color="#2563eb"
+                                        stop-opacity="0"
+                                    />
+
+                                </linearGradient>
+
+                            </defs>
+
+
+                            <path
+                                id="reportChartAreaPath"
+                                d=""
+                                fill="url(#reportChartGradient)"
+                            ></path>
+
+
+                            <path
+                                id="reportChartLinePath"
+                                d=""
+                                fill="none"
+                                stroke="#2563eb"
+                                stroke-width="4"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            ></path>
+
+
+                            <g
+                                id="reportChartPoints"
+                            ></g>
+
+                        </svg>
+
+
+                        <div
+                            class="chart-x-axis"
+                            id="reportChartXAxis"
+                        >
+
+                            <span>
+                                -
+                            </span>
+
+                            <span>
+                                -
+                            </span>
+
+                            <span>
+                                -
+                            </span>
+
+                            <span>
+                                -
+                            </span>
+
+                            <span>
+                                -
+                            </span>
+
+                            <span>
+                                -
+                            </span>
+
+                            <span>
+                                -
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="chart-footer">
+
+                    <div class="chart-legend">
+
+                        <span class="legend-item">
+
+                            <span class="legend-dot blue"></span>
+
+                            <span id="reportChartLegend">
+                                Penjualan
+                            </span>
+
+                        </span>
+
+                    </div>
+
+
+                    <div class="chart-total">
+
+                        <span>
+                            Total
+                        </span>
+
+                        <strong id="reportChartTotal">
+                            Rp0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 PLATFORM REPORT
+            ================================================== -->
+            <section class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>
+                            Penjualan Berdasarkan Platform
+                        </h3>
+
+                        <p>
+                            Perbandingan omzet dari setiap platform.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="platform-report-grid">
+
+
+                    <!-- OFFLINE -->
+                    <div class="platform-report-item">
+
+                        <div class="platform-report-top">
+
+                            <span class="platform-icon offline">
+                                🏪
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    Offline
+                                </strong>
+
+                                <small id="reportOfflineCount">
+                                    0 transaksi
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="platform-report-value">
+
+                            <strong id="reportOfflineSales">
+                                Rp0
+                            </strong>
+
+                            <span id="reportOfflinePercentage">
+                                0%
+                            </span>
+
+                        </div>
+
+
+                        <div class="progress-bar">
+
+                            <span
+                                id="reportOfflineProgress"
+                                style="width: 0%"
+                            ></span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- GRABFOOD -->
+                    <div class="platform-report-item">
+
+                        <div class="platform-report-top">
+
+                            <span class="platform-icon grab">
+                                🟢
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    GrabFood
+                                </strong>
+
+                                <small id="reportGrabCount">
+                                    0 transaksi
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="platform-report-value">
+
+                            <strong id="reportGrabSales">
+                                Rp0
+                            </strong>
+
+                            <span id="reportGrabPercentage">
+                                0%
+                            </span>
+
+                        </div>
+
+
+                        <div class="progress-bar">
+
+                            <span
+                                id="reportGrabProgress"
+                                style="width: 0%"
+                            ></span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- GOFOOD -->
+                    <div class="platform-report-item">
+
+                        <div class="platform-report-top">
+
+                            <span class="platform-icon gofood">
+                                🟢
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    GoFood
+                                </strong>
+
+                                <small id="reportGofoodCount">
+                                    0 transaksi
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="platform-report-value">
+
+                            <strong id="reportGofoodSales">
+                                Rp0
+                            </strong>
+
+                            <span id="reportGofoodPercentage">
+                                0%
+                            </span>
+
+                        </div>
+
+
+                        <div class="progress-bar">
+
+                            <span
+                                id="reportGofoodProgress"
+                                style="width: 0%"
+                            ></span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- SHOPEEFOOD -->
+                    <div class="platform-report-item">
+
+                        <div class="platform-report-top">
+
+                            <span class="platform-icon shopee">
+                                🟠
+                            </span>
+
+                            <div>
+
+                                <strong>
+                                    ShopeeFood
+                                </strong>
+
+                                <small id="reportShopeeCount">
+                                    0 transaksi
+                                </small>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="platform-report-value">
+
+                            <strong id="reportShopeeSales">
+                                Rp0
+                            </strong>
+
+                            <span id="reportShopeePercentage">
+                                0%
+                            </span>
+
+                        </div>
+
+
+                        <div class="progress-bar">
+
+                            <span
+                                id="reportShopeeProgress"
+                                style="width: 0%"
+                            ></span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 PRODUCT PERFORMANCE
+            ================================================== -->
+            <section class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>
+                            Performa Produk
+                        </h3>
+
+                        <p>
+                            Produk dengan penjualan tertinggi pada periode terpilih.
+                        </p>
+
+                    </div>
+
+
+                    <select
+                        id="productReportSort"
+                        class="select-control"
+                    >
+
+                        <option value="sales">
+                            Penjualan Tertinggi
+                        </option>
+
+                        <option value="quantity">
+                            Qty Terbanyak
+                        </option>
+
+                        <option value="profit">
+                            Laba Tertinggi
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table class="data-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    #
+                                </th>
+
+                                <th>
+                                    Produk
+                                </th>
+
+                                <th>
+                                    Terjual
+                                </th>
+
+                                <th>
+                                    Penjualan
+                                </th>
+
+                                <th>
+                                    HPP
+                                </th>
+
+                                <th>
+                                    Laba
+                                </th>
+
+                                <th>
+                                    Margin
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="productReportBody">
+
+                            <tr>
+
+                                <td colspan="7">
+
+                                    <div class="loading-state">
+
+                                        <div class="loading-spinner"></div>
+
+                                        <span>
+                                            Memuat laporan produk...
+                                        </span>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 INGREDIENT REPORT
+            ================================================== -->
+            <section class="dashboard-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>
+                            Penggunaan Bahan
+                        </h3>
+
+                        <p>
+                            Ringkasan penggunaan bahan pada periode terpilih.
+                        </p>
+
+                    </div>
+
+
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="viewIngredientReport"
+                    >
+                        Lihat Detail
+                    </button>
+
+                </div>
+
+
+                <div class="table-wrapper">
+
+                    <table class="data-table">
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    #
+                                </th>
+
+                                <th>
+                                    Bahan
+                                </th>
+
+                                <th>
+                                    Penggunaan
+                                </th>
+
+                                <th>
+                                    Satuan
+                                </th>
+
+                                <th>
+                                    Estimasi Biaya
+                                </th>
+
+                                <th>
+                                    Stok Akhir
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="ingredientReportBody">
+
+                            <tr>
+
+                                <td colspan="7">
+
+                                    <div class="loading-state">
+
+                                        <div class="loading-spinner"></div>
+
+                                        <span>
+                                            Memuat laporan bahan...
+                                        </span>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+
+            <!-- =================================================
+                 PROFIT ANALYSIS
+            ================================================== -->
+            <section class="dashboard-card profit-analysis-card">
+
+                <div class="card-header">
+
+                    <div>
+
+                        <h3>
+                            Analisis Laba
+                        </h3>
+
+                        <p>
+                            Komposisi penjualan dan biaya pada periode terpilih.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="profit-analysis-grid">
+
+
+                    <!-- VISUAL -->
+                    <div class="profit-visual">
+
+                        <div
+                            class="profit-donut"
+                            id="profitDonut"
+                        >
+
+                            <div class="profit-donut-center">
+
+                                <strong id="profitDonutPercentage">
+                                    0%
+                                </strong>
+
+                                <span>
+                                    Margin
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- DETAILS -->
+                    <div class="profit-breakdown">
+
+                        <div class="breakdown-item">
+
+                            <span class="breakdown-color sales"></span>
+
+                            <div>
+
+                                <strong>
+                                    Penjualan
+                                </strong>
+
+                                <small>
+                                    Total omzet
+                                </small>
+
+                            </div>
+
+                            <strong id="breakdownSales">
+                                Rp0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="breakdown-item">
+
+                            <span class="breakdown-color hpp"></span>
+
+                            <div>
+
+                                <strong>
+                                    HPP
+                                </strong>
+
+                                <small>
+                                    Biaya bahan
+                                </small>
+
+                            </div>
+
+                            <strong id="breakdownHpp">
+                                Rp0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="breakdown-item">
+
+                            <span class="breakdown-color platform"></span>
+
+                            <div>
+
+                                <strong>
+                                    Potongan Platform
+                                </strong>
+
+                                <small>
+                                    Komisi platform
+                                </small>
+
+                            </div>
+
+                            <strong id="breakdownPlatform">
+                                Rp0
+                            </strong>
+
+                        </div>
+
+
+                        <div class="breakdown-item total">
+
+                            <span class="breakdown-color profit"></span>
+
+                            <div>
+
+                                <strong>
+                                    Laba Bersih
+                                </strong>
+
+                                <small>
+                                    Setelah biaya
+                                </small>
+
+                            </div>
+
+                            <strong id="breakdownProfit">
+                                Rp0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+
+        </div>
+
+
+        <!-- =================================================
+             FOOTER
+        ================================================== -->
+        <footer class="footer">
+
+            <span>
+
+                ©
+                <span id="currentYear"></span>
+                Food Monitoring
+
+            </span>
+
+
+            <span>
+                Sistem Monitoring Bisnis Kuliner
+            </span>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<!-- =========================================================
+     EXPORT MODAL
+========================================================= -->
+<div
+    class="modal-overlay"
+    id="exportModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal modal-small"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="exportModalTitle"
+    >
+
+        <div class="modal-header">
+
+            <div>
+
+                <h3 id="exportModalTitle">
+                    Export Laporan
+                </h3>
+
+                <p>
+                    Pilih data yang ingin diekspor.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeExportModal"
+                aria-label="Tutup"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="modal-body">
+
+            <div class="export-options">
+
+
+                <label class="export-option">
+
+                    <input
+                        type="checkbox"
+                        name="exportData"
+                        value="sales"
+                        checked
+                    >
+
+                    <span class="export-option-icon">
+                        🧾
+                    </span>
+
+                    <span class="export-option-info">
+
+                        <strong>
+                            Penjualan
+                        </strong>
+
+                        <small>
+                            Data transaksi penjualan
+                        </small>
+
+                    </span>
+
+                </label>
+
+
+                <label class="export-option">
+
+                    <input
+                        type="checkbox"
+                        name="exportData"
+                        value="products"
+                        checked
+                    >
+
+                    <span class="export-option-icon">
+                        📦
+                    </span>
+
+                    <span class="export-option-info">
+
+                        <strong>
+                            Produk
+                        </strong>
+
+                        <small>
+                            Performa produk
+                        </small>
+
+                    </span>
+
+                </label>
+
+
+                <label class="export-option">
+
+                    <input
+                        type="checkbox"
+                        name="exportData"
+                        value="ingredients"
+                        checked
+                    >
+
+                    <span class="export-option-icon">
+                        🥩
+                    </span>
+
+                    <span class="export-option-info">
+
+                        <strong>
+                            Bahan
+                        </strong>
+
+                        <small>
+                            Penggunaan dan stok bahan
+                        </small>
+
+                    </span>
+
+                </label>
+
+
+                <label class="export-option">
+
+                    <input
+                        type="checkbox"
+                        name="exportData"
+                        value="summary"
+                        checked
+                    >
+
+                    <span class="export-option-icon">
+                        📊
+                    </span>
+
+                    <span class="export-option-info">
+
+                        <strong>
+                            Ringkasan
+                        </strong>
+
+                        <small>
+                            HPP dan laba
+                        </small>
+
+                    </span>
+
+                </label>
+
+            </div>
+
+        </div>
+
+
+        <div class="modal-footer">
+
+            <button
+                type="button"
+                class="secondary-button"
+                id="cancelExport"
+            >
+                Batal
+            </button>
+
+
+            <button
+                type="button"
+                class="primary-button"
+                id="confirmExport"
+            >
+                📥 Download Excel
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     INGREDIENT REPORT DETAIL MODAL
+========================================================= -->
+<div
+    class="modal-overlay"
+    id="ingredientReportModal"
+    aria-hidden="true"
+>
+
+    <div
+        class="modal modal-large"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="ingredientReportTitle"
+    >
+
+        <div class="modal-header">
+
+            <div>
+
+                <h3 id="ingredientReportTitle">
+                    Detail Penggunaan Bahan
+                </h3>
+
+                <p>
+                    Rincian penggunaan bahan pada periode laporan.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="modal-close"
+                id="closeIngredientReportModal"
+                aria-label="Tutup"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="modal-body">
+
+            <div class="table-wrapper">
+
+                <table class="data-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Tanggal
+                            </th>
+
+                            <th>
+                                Bahan
+                            </th>
+
+                            <th>
+                                Produk
+                            </th>
+
+                            <th>
+                                Jumlah
+                            </th>
+
+                            <th>
+                                Satuan
+                            </th>
+
+                            <th>
+                                Biaya
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="ingredientReportDetailBody">
+
+                        <tr>
+
+                            <td colspan="6">
+
+                                <div class="empty-state">
+
+                                    <span>
+                                        📊
+                                    </span>
+
+                                    <strong>
+                                        Belum ada data
+                                    </strong>
+
+                                    <small>
+                                        Detail penggunaan bahan akan muncul di sini.
+                                    </small>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+        <div class="modal-footer">
+
+            <button
+                type="button"
+                class="secondary-button"
+                id="closeIngredientReportButton"
+            >
+                Tutup
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     NOTIFICATION PANEL
+========================================================= -->
+<div
+    class="notification-panel"
+    id="notificationPanel"
+    aria-hidden="true"
+>
+
+    <div class="notification-header">
+
+        <div>
+
+            <h3>
+                Notifikasi
+            </h3>
+
+            <span id="notificationCount">
+                0 notifikasi
+            </span>
+
+        </div>
+
+
+        <button
+            type="button"
+            class="panel-close"
+            id="closeNotification"
+            aria-label="Tutup notifikasi"
+        >
+            ×
+        </button>
+
+    </div>
+
+
+    <div
+        class="notification-list"
+        id="notificationList"
+    >
+
+        <div class="empty-notification">
+
+            <span>
+                🔔
+            </span>
+
+            <strong>
+                Tidak ada notifikasi
+            </strong>
+
+            <small>
+                Semua kondisi terlihat baik.
+            </small>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     TOAST
+========================================================= -->
+<div
+    class="toast-container"
+    id="toastContainer"
+    aria-live="polite"
+></div>
+
+
+<!-- =========================================================
+     JAVASCRIPT
+========================================================= -->
+<script src="js/reports.js"></script>
+
+</body>
+</html>
