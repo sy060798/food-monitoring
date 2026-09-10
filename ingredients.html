@@ -2,16 +2,15 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Food Monitoring - Bahan</title>
 
     <meta
-        name="description"
-        content="Kelola bahan baku, stok, harga bahan, minimum stok, supplier, dan riwayat penggunaan."
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
     >
 
-    <link rel="stylesheet" href="css/style.css">
+    <title>Bahan & Supplier - Food Monitoring</title>
+
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 
 <body>
@@ -21,17 +20,22 @@
     <!-- =====================================================
          SIDEBAR
     ====================================================== -->
+
     <aside class="sidebar" id="sidebar">
 
         <div class="sidebar-header">
 
             <a href="index.html" class="brand">
-                <span class="brand-icon">🍴</span>
 
-                <span class="brand-text">
+                <div class="brand-icon">
+                    🍴
+                </div>
+
+                <div class="brand-text">
                     <strong>FOOD</strong>
-                    <small>MONITOR</small>
-                </span>
+                    <small>MONITORING</small>
+                </div>
+
             </a>
 
             <button
@@ -46,101 +50,98 @@
         </div>
 
 
-        <!-- NAVIGATION -->
         <nav class="sidebar-nav">
 
-            <div class="nav-section">
-
-                <span class="nav-section-title">
-                    Menu Utama
-                </span>
+            <span class="nav-section-title">
+                Menu Utama
+            </span>
 
 
-                <a
-                    href="index.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">▦</span>
-                    <span class="nav-text">Dashboard</span>
-                </a>
+            <a
+                href="index.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">📊</span>
+                <span class="nav-text">Dashboard</span>
+            </a>
 
 
-                <a
-                    href="products.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">📦</span>
-                    <span class="nav-text">Produk</span>
-                </a>
+            <a
+                href="products.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">📦</span>
+                <span class="nav-text">Produk</span>
+            </a>
 
 
-                <a
-                    href="ingredients.html"
-                    class="nav-item active"
-                >
-                    <span class="nav-icon">🥩</span>
-                    <span class="nav-text">Bahan</span>
-                </a>
+            <a
+                href="ingredients.html"
+                class="nav-item active"
+                aria-current="page"
+            >
+                <span class="nav-icon">🥩</span>
+                <span class="nav-text">Bahan</span>
+            </a>
 
 
-                <a
-                    href="sales.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">🧾</span>
-                    <span class="nav-text">Penjualan</span>
-                </a>
+            <!-- SUPPLIER LANGSUNG KE SECTION SUPPLIER -->
+            <a
+                href="#supplierSection"
+                class="nav-item"
+                id="supplierMenu"
+            >
+                <span class="nav-icon">🚚</span>
+                <span class="nav-text">Supplier</span>
+            </a>
 
 
-                <a
-                    href="reports.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">📊</span>
-                    <span class="nav-text">Laporan</span>
-                </a>
+            <a
+                href="sales.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">🧾</span>
+                <span class="nav-text">Penjualan</span>
+            </a>
 
 
-                <a
-                    href="#"
-                    class="nav-item"
-                    id="historyMenu"
-                >
-                    <span class="nav-icon">📜</span>
-                    <span class="nav-text">History</span>
-                </a>
+            <a
+                href="reports.html"
+                class="nav-item"
+            >
+                <span class="nav-icon">📈</span>
+                <span class="nav-text">Laporan</span>
+            </a>
 
 
-                <a
-                    href="#"
-                    class="nav-item"
-                    id="supplierMenu"
-                >
-                    <span class="nav-icon">🚚</span>
-                    <span class="nav-text">Supplier</span>
-                </a>
+            <a
+                href="reports.html#history"
+                class="nav-item"
+            >
+                <span class="nav-icon">📜</span>
+                <span class="nav-text">History</span>
+            </a>
 
 
-                <a
-                    href="#"
-                    class="nav-item"
-                    id="settingsMenu"
-                >
-                    <span class="nav-icon">⚙</span>
-                    <span class="nav-text">Pengaturan</span>
-                </a>
-
-            </div>
+            <a
+                href="reports.html#settings"
+                class="nav-item"
+            >
+                <span class="nav-icon">⚙️</span>
+                <span class="nav-text">Pengaturan</span>
+            </a>
 
         </nav>
 
 
-        <!-- SIDEBAR FOOTER -->
         <div class="sidebar-footer">
 
             <div class="system-status">
+
                 <span class="status-dot"></span>
-                <span>Sistem aktif</span>
+
+                <span>Sistem Online</span>
+
             </div>
 
             <small>
@@ -152,9 +153,8 @@
     </aside>
 
 
-    <!-- =====================================================
-         MOBILE OVERLAY
-    ====================================================== -->
+    <!-- MOBILE OVERLAY -->
+
     <div
         class="sidebar-overlay"
         id="sidebarOverlay"
@@ -164,12 +164,11 @@
     <!-- =====================================================
          MAIN
     ====================================================== -->
+
     <main class="main">
 
+        <!-- TOPBAR -->
 
-        <!-- =================================================
-             TOPBAR
-        ================================================== -->
         <header class="topbar">
 
             <div class="topbar-left">
@@ -179,16 +178,18 @@
                     class="menu-toggle"
                     id="menuToggle"
                     aria-label="Buka menu"
+                    aria-expanded="false"
                 >
                     ☰
                 </button>
 
+
                 <div class="page-title">
 
-                    <h1>Bahan</h1>
+                    <h1>Bahan & Supplier</h1>
 
                     <p>
-                        Kelola bahan baku dan stok
+                        Kelola stok bahan dan supplier
                     </p>
 
                 </div>
@@ -200,10 +201,11 @@
 
                 <button
                     type="button"
-                    class="icon-button notification-button"
+                    class="icon-button"
                     id="notificationButton"
                     aria-label="Notifikasi"
                 >
+
                     🔔
 
                     <span
@@ -212,20 +214,19 @@
                     >
                         0
                     </span>
+
                 </button>
 
 
                 <div class="admin-profile">
 
                     <div class="admin-avatar">
-                        A
+                        AD
                     </div>
 
                     <div class="admin-info">
 
-                        <strong>
-                            Admin
-                        </strong>
+                        <strong>Admin</strong>
 
                         <small>
                             Administrator
@@ -243,13 +244,13 @@
         <!-- =================================================
              CONTENT
         ================================================== -->
+
         <div class="content">
 
 
-            <!-- =================================================
-                 PAGE HEADER
-            ================================================== -->
-            <section class="page-header">
+            <!-- PAGE HEADER -->
+
+            <div class="page-header">
 
                 <div>
 
@@ -262,42 +263,56 @@
                         <span>›</span>
 
                         <span>
-                            Bahan
+                            Bahan & Supplier
                         </span>
 
                     </div>
 
 
                     <h2>
-                        Daftar Bahan
+                        Bahan
                     </h2>
 
                     <p>
-                        Kelola bahan baku, stok, harga, dan minimum stok.
+                        Kelola bahan baku, stok, harga, dan supplier.
                     </p>
 
                 </div>
 
 
-                <button
-                    type="button"
-                    class="primary-button"
-                    id="addIngredientButton"
-                >
-                    <span>＋</span>
-                    Tambah Bahan
-                </button>
+                <div style="
+                    display:flex;
+                    gap:8px;
+                    flex-wrap:wrap;
+                ">
 
-            </section>
+                    <button
+                        type="button"
+                        class="secondary-button"
+                        id="supplierButton"
+                    >
+                        🚚 Supplier
+                    </button>
+
+                    <button
+                        type="button"
+                        class="primary-button"
+                        id="addIngredientButton"
+                    >
+                        + Tambah Bahan
+                    </button>
+
+                </div>
+
+            </div>
 
 
             <!-- =================================================
-                 SUMMARY CARDS
+                 SUMMARY
             ================================================== -->
-            <section class="summary-grid ingredient-summary-grid">
 
+            <div class="summary-grid">
 
-                <!-- TOTAL BAHAN -->
                 <div class="summary-card">
 
                     <div class="summary-card-top">
@@ -308,9 +323,13 @@
                                 TOTAL BAHAN
                             </span>
 
-                            <h3 id="totalIngredientCount">
+                            <h3 id="totalIngredients">
                                 0
                             </h3>
+
+                            <span class="summary-change neutral">
+                                Semua bahan
+                            </span>
 
                         </div>
 
@@ -320,52 +339,9 @@
 
                     </div>
 
-                    <div class="summary-card-bottom">
-
-                        <span>
-                            Semua bahan
-                        </span>
-
-                    </div>
-
                 </div>
 
 
-                <!-- STOK AMAN -->
-                <div class="summary-card">
-
-                    <div class="summary-card-top">
-
-                        <div>
-
-                            <span class="summary-label">
-                                STOK AMAN
-                            </span>
-
-                            <h3 id="safeStockCount">
-                                0
-                            </h3>
-
-                        </div>
-
-                        <div class="summary-icon green">
-                            ✓
-                        </div>
-
-                    </div>
-
-                    <div class="summary-card-bottom">
-
-                        <span>
-                            Di atas minimum
-                        </span>
-
-                    </div>
-
-                </div>
-
-
-                <!-- STOK MENIPIS -->
                 <div class="summary-card">
 
                     <div class="summary-card-top">
@@ -376,30 +352,25 @@
                                 STOK MENIPIS
                             </span>
 
-                            <h3 id="lowStockIngredientCount">
+                            <h3 id="lowStockCount">
                                 0
                             </h3>
+
+                            <span class="summary-change negative">
+                                Perlu diperhatikan
+                            </span>
 
                         </div>
 
                         <div class="summary-icon orange">
-                            ⚠
+                            ⚠️
                         </div>
-
-                    </div>
-
-                    <div class="summary-card-bottom">
-
-                        <span>
-                            Perlu segera dibeli
-                        </span>
 
                     </div>
 
                 </div>
 
 
-                <!-- HABIS -->
                 <div class="summary-card">
 
                     <div class="summary-card-top">
@@ -407,41 +378,66 @@
                         <div>
 
                             <span class="summary-label">
-                                STOK HABIS
+                                TOTAL SUPPLIER
                             </span>
 
-                            <h3 id="outOfStockCount">
+                            <h3 id="totalSuppliers">
                                 0
                             </h3>
 
+                            <span class="summary-change neutral">
+                                Supplier aktif
+                            </span>
+
                         </div>
 
-                        <div class="summary-icon red">
-                            !
+                        <div class="summary-icon purple">
+                            🚚
                         </div>
-
-                    </div>
-
-                    <div class="summary-card-bottom">
-
-                        <span>
-                            Stok = 0
-                        </span>
 
                     </div>
 
                 </div>
 
-            </section>
+
+                <div class="summary-card">
+
+                    <div class="summary-card-top">
+
+                        <div>
+
+                            <span class="summary-label">
+                                NILAI STOK
+                            </span>
+
+                            <h3 id="stockValue">
+                                Rp0
+                            </h3>
+
+                            <span class="summary-change neutral">
+                                Estimasi
+                            </span>
+
+                        </div>
+
+                        <div class="summary-icon dark">
+                            💰
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
 
 
             <!-- =================================================
-                 STOCK TABLE
+                 BAHAN SECTION
             ================================================== -->
+
             <section class="dashboard-card">
 
-                <!-- CARD HEADER -->
-                <div class="card-header ingredient-table-header">
+                <div class="card-header">
 
                     <div>
 
@@ -450,7 +446,7 @@
                         </h3>
 
                         <p>
-                            Pantau stok dan harga setiap bahan.
+                            Daftar seluruh bahan baku yang digunakan.
                         </p>
 
                     </div>
@@ -458,7 +454,6 @@
 
                     <div class="table-actions">
 
-                        <!-- SEARCH -->
                         <div class="search-box">
 
                             <span class="search-icon">
@@ -475,26 +470,25 @@
                         </div>
 
 
-                        <!-- STOCK FILTER -->
                         <select
-                            id="ingredientStockFilter"
+                            id="stockFilter"
                             class="select-control"
                         >
 
                             <option value="all">
-                                Semua Stok
+                                Semua stok
                             </option>
 
-                            <option value="safe">
-                                Stok Aman
+                            <option value="normal">
+                                Stok normal
                             </option>
 
                             <option value="low">
-                                Stok Menipis
+                                Stok menipis
                             </option>
 
-                            <option value="out">
-                                Stok Habis
+                            <option value="empty">
+                                Stok habis
                             </option>
 
                         </select>
@@ -504,21 +498,20 @@
                 </div>
 
 
-                <!-- TABLE -->
                 <div class="table-wrapper">
 
-                    <table class="data-table ingredient-table">
+                    <table class="data-table">
 
                         <thead>
 
                             <tr>
 
-                                <th width="60">
-                                    #
+                                <th>
+                                    Bahan
                                 </th>
 
                                 <th>
-                                    Nama Bahan
+                                    Satuan
                                 </th>
 
                                 <th>
@@ -552,6 +545,8 @@
 
                         <tbody id="ingredientTableBody">
 
+                            <!-- Diisi ingredients.js -->
+
                             <tr>
 
                                 <td colspan="8">
@@ -577,31 +572,13 @@
                 </div>
 
 
-                <!-- TABLE FOOTER -->
                 <div class="table-footer">
 
-                    <div class="table-info">
-
-                        Menampilkan
-
-                        <strong id="ingredientShowingFrom">
-                            0
-                        </strong>
-
-                        -
-
-                        <strong id="ingredientShowingTo">
-                            0
-                        </strong>
-
-                        dari
-
-                        <strong id="ingredientTotalItems">
-                            0
-                        </strong>
-
-                        bahan
-
+                    <div
+                        class="table-info"
+                        id="ingredientTableInfo"
+                    >
+                        Memuat data...
                     </div>
 
 
@@ -610,25 +587,23 @@
                         <button
                             type="button"
                             class="pagination-button"
-                            id="ingredientPrevPage"
+                            id="ingredientPrev"
                             disabled
                         >
                             ‹
                         </button>
 
-
                         <span
                             class="pagination-current"
-                            id="ingredientCurrentPage"
+                            id="ingredientPage"
                         >
                             1
                         </span>
 
-
                         <button
                             type="button"
                             class="pagination-button"
-                            id="ingredientNextPage"
+                            id="ingredientNext"
                         >
                             ›
                         </button>
@@ -641,239 +616,168 @@
 
 
             <!-- =================================================
-                 STOCK MOVEMENT
+                 SUPPLIER SECTION
             ================================================== -->
-            <section class="dashboard-grid secondary-grid">
 
+            <section
+                class="dashboard-card"
+                id="supplierSection"
+                style="scroll-margin-top:90px;"
+            >
 
-                <!-- STOCK IN -->
-                <div class="dashboard-card">
+                <div class="card-header">
 
-                    <div class="card-header">
+                    <div>
 
-                        <div>
+                        <h3>
+                            🚚 Supplier
+                        </h3>
 
-                            <h3>
-                                📥 Stok Masuk
-                            </h3>
-
-                            <p>
-                                Tambahkan stok bahan dari pembelian.
-                            </p>
-
-                        </div>
+                        <p>
+                            Kelola supplier bahan dan informasi pembelian.
+                        </p>
 
                     </div>
 
 
-                    <form id="stockInForm">
+                    <div class="table-actions">
 
-                        <div class="form-grid">
+                        <div class="search-box">
 
+                            <span class="search-icon">
+                                🔍
+                            </span>
 
-                            <div class="form-group form-group-full">
-
-                                <label for="stockInIngredient">
-                                    Bahan
-                                    <span class="required">*</span>
-                                </label>
-
-                                <select
-                                    id="stockInIngredient"
-                                    name="ingredientId"
-                                    required
-                                >
-
-                                    <option value="">
-                                        Pilih bahan
-                                    </option>
-
-                                </select>
-
-                            </div>
-
-
-                            <div class="form-group">
-
-                                <label for="stockInQuantity">
-                                    Jumlah
-                                    <span class="required">*</span>
-                                </label>
-
-                                <input
-                                    type="number"
-                                    id="stockInQuantity"
-                                    name="quantity"
-                                    min="0"
-                                    step="0.01"
-                                    placeholder="0"
-                                    required
-                                >
-
-                            </div>
-
-
-                            <div class="form-group">
-
-                                <label for="stockInDate">
-                                    Tanggal
-                                </label>
-
-                                <input
-                                    type="date"
-                                    id="stockInDate"
-                                    name="date"
-                                >
-
-                            </div>
-
-
-                            <div class="form-group form-group-full">
-
-                                <label for="stockInNote">
-                                    Catatan
-                                </label>
-
-                                <textarea
-                                    id="stockInNote"
-                                    name="note"
-                                    rows="2"
-                                    placeholder="Contoh: Pembelian dari supplier..."
-                                ></textarea>
-
-                            </div>
-
-
-                            <div class="form-group form-group-full">
-
-                                <button
-                                    type="submit"
-                                    class="primary-button"
-                                >
-                                    📥 Tambah Stok
-                                </button>
-
-                            </div>
+                            <input
+                                type="search"
+                                id="supplierSearch"
+                                placeholder="Cari supplier..."
+                                autocomplete="off"
+                            >
 
                         </div>
 
-                    </form>
+
+                        <button
+                            type="button"
+                            class="primary-button"
+                            id="addSupplierButton"
+                        >
+                            + Tambah Supplier
+                        </button>
+
+                    </div>
 
                 </div>
 
 
-                <!-- STOCK OUT -->
-                <div class="dashboard-card">
+                <div class="table-wrapper">
 
-                    <div class="card-header">
+                    <table class="data-table">
 
-                        <div>
+                        <thead>
 
-                            <h3>
-                                📤 Stok Keluar
-                            </h3>
+                            <tr>
 
-                            <p>
-                                Catat penggunaan atau pengurangan stok.
-                            </p>
+                                <th>
+                                    Supplier
+                                </th>
 
-                        </div>
+                                <th>
+                                    Kontak
+                                </th>
 
+                                <th>
+                                    Telepon
+                                </th>
+
+                                <th>
+                                    Bahan
+                                </th>
+
+                                <th>
+                                    Diskon
+                                </th>
+
+                                <th>
+                                    Status
+                                </th>
+
+                                <th class="text-right">
+                                    Aksi
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="supplierTableBody">
+
+                            <!-- Diisi ingredients.js -->
+
+                            <tr>
+
+                                <td colspan="7">
+
+                                    <div class="loading-state">
+
+                                        <div class="loading-spinner"></div>
+
+                                        <span>
+                                            Memuat supplier...
+                                        </span>
+
+                                    </div>
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+
+                <div class="table-footer">
+
+                    <div
+                        class="table-info"
+                        id="supplierTableInfo"
+                    >
+                        Memuat supplier...
                     </div>
 
 
-                    <form id="stockOutForm">
+                    <div class="pagination">
 
-                        <div class="form-grid">
+                        <button
+                            type="button"
+                            class="pagination-button"
+                            id="supplierPrev"
+                            disabled
+                        >
+                            ‹
+                        </button>
 
+                        <span
+                            class="pagination-current"
+                            id="supplierPage"
+                        >
+                            1
+                        </span>
 
-                            <div class="form-group form-group-full">
+                        <button
+                            type="button"
+                            class="pagination-button"
+                            id="supplierNext"
+                        >
+                            ›
+                        </button>
 
-                                <label for="stockOutIngredient">
-                                    Bahan
-                                    <span class="required">*</span>
-                                </label>
-
-                                <select
-                                    id="stockOutIngredient"
-                                    name="ingredientId"
-                                    required
-                                >
-
-                                    <option value="">
-                                        Pilih bahan
-                                    </option>
-
-                                </select>
-
-                            </div>
-
-
-                            <div class="form-group">
-
-                                <label for="stockOutQuantity">
-                                    Jumlah
-                                    <span class="required">*</span>
-                                </label>
-
-                                <input
-                                    type="number"
-                                    id="stockOutQuantity"
-                                    name="quantity"
-                                    min="0"
-                                    step="0.01"
-                                    placeholder="0"
-                                    required
-                                >
-
-                            </div>
-
-
-                            <div class="form-group">
-
-                                <label for="stockOutDate">
-                                    Tanggal
-                                </label>
-
-                                <input
-                                    type="date"
-                                    id="stockOutDate"
-                                    name="date"
-                                >
-
-                            </div>
-
-
-                            <div class="form-group form-group-full">
-
-                                <label for="stockOutNote">
-                                    Catatan
-                                </label>
-
-                                <textarea
-                                    id="stockOutNote"
-                                    name="note"
-                                    rows="2"
-                                    placeholder="Contoh: Penggunaan bahan..."
-                                ></textarea>
-
-                            </div>
-
-
-                            <div class="form-group form-group-full">
-
-                                <button
-                                    type="submit"
-                                    class="secondary-button"
-                                >
-                                    📤 Kurangi Stok
-                                </button>
-
-                            </div>
-
-                        </div>
-
-                    </form>
+                    </div>
 
                 </div>
 
@@ -881,8 +785,9 @@
 
 
             <!-- =================================================
-                 RECENT USAGE
+                 PEMBELIAN TERAKHIR
             ================================================== -->
+
             <section class="dashboard-card">
 
                 <div class="card-header">
@@ -890,11 +795,11 @@
                     <div>
 
                         <h3>
-                            History Penggunaan Bahan
+                            🧾 Pembelian Bahan Terakhir
                         </h3>
 
                         <p>
-                            Aktivitas penggunaan bahan terbaru.
+                            Riwayat pembelian bahan dari supplier.
                         </p>
 
                     </div>
@@ -903,7 +808,7 @@
                     <button
                         type="button"
                         class="secondary-button"
-                        id="viewIngredientHistory"
+                        id="viewAllPurchasesButton"
                     >
                         Lihat Semua
                     </button>
@@ -924,11 +829,11 @@
                                 </th>
 
                                 <th>
-                                    Bahan
+                                    Supplier
                                 </th>
 
                                 <th>
-                                    Jenis
+                                    Bahan
                                 </th>
 
                                 <th>
@@ -936,11 +841,19 @@
                                 </th>
 
                                 <th>
-                                    Keterangan
+                                    Harga
                                 </th>
 
                                 <th>
-                                    Oleh
+                                    Diskon
+                                </th>
+
+                                <th>
+                                    Total
+                                </th>
+
+                                <th>
+                                    Status
                                 </th>
 
                             </tr>
@@ -948,24 +861,24 @@
                         </thead>
 
 
-                        <tbody id="ingredientHistoryBody">
+                        <tbody id="purchaseTableBody">
 
                             <tr>
 
-                                <td colspan="6">
+                                <td colspan="8">
 
                                     <div class="empty-state">
 
                                         <span>
-                                            📜
+                                            🧾
                                         </span>
 
                                         <strong>
-                                            Belum ada history
+                                            Belum ada pembelian
                                         </strong>
 
                                         <small>
-                                            Riwayat penggunaan bahan akan muncul di sini.
+                                            Data pembelian akan muncul di sini.
                                         </small>
 
                                     </div>
@@ -986,19 +899,16 @@
         </div>
 
 
-        <!-- =================================================
-             FOOTER
-        ================================================== -->
+        <!-- FOOTER -->
+
         <footer class="footer">
 
             <span>
-                ©
-                <span id="currentYear"></span>
-                Food Monitoring
+                © 2026 Food Monitoring
             </span>
 
             <span>
-                Sistem Monitoring Bisnis Kuliner
+                Sistem Monitoring Bahan & Penjualan
             </span>
 
         </footer>
@@ -1009,23 +919,17 @@
 
 
 <!-- =========================================================
-     ADD / EDIT INGREDIENT MODAL
-========================================================= -->
+     MODAL BAHAN
+========================================================== -->
+
 <div
     class="modal-overlay"
     id="ingredientModal"
     aria-hidden="true"
 >
 
-    <div
-        class="modal modal-large"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="ingredientModalTitle"
-    >
+    <div class="modal modal-large">
 
-
-        <!-- MODAL HEADER -->
         <div class="modal-header">
 
             <div>
@@ -1044,7 +948,7 @@
             <button
                 type="button"
                 class="modal-close"
-                id="closeIngredientModal"
+                id="ingredientModalClose"
                 aria-label="Tutup"
             >
                 ×
@@ -1053,28 +957,17 @@
         </div>
 
 
-        <!-- FORM -->
         <form id="ingredientForm">
 
             <div class="modal-body">
 
-                <input
-                    type="hidden"
-                    id="ingredientId"
-                    name="id"
-                >
-
-
-                <!-- =================================================
-                     BASIC INFORMATION
-                ================================================== -->
                 <div class="form-section">
 
                     <div class="form-section-title">
 
-                        <span class="form-section-icon">
+                        <div class="form-section-icon">
                             🥩
-                        </span>
+                        </div>
 
                         <div>
 
@@ -1083,7 +976,7 @@
                             </h4>
 
                             <p>
-                                Informasi dasar bahan baku.
+                                Data dasar bahan baku.
                             </p>
 
                         </div>
@@ -1093,32 +986,24 @@
 
                     <div class="form-grid">
 
-
-                        <!-- NAME -->
-                        <div class="form-group form-group-full">
+                        <div class="form-group">
 
                             <label for="ingredientName">
-
                                 Nama Bahan
-
-                                <span class="required">
-                                    *
-                                </span>
-
+                                <span class="required">*</span>
                             </label>
 
                             <input
                                 type="text"
                                 id="ingredientName"
                                 name="name"
-                                placeholder="Contoh: Daging Ayam"
+                                placeholder="Contoh: Ayam"
                                 required
                             >
 
                         </div>
 
 
-                        <!-- CATEGORY -->
                         <div class="form-group">
 
                             <label for="ingredientCategory">
@@ -1134,8 +1019,8 @@
                                     Pilih kategori
                                 </option>
 
-                                <option value="daging">
-                                    Daging
+                                <option value="protein">
+                                    Protein
                                 </option>
 
                                 <option value="sayuran">
@@ -1150,16 +1035,8 @@
                                     Minyak
                                 </option>
 
-                                <option value="sembako">
-                                    Sembako
-                                </option>
-
-                                <option value="minuman">
-                                    Minuman
-                                </option>
-
-                                <option value="kemasan">
-                                    Kemasan
+                                <option value="karbohidrat">
+                                    Karbohidrat
                                 </option>
 
                                 <option value="lainnya">
@@ -1171,14 +1048,11 @@
                         </div>
 
 
-                        <!-- UNIT -->
                         <div class="form-group">
 
                             <label for="ingredientUnit">
                                 Satuan
-                                <span class="required">
-                                    *
-                                </span>
+                                <span class="required">*</span>
                             </label>
 
                             <select
@@ -1186,6 +1060,10 @@
                                 name="unit"
                                 required
                             >
+
+                                <option value="">
+                                    Pilih satuan
+                                </option>
 
                                 <option value="kg">
                                     Kilogram (kg)
@@ -1204,19 +1082,11 @@
                                 </option>
 
                                 <option value="pcs">
-                                    Pcs
+                                    Pieces (pcs)
                                 </option>
 
                                 <option value="pack">
                                     Pack
-                                </option>
-
-                                <option value="botol">
-                                    Botol
-                                </option>
-
-                                <option value="dus">
-                                    Dus
                                 </option>
 
                             </select>
@@ -1224,57 +1094,37 @@
                         </div>
 
 
-                        <!-- PRICE -->
                         <div class="form-group">
 
                             <label for="ingredientPrice">
-
                                 Harga / Satuan
-
-                                <span class="required">
-                                    *
-                                </span>
-
-                            </label>
-
-                            <div class="input-prefix">
-
-                                <span>
-                                    Rp
-                                </span>
-
-                                <input
-                                    type="number"
-                                    id="ingredientPrice"
-                                    name="price"
-                                    min="0"
-                                    step="1"
-                                    placeholder="0"
-                                    required
-                                >
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- MIN STOCK -->
-                        <div class="form-group">
-
-                            <label for="ingredientMinimumStock">
-
-                                Minimum Stok
-
-                                <span class="required">
-                                    *
-                                </span>
-
+                                <span class="required">*</span>
                             </label>
 
                             <input
                                 type="number"
-                                id="ingredientMinimumStock"
-                                name="minimumStock"
+                                id="ingredientPrice"
+                                name="price"
+                                min="0"
+                                step="1"
+                                placeholder="0"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="ingredientStock">
+                                Stok Awal
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="number"
+                                id="ingredientStock"
+                                name="stock"
                                 min="0"
                                 step="0.01"
                                 placeholder="0"
@@ -1284,30 +1134,26 @@
                         </div>
 
 
-                        <!-- CURRENT STOCK -->
                         <div class="form-group">
 
-                            <label for="ingredientCurrentStock">
-                                Stok Saat Ini
+                            <label for="ingredientMinimumStock">
+                                Minimum Stok
+                                <span class="required">*</span>
                             </label>
 
                             <input
                                 type="number"
-                                id="ingredientCurrentStock"
-                                name="stock"
+                                id="ingredientMinimumStock"
+                                name="minimum_stock"
                                 min="0"
                                 step="0.01"
                                 placeholder="0"
+                                required
                             >
-
-                            <small class="form-help">
-                                Saat edit, nilai ini menunjukkan stok saat ini.
-                            </small>
 
                         </div>
 
 
-                        <!-- SUPPLIER -->
                         <div class="form-group">
 
                             <label for="ingredientSupplier">
@@ -1316,7 +1162,7 @@
 
                             <select
                                 id="ingredientSupplier"
-                                name="supplierId"
+                                name="supplier_id"
                             >
 
                                 <option value="">
@@ -1328,7 +1174,6 @@
                         </div>
 
 
-                        <!-- STATUS -->
                         <div class="form-group">
 
                             <label for="ingredientStatus">
@@ -1353,18 +1198,16 @@
                         </div>
 
 
-                        <!-- NOTE -->
                         <div class="form-group form-group-full">
 
-                            <label for="ingredientDescription">
+                            <label for="ingredientNotes">
                                 Catatan
                             </label>
 
                             <textarea
-                                id="ingredientDescription"
-                                name="description"
-                                rows="3"
-                                placeholder="Catatan tentang bahan..."
+                                id="ingredientNotes"
+                                name="notes"
+                                placeholder="Catatan bahan..."
                             ></textarea>
 
                         </div>
@@ -1373,87 +1216,23 @@
 
                 </div>
 
-
-                <!-- =================================================
-                     STOCK PREVIEW
-                ================================================== -->
-                <div class="stock-preview">
-
-                    <div class="stock-preview-item">
-
-                        <span>
-                            Stok
-                        </span>
-
-                        <strong id="previewIngredientStock">
-                            0
-                        </strong>
-
-                    </div>
-
-
-                    <div class="stock-preview-item">
-
-                        <span>
-                            Minimum
-                        </span>
-
-                        <strong id="previewIngredientMinimum">
-                            0
-                        </strong>
-
-                    </div>
-
-
-                    <div class="stock-preview-item">
-
-                        <span>
-                            Harga / Satuan
-                        </span>
-
-                        <strong id="previewIngredientPrice">
-                            Rp0
-                        </strong>
-
-                    </div>
-
-
-                    <div
-                        class="stock-preview-item highlight"
-                        id="ingredientStockStatusPreview"
-                    >
-
-                        <span>
-                            Status Stok
-                        </span>
-
-                        <strong>
-                            -
-                        </strong>
-
-                    </div>
-
-                </div>
-
             </div>
 
 
-            <!-- MODAL FOOTER -->
             <div class="modal-footer">
 
                 <button
                     type="button"
                     class="secondary-button"
-                    id="cancelIngredientForm"
+                    id="ingredientCancelButton"
                 >
                     Batal
                 </button>
 
-
                 <button
                     type="submit"
                     class="primary-button"
-                    id="saveIngredientButton"
+                    id="ingredientSaveButton"
                 >
                     💾 Simpan Bahan
                 </button>
@@ -1468,51 +1247,269 @@
 
 
 <!-- =========================================================
-     DELETE MODAL
-========================================================= -->
+     MODAL SUPPLIER
+========================================================== -->
+
 <div
     class="modal-overlay"
-    id="deleteIngredientModal"
+    id="supplierModal"
     aria-hidden="true"
 >
 
-    <div
-        class="modal modal-small"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="deleteIngredientTitle"
-    >
+    <div class="modal modal-large">
 
-        <div class="modal-body delete-confirmation">
+        <div class="modal-header">
+
+            <div>
+
+                <h3 id="supplierModalTitle">
+                    Tambah Supplier
+                </h3>
+
+                <p>
+                    Masukkan informasi supplier bahan.
+                </p>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="modal-close"
+                id="supplierModalClose"
+                aria-label="Tutup"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <form id="supplierForm">
+
+            <div class="modal-body">
+
+                <div class="form-section">
+
+                    <div class="form-section-title">
+
+                        <div class="form-section-icon">
+                            🚚
+                        </div>
+
+                        <div>
+
+                            <h4>
+                                Informasi Supplier
+                            </h4>
+
+                            <p>
+                                Data supplier dan ketentuan harga.
+                            </p>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="form-grid">
+
+                        <div class="form-group">
+
+                            <label for="supplierName">
+                                Nama Supplier
+                                <span class="required">*</span>
+                            </label>
+
+                            <input
+                                type="text"
+                                id="supplierName"
+                                name="name"
+                                placeholder="Contoh: Supplier Ayam Jaya"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="supplierContact">
+                                Nama Kontak
+                            </label>
+
+                            <input
+                                type="text"
+                                id="supplierContact"
+                                name="contact"
+                                placeholder="Nama PIC"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="supplierPhone">
+                                Nomor Telepon
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="supplierPhone"
+                                name="phone"
+                                placeholder="08xxxxxxxxxx"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="supplierEmail">
+                                Email
+                            </label>
+
+                            <input
+                                type="email"
+                                id="supplierEmail"
+                                name="email"
+                                placeholder="supplier@email.com"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="supplierDiscount">
+                                Diskon Supplier (%)
+                            </label>
+
+                            <input
+                                type="number"
+                                id="supplierDiscount"
+                                name="discount"
+                                min="0"
+                                max="100"
+                                step="0.01"
+                                value="0"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="supplierStatus">
+                                Status
+                            </label>
+
+                            <select
+                                id="supplierStatus"
+                                name="status"
+                            >
+
+                                <option value="active">
+                                    Aktif
+                                </option>
+
+                                <option value="inactive">
+                                    Nonaktif
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group form-group-full">
+
+                            <label for="supplierAddress">
+                                Alamat
+                            </label>
+
+                            <textarea
+                                id="supplierAddress"
+                                name="address"
+                                placeholder="Alamat supplier..."
+                            ></textarea>
+
+                        </div>
+
+
+                        <div class="form-group form-group-full">
+
+                            <label for="supplierNotes">
+                                Catatan
+                            </label>
+
+                            <textarea
+                                id="supplierNotes"
+                                name="notes"
+                                placeholder="Catatan supplier..."
+                            ></textarea>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="modal-footer">
+
+                <button
+                    type="button"
+                    class="secondary-button"
+                    id="supplierCancelButton"
+                >
+                    Batal
+                </button>
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                    id="supplierSaveButton"
+                >
+                    💾 Simpan Supplier
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     MODAL DELETE
+========================================================== -->
+
+<div
+    class="modal-overlay"
+    id="deleteModal"
+    aria-hidden="true"
+>
+
+    <div class="modal modal-small">
+
+        <div class="delete-confirmation">
 
             <div class="delete-icon">
                 🗑️
             </div>
 
-
-            <h3 id="deleteIngredientTitle">
-                Hapus Bahan?
+            <h3 id="deleteTitle">
+                Hapus Data?
             </h3>
 
-
-            <p>
-
-                Bahan
-
-                <strong id="deleteIngredientName">
-                    -
-                </strong>
-
-                akan dihapus dari sistem.
-
-            </p>
-
-
-            <p class="warning-text">
-
-                Jika bahan sudah digunakan pada resep atau transaksi,
-                sebaiknya nonaktifkan bahan daripada menghapusnya.
-
+            <p id="deleteMessage">
+                Data yang dihapus tidak dapat dikembalikan.
             </p>
 
         </div>
@@ -1523,18 +1520,17 @@
             <button
                 type="button"
                 class="secondary-button"
-                id="cancelDeleteIngredient"
+                id="deleteCancelButton"
             >
                 Batal
             </button>
 
-
             <button
                 type="button"
                 class="danger-button"
-                id="confirmDeleteIngredient"
+                id="deleteConfirmButton"
             >
-                Hapus Bahan
+                🗑 Hapus
             </button>
 
         </div>
@@ -1546,11 +1542,11 @@
 
 <!-- =========================================================
      NOTIFICATION PANEL
-========================================================= -->
+========================================================== -->
+
 <div
     class="notification-panel"
     id="notificationPanel"
-    aria-hidden="true"
 >
 
     <div class="notification-header">
@@ -1571,7 +1567,7 @@
         <button
             type="button"
             class="panel-close"
-            id="closeNotification"
+            id="notificationClose"
             aria-label="Tutup notifikasi"
         >
             ×
@@ -1596,7 +1592,7 @@
             </strong>
 
             <small>
-                Semua kondisi terlihat baik.
+                Semua kondisi bahan aman.
             </small>
 
         </div>
@@ -1608,18 +1604,627 @@
 
 <!-- =========================================================
      TOAST
-========================================================= -->
+========================================================== -->
+
 <div
     class="toast-container"
     id="toastContainer"
-    aria-live="polite"
 ></div>
 
 
 <!-- =========================================================
      JAVASCRIPT
-========================================================= -->
-<script src="js/ingredients.js"></script>
+========================================================== -->
+
+<script src="../js/ingredients.js"></script>
+
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* =====================================================
+       SIDEBAR MOBILE
+    ====================================================== */
+
+    const sidebar =
+        document.getElementById("sidebar");
+
+    const menuToggle =
+        document.getElementById("menuToggle");
+
+    const sidebarClose =
+        document.getElementById("sidebarClose");
+
+    const sidebarOverlay =
+        document.getElementById("sidebarOverlay");
+
+
+    function openSidebar() {
+
+        if (!sidebar) return;
+
+        sidebar.classList.add("open");
+
+        sidebarOverlay?.classList.add("show");
+
+        menuToggle?.setAttribute(
+            "aria-expanded",
+            "true"
+        );
+
+    }
+
+
+    function closeSidebar() {
+
+        if (!sidebar) return;
+
+        sidebar.classList.remove("open");
+
+        sidebarOverlay?.classList.remove("show");
+
+        menuToggle?.setAttribute(
+            "aria-expanded",
+            "false"
+        );
+
+    }
+
+
+    menuToggle?.addEventListener(
+        "click",
+        openSidebar
+    );
+
+
+    sidebarClose?.addEventListener(
+        "click",
+        closeSidebar
+    );
+
+
+    sidebarOverlay?.addEventListener(
+        "click",
+        closeSidebar
+    );
+
+
+    /* =====================================================
+       SUPPLIER MENU
+    ====================================================== */
+
+    const supplierMenu =
+        document.getElementById("supplierMenu");
+
+    supplierMenu?.addEventListener(
+        "click",
+        function () {
+
+            closeSidebar();
+
+            setTimeout(function () {
+
+                const section =
+                    document.getElementById(
+                        "supplierSection"
+                    );
+
+                section?.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+
+            }, 50);
+
+        }
+    );
+
+
+    /* =====================================================
+       SUPPLIER BUTTON
+    ====================================================== */
+
+    const supplierButton =
+        document.getElementById("supplierButton");
+
+
+    supplierButton?.addEventListener(
+        "click",
+        function () {
+
+            const section =
+                document.getElementById(
+                    "supplierSection"
+                );
+
+            section?.scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+
+        }
+    );
+
+
+    /* =====================================================
+       MODAL GENERIC
+    ====================================================== */
+
+    function openModal(id) {
+
+        const modal =
+            document.getElementById(id);
+
+        if (!modal) return;
+
+        modal.classList.add("show");
+
+        modal.setAttribute(
+            "aria-hidden",
+            "false"
+        );
+
+        document.body.style.overflow = "hidden";
+
+    }
+
+
+    function closeModal(id) {
+
+        const modal =
+            document.getElementById(id);
+
+        if (!modal) return;
+
+        modal.classList.remove("show");
+
+        modal.setAttribute(
+            "aria-hidden",
+            "true"
+        );
+
+        document.body.style.overflow = "";
+
+    }
+
+
+    /* =====================================================
+       BAHAN MODAL
+    ====================================================== */
+
+    document
+        .getElementById("addIngredientButton")
+        ?.addEventListener(
+            "click",
+            function () {
+
+                document
+                    .getElementById("ingredientForm")
+                    ?.reset();
+
+                const title =
+                    document.getElementById(
+                        "ingredientModalTitle"
+                    );
+
+                if (title) {
+                    title.textContent =
+                        "Tambah Bahan";
+                }
+
+                openModal(
+                    "ingredientModal"
+                );
+
+            }
+        );
+
+
+    document
+        .getElementById("ingredientModalClose")
+        ?.addEventListener(
+            "click",
+            function () {
+
+                closeModal(
+                    "ingredientModal"
+                );
+
+            }
+        );
+
+
+    document
+        .getElementById("ingredientCancelButton")
+        ?.addEventListener(
+            "click",
+            function () {
+
+                closeModal(
+                    "ingredientModal"
+                );
+
+            }
+        );
+
+
+    /* =====================================================
+       SUPPLIER MODAL
+    ====================================================== */
+
+    document
+        .getElementById("addSupplierButton")
+        ?.addEventListener(
+            "click",
+            function () {
+
+                document
+                    .getElementById("supplierForm")
+                    ?.reset();
+
+                const title =
+                    document.getElementById(
+                        "supplierModalTitle"
+                    );
+
+                if (title) {
+                    title.textContent =
+                        "Tambah Supplier";
+                }
+
+                openModal(
+                    "supplierModal"
+                );
+
+            }
+        );
+
+
+    document
+        .getElementById("supplierModalClose")
+        ?.addEventListener(
+            "click",
+            function () {
+
+                closeModal(
+                    "supplierModal"
+                );
+
+            }
+        );
+
+
+    document
+        .getElementById("supplierCancelButton")
+        ?.addEventListener(
+            "click",
+            function () {
+
+                closeModal(
+                    "supplierModal"
+                );
+
+            }
+        );
+
+
+    /* =====================================================
+       DELETE MODAL
+    ====================================================== */
+
+    document
+        .getElementById("deleteCancelButton")
+        ?.addEventListener(
+            "click",
+            function () {
+
+                closeModal(
+                    "deleteModal"
+                );
+
+            }
+        );
+
+
+    /* =====================================================
+       CLOSE MODAL KLIK LUAR
+    ====================================================== */
+
+    document
+        .querySelectorAll(".modal-overlay")
+        .forEach(function (overlay) {
+
+            overlay.addEventListener(
+                "click",
+                function (event) {
+
+                    if (
+                        event.target === overlay
+                    ) {
+
+                        closeModal(
+                            overlay.id
+                        );
+
+                    }
+
+                }
+            );
+
+        });
+
+
+    /* =====================================================
+       ESC CLOSE
+    ====================================================== */
+
+    document.addEventListener(
+        "keydown",
+        function (event) {
+
+            if (event.key !== "Escape") {
+                return;
+            }
+
+            document
+                .querySelectorAll(
+                    ".modal-overlay.show"
+                )
+                .forEach(function (modal) {
+
+                    closeModal(modal.id);
+
+                });
+
+
+            document
+                .getElementById(
+                    "notificationPanel"
+                )
+                ?.classList.remove("show");
+
+        }
+    );
+
+
+    /* =====================================================
+       NOTIFICATION
+    ====================================================== */
+
+    const notificationButton =
+        document.getElementById(
+            "notificationButton"
+        );
+
+    const notificationPanel =
+        document.getElementById(
+            "notificationPanel"
+        );
+
+    const notificationClose =
+        document.getElementById(
+            "notificationClose"
+        );
+
+
+    notificationButton?.addEventListener(
+        "click",
+        function () {
+
+            notificationPanel?.classList.toggle(
+                "show"
+            );
+
+        }
+    );
+
+
+    notificationClose?.addEventListener(
+        "click",
+        function () {
+
+            notificationPanel?.classList.remove(
+                "show"
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       SEARCH SUPPLIER
+       - Event tersedia untuk ingredients.js
+    ====================================================== */
+
+    document
+        .getElementById("supplierSearch")
+        ?.addEventListener(
+            "input",
+            function (event) {
+
+                document.dispatchEvent(
+                    new CustomEvent(
+                        "supplierSearch",
+                        {
+                            detail: {
+                                value:
+                                    event.target.value
+                            }
+                        }
+                    )
+                );
+
+            }
+        );
+
+
+    /* =====================================================
+       SEARCH BAHAN
+    ====================================================== */
+
+    document
+        .getElementById("ingredientSearch")
+        ?.addEventListener(
+            "input",
+            function (event) {
+
+                document.dispatchEvent(
+                    new CustomEvent(
+                        "ingredientSearch",
+                        {
+                            detail: {
+                                value:
+                                    event.target.value
+                            }
+                        }
+                    )
+                );
+
+            }
+        );
+
+
+    /* =====================================================
+       FILTER STOK
+    ====================================================== */
+
+    document
+        .getElementById("stockFilter")
+        ?.addEventListener(
+            "change",
+            function (event) {
+
+                document.dispatchEvent(
+                    new CustomEvent(
+                        "stockFilter",
+                        {
+                            detail: {
+                                value:
+                                    event.target.value
+                            }
+                        }
+                    )
+                );
+
+            }
+        );
+
+
+    /* =====================================================
+       VIEW PURCHASES
+    ====================================================== */
+
+    document
+        .getElementById("viewAllPurchasesButton")
+        ?.addEventListener(
+            "click",
+            function () {
+
+                document.dispatchEvent(
+                    new CustomEvent(
+                        "viewAllPurchases"
+                    )
+                );
+
+            }
+        );
+
+
+    /* =====================================================
+       FORM SUBMIT FALLBACK
+       Supaya tidak reload halaman.
+       ingredients.js bisa mengambil alih event.
+    ====================================================== */
+
+    document
+        .getElementById("ingredientForm")
+        ?.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+                document.dispatchEvent(
+                    new CustomEvent(
+                        "ingredientFormSubmit",
+                        {
+                            detail: {
+                                form:
+                                    event.target
+                            }
+                        }
+                    )
+                );
+
+            }
+        );
+
+
+    document
+        .getElementById("supplierForm")
+        ?.addEventListener(
+            "submit",
+            function (event) {
+
+                event.preventDefault();
+
+                document.dispatchEvent(
+                    new CustomEvent(
+                        "supplierFormSubmit",
+                        {
+                            detail: {
+                                form:
+                                    event.target
+                            }
+                        }
+                    )
+                );
+
+            }
+        );
+
+
+    /* =====================================================
+       NOTIFICATION CLICK OUTSIDE
+    ====================================================== */
+
+    document.addEventListener(
+        "click",
+        function (event) {
+
+            if (
+                !notificationPanel ||
+                !notificationPanel.classList.contains(
+                    "show"
+                )
+            ) {
+                return;
+            }
+
+
+            if (
+                notificationPanel.contains(
+                    event.target
+                ) ||
+                notificationButton?.contains(
+                    event.target
+                )
+            ) {
+                return;
+            }
+
+
+            notificationPanel.classList.remove(
+                "show"
+            );
+
+        }
+    );
+
+});
+
+</script>
 
 </body>
 </html>
