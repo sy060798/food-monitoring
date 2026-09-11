@@ -6,1025 +6,1635 @@
 
     <title>Food Monitoring - Dashboard</title>
 
-    <meta
-        name="description"
-        content="Dashboard Food Monitoring untuk memantau penjualan, HPP, laba, stok, produk, bahan, dan laporan."
-    >
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <link rel="stylesheet" href="css/style.css">
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --success: #16a34a;
+            --danger: #dc2626;
+            --warning: #d97706;
+            --purple: #7c3aed;
+
+            --bg: #f5f7fb;
+            --card: #ffffff;
+            --text: #111827;
+            --muted: #6b7280;
+            --border: #e5e7eb;
+
+            --sidebar: #111827;
+            --sidebar-hover: #1f2937;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        /* =========================
+           LAYOUT
+        ========================= */
+
+        .app {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* =========================
+           SIDEBAR
+        ========================= */
+
+        .sidebar {
+            width: 250px;
+            background: var(--sidebar);
+            color: white;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .logo {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            padding: 0 22px;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            background: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .logo-subtitle {
+            font-size: 10px;
+            color: #9ca3af;
+            margin-top: 2px;
+        }
+
+        .menu {
+            padding: 20px 12px;
+        }
+
+        .menu-title {
+            font-size: 11px;
+            color: #6b7280;
+            text-transform: uppercase;
+            margin: 15px 10px 8px;
+            font-weight: bold;
+            letter-spacing: .5px;
+        }
+
+        .menu a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #d1d5db;
+            padding: 11px 12px;
+            border-radius: 8px;
+            margin-bottom: 3px;
+            font-size: 14px;
+            transition: .2s;
+        }
+
+        .menu a:hover {
+            background: var(--sidebar-hover);
+            color: white;
+        }
+
+        .menu a.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .menu-icon {
+            width: 20px;
+            text-align: center;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .main {
+            margin-left: 250px;
+            width: calc(100% - 250px);
+            min-height: 100vh;
+        }
+
+        /* =========================
+           TOPBAR
+        ========================= */
+
+        .topbar {
+            height: 70px;
+            background: white;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            position: sticky;
+            top: 0;
+            z-index: 500;
+        }
+
+        .page-title {
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .page-date {
+            color: var(--muted);
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .notification {
+            width: 38px;
+            height: 38px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .notification-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--danger);
+            border-radius: 50%;
+            position: absolute;
+            right: 7px;
+            top: 7px;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .avatar {
+            width: 38px;
+            height: 38px;
+            background: #dbeafe;
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .profile-name {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .profile-role {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        /* =========================
+           CONTENT
+        ========================= */
+
+        .content {
+            padding: 28px;
+        }
+
+        .welcome {
+            margin-bottom: 25px;
+        }
+
+        .welcome h2 {
+            font-size: 23px;
+            margin-bottom: 6px;
+        }
+
+        .welcome p {
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        /* =========================
+           FILTER
+        ========================= */
+
+        .toolbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .filter-group {
+            display: flex;
+            gap: 8px;
+        }
+
+        .filter-btn {
+            border: 1px solid var(--border);
+            background: white;
+            color: var(--muted);
+            padding: 9px 15px;
+            border-radius: 7px;
+            cursor: pointer;
+            font-size: 12px;
+        }
+
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        /* =========================
+           STAT CARDS
+        ========================= */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 22px;
+        }
+
+        .stat-card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .stat-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 14px;
+        }
+
+        .stat-label {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        .stat-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 9px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .blue {
+            background: #eff6ff;
+        }
+
+        .green {
+            background: #f0fdf4;
+        }
+
+        .red {
+            background: #fef2f2;
+        }
+
+        .purple {
+            background: #f5f3ff;
+        }
+
+        .stat-value {
+            font-size: 23px;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .stat-change {
+            font-size: 11px;
+        }
+
+        .positive {
+            color: var(--success);
+        }
+
+        .negative {
+            color: var(--danger);
+        }
+
+        .neutral {
+            color: var(--muted);
+        }
+
+        /* =========================
+           GRID
+        ========================= */
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 20px;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .card-action {
+            font-size: 12px;
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* =========================
+           CHART
+        ========================= */
+
+        .chart {
+            height: 280px;
+            display: flex;
+            align-items: flex-end;
+            gap: 14px;
+            padding: 20px 5px 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .chart-column {
+            flex: 1;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .bar {
+            width: 75%;
+            max-width: 40px;
+            background: linear-gradient(
+                to top,
+                var(--primary),
+                #60a5fa
+            );
+            border-radius: 5px 5px 0 0;
+            min-height: 5px;
+        }
+
+        .chart-label {
+            font-size: 10px;
+            color: var(--muted);
+        }
+
+        /* =========================
+           PRODUCT LIST
+        ========================= */
+
+        .product-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 13px 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .product-item:last-child {
+            border-bottom: none;
+        }
+
+        .product-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .product-image {
+            width: 40px;
+            height: 40px;
+            background: #f3f4f6;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 19px;
+        }
+
+        .product-name {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .product-qty {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 3px;
+        }
+
+        .product-sales {
+            text-align: right;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* =========================
+           TABLE
+        ========================= */
+
+        .table-card {
+            margin-bottom: 20px;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            text-align: left;
+            font-size: 11px;
+            color: var(--muted);
+            background: #f9fafb;
+            padding: 12px;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 13px 12px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 5px 9px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .status-success {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .status-warning {
+            background: #fef3c7;
+            color: #b45309;
+        }
+
+        .status-danger {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        /* =========================
+           STOCK
+        ========================= */
+
+        .stock-item {
+            margin-bottom: 18px;
+        }
+
+        .stock-head {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 7px;
+        }
+
+        .stock-name {
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .stock-value {
+            font-size: 11px;
+            color: var(--muted);
+        }
+
+        .progress {
+            width: 100%;
+            height: 7px;
+            background: #f3f4f6;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            border-radius: 10px;
+        }
+
+        .progress-green {
+            background: var(--success);
+        }
+
+        .progress-yellow {
+            background: #f59e0b;
+        }
+
+        .progress-red {
+            background: var(--danger);
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
+
+        footer {
+            text-align: center;
+            color: var(--muted);
+            font-size: 11px;
+            padding: 20px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        .mobile-menu {
+            display: none;
+            border: none;
+            background: none;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 1100px) {
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .sidebar {
+                transform: translateX(-100%);
+                transition: .25s;
+            }
+
+            .sidebar.show {
+                transform: translateX(0);
+            }
+
+            .main {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .mobile-menu {
+                display: block;
+                margin-right: 10px;
+            }
+
+            .topbar {
+                padding: 0 15px;
+            }
+
+            .content {
+                padding: 18px;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-info {
+                display: none;
+            }
+
+            .toolbar {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+            .filter-group {
+                width: 100%;
+                overflow-x: auto;
+            }
+
+            .filter-btn {
+                white-space: nowrap;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
+<div class="app">
+
     <!-- =========================
-         APP CONTAINER
+         SIDEBAR
     ========================== -->
-    <div class="app">
 
-        <!-- =========================
-             SIDEBAR
-        ========================== -->
-        <aside class="sidebar" id="sidebar">
+    <aside class="sidebar" id="sidebar">
 
-            <div class="sidebar-header">
+        <div class="logo">
 
-                <a href="index.html" class="brand">
-                    <span class="brand-icon">🍴</span>
+            <div class="logo-icon">
+                🍴
+            </div>
 
-                    <span class="brand-text">
-                        <strong>FOOD</strong>
-                        <small>MONITOR</small>
-                    </span>
-                </a>
+            <div>
+                <div class="logo-text">
+                    Food Monitoring
+                </div>
+
+                <div class="logo-subtitle">
+                    Business Management
+                </div>
+            </div>
+
+        </div>
+
+        <nav class="menu">
+
+            <div class="menu-title">
+                Utama
+            </div>
+
+            <a href="index.html" class="active">
+                <span class="menu-icon">📊</span>
+                Dashboard
+            </a>
+
+            <div class="menu-title">
+                Produk & Stok
+            </div>
+
+            <a href="products.html">
+                <span class="menu-icon">🍔</span>
+                Produk / Menu
+            </a>
+
+            <a href="ingredients.html">
+                <span class="menu-icon">📦</span>
+                Bahan Baku
+            </a>
+
+            <a href="suppliers.html">
+                <span class="menu-icon">🚚</span>
+                Supplier
+            </a>
+
+            <div class="menu-title">
+                Keuangan
+            </div>
+
+            <a href="sales.html">
+                <span class="menu-icon">💰</span>
+                Penjualan
+            </a>
+
+            <a href="expenses.html">
+                <span class="menu-icon">💸</span>
+                Pengeluaran
+            </a>
+
+            <div class="menu-title">
+                Analisis
+            </div>
+
+            <a href="reports.html">
+                <span class="menu-icon">📈</span>
+                Laporan
+            </a>
+
+            <div class="menu-title">
+                Sistem
+            </div>
+
+            <a href="settings.html">
+                <span class="menu-icon">⚙️</span>
+                Pengaturan
+            </a>
+
+        </nav>
+
+    </aside>
+
+
+    <!-- =========================
+         MAIN
+    ========================== -->
+
+    <main class="main">
+
+        <!-- TOPBAR -->
+
+        <header class="topbar">
+
+            <div style="display:flex;align-items:center;">
 
                 <button
-                    type="button"
-                    class="sidebar-close"
-                    id="sidebarClose"
-                    aria-label="Tutup menu"
+                    class="mobile-menu"
+                    onclick="toggleSidebar()"
                 >
-                    ×
+                    ☰
                 </button>
 
-            </div>
-
-
-            <!-- NAVIGATION -->
-            <nav class="sidebar-nav">
-
-                <div class="nav-section">
-                    <span class="nav-section-title">Menu Utama</span>
-
-                    <a href="index.html" class="nav-item active">
-                        <span class="nav-icon">▦</span>
-                        <span class="nav-text">Dashboard</span>
-                    </a>
-
-                    <a href="products.html" class="nav-item">
-                        <span class="nav-icon">📦</span>
-                        <span class="nav-text">Produk</span>
-                    </a>
-
-                    <a href="ingredients.html" class="nav-item">
-                        <span class="nav-icon">🥩</span>
-                        <span class="nav-text">Bahan</span>
-                    </a>
-
-                    <a href="sales.html" class="nav-item">
-                        <span class="nav-icon">🧾</span>
-                        <span class="nav-text">Penjualan</span>
-                    </a>
-
-                    <a href="reports.html" class="nav-item">
-                        <span class="nav-icon">📊</span>
-                        <span class="nav-text">Laporan</span>
-                    </a>
-
-                    <a href="#" class="nav-item" id="historyMenu">
-                        <span class="nav-icon">📜</span>
-                        <span class="nav-text">History</span>
-                    </a>
-
-                    <a href="#" class="nav-item" id="supplierMenu">
-                        <span class="nav-icon">🚚</span>
-                        <span class="nav-text">Supplier</span>
-                    </a>
-
-                    <a href="#" class="nav-item" id="settingsMenu">
-                        <span class="nav-icon">⚙</span>
-                        <span class="nav-text">Pengaturan</span>
-                    </a>
-                </div>
-
-            </nav>
-
-
-            <!-- SIDEBAR FOOTER -->
-            <div class="sidebar-footer">
-
-                <div class="system-status">
-                    <span class="status-dot"></span>
-                    <span>Sistem aktif</span>
-                </div>
-
-                <small>
-                    Food Monitoring v1.0
-                </small>
-
-            </div>
-
-        </aside>
-
-
-        <!-- =========================
-             SIDEBAR OVERLAY MOBILE
-        ========================== -->
-        <div
-            class="sidebar-overlay"
-            id="sidebarOverlay"
-        ></div>
-
-
-        <!-- =========================
-             MAIN AREA
-        ========================== -->
-        <main class="main">
-
-            <!-- =========================
-                 TOPBAR
-            ========================== -->
-            <header class="topbar">
-
-                <div class="topbar-left">
-
-                    <button
-                        type="button"
-                        class="menu-toggle"
-                        id="menuToggle"
-                        aria-label="Buka menu"
-                    >
-                        ☰
-                    </button>
+                <div>
 
                     <div class="page-title">
+                        Dashboard
+                    </div>
 
-                        <h1>Dashboard</h1>
+                    <div
+                        class="page-date"
+                        id="currentDate"
+                    >
+                        Memuat tanggal...
+                    </div>
 
-                        <p>
-                            Ringkasan bisnis hari ini
-                        </p>
+                </div>
+
+            </div>
+
+
+            <div class="topbar-right">
+
+                <button
+                    class="notification"
+                    title="Notifikasi"
+                >
+                    🔔
+                    <span class="notification-dot"></span>
+                </button>
+
+                <div class="profile">
+
+                    <div class="avatar">
+                        A
+                    </div>
+
+                    <div class="profile-info">
+
+                        <div class="profile-name">
+                            Admin
+                        </div>
+
+                        <div class="profile-role">
+                            Administrator
+                        </div>
 
                     </div>
 
                 </div>
 
+            </div>
 
-                <div class="topbar-right">
+        </header>
 
-                    <!-- Notification -->
+
+        <!-- CONTENT -->
+
+        <section class="content">
+
+            <!-- WELCOME -->
+
+            <div class="welcome">
+
+                <h2>
+                    Selamat datang 👋
+                </h2>
+
+                <p>
+                    Berikut ringkasan kondisi usaha kamu hari ini.
+                </p>
+
+            </div>
+
+
+            <!-- TOOLBAR -->
+
+            <div class="toolbar">
+
+                <div class="filter-group">
+
                     <button
-                        type="button"
-                        class="icon-button notification-button"
-                        id="notificationButton"
-                        aria-label="Notifikasi"
+                        class="filter-btn active"
+                        onclick="changePeriod('today', this)"
                     >
-                        🔔
-                        <span
-                            class="notification-badge"
-                            id="notificationBadge"
-                        >
-                            0
-                        </span>
+                        Hari Ini
                     </button>
 
+                    <button
+                        class="filter-btn"
+                        onclick="changePeriod('week', this)"
+                    >
+                        Minggu Ini
+                    </button>
 
-                    <!-- Admin -->
-                    <div class="admin-profile">
+                    <button
+                        class="filter-btn"
+                        onclick="changePeriod('month', this)"
+                    >
+                        Bulan Ini
+                    </button>
 
-                        <div class="admin-avatar">
-                            A
+                </div>
+
+            </div>
+
+
+            <!-- STATISTICS -->
+
+            <div class="stats">
+
+                <!-- OMZET -->
+
+                <div class="stat-card">
+
+                    <div class="stat-top">
+
+                        <span class="stat-label">
+                            Total Penjualan
+                        </span>
+
+                        <div class="stat-icon blue">
+                            💰
                         </div>
 
-                        <div class="admin-info">
-                            <strong>Admin</strong>
-                            <small>Administrator</small>
-                        </div>
+                    </div>
 
+                    <div
+                        class="stat-value"
+                        id="totalSales"
+                    >
+                        Rp 0
+                    </div>
+
+                    <div class="stat-change positive">
+                        ↑ 0% dari periode sebelumnya
                     </div>
 
                 </div>
 
-            </header>
 
+                <!-- EXPENSE -->
 
-            <!-- =========================
-                 PAGE CONTENT
-            ========================== -->
-            <div class="content">
+                <div class="stat-card">
 
+                    <div class="stat-top">
 
-                <!-- =========================
-                     WELCOME
-                ========================== -->
-                <section class="welcome-section">
-
-                    <div>
-                        <h2>
-                            Selamat datang 👋
-                        </h2>
-
-                        <p>
-                            Berikut ringkasan kondisi bisnis kamu hari ini.
-                        </p>
-                    </div>
-
-                    <div class="date-display">
-                        <span>📅</span>
-                        <span id="currentDate">
-                            Memuat tanggal...
+                        <span class="stat-label">
+                            Total Pengeluaran
                         </span>
-                    </div>
 
-                </section>
-
-
-                <!-- =========================
-                     SUMMARY CARDS
-                ========================== -->
-                <section class="summary-grid">
-
-
-                    <!-- PENJUALAN -->
-                    <div class="summary-card sales-card">
-
-                        <div class="summary-card-top">
-
-                            <div>
-                                <span class="summary-label">
-                                    PENJUALAN
-                                </span>
-
-                                <h3 id="totalSales">
-                                    Rp0
-                                </h3>
-
-                                <span
-                                    class="summary-change positive"
-                                    id="salesChange"
-                                >
-                                    ↑ 0%
-                                </span>
-                            </div>
-
-                            <div class="summary-icon blue">
-                                💰
-                            </div>
-
-                        </div>
-
-                        <div class="summary-card-bottom">
-                            <span>
-                                Total penjualan
-                            </span>
-
-                            <span id="salesTransaction">
-                                0 transaksi
-                            </span>
+                        <div class="stat-icon red">
+                            💸
                         </div>
 
                     </div>
 
+                    <div
+                        class="stat-value"
+                        id="totalExpenses"
+                    >
+                        Rp 0
+                    </div>
 
-                    <!-- HPP -->
-                    <div class="summary-card hpp-card">
+                    <div class="stat-change negative">
+                        ↓ 0% dari periode sebelumnya
+                    </div>
 
-                        <div class="summary-card-top">
+                </div>
 
-                            <div>
-                                <span class="summary-label">
-                                    HPP
-                                </span>
 
-                                <h3 id="totalHpp">
-                                    Rp0
-                                </h3>
+                <!-- HPP -->
 
-                                <span
-                                    class="summary-change neutral"
-                                    id="hppChange"
-                                >
-                                    0%
-                                </span>
-                            </div>
+                <div class="stat-card">
 
-                            <div class="summary-icon orange">
-                                🧮
-                            </div>
+                    <div class="stat-top">
 
-                        </div>
+                        <span class="stat-label">
+                            HPP
+                        </span>
 
-                        <div class="summary-card-bottom">
-
-                            <span>
-                                Harga pokok penjualan
-                            </span>
-
-                            <span id="hppPercentage">
-                                0%
-                            </span>
-
+                        <div class="stat-icon purple">
+                            📦
                         </div>
 
                     </div>
 
+                    <div
+                        class="stat-value"
+                        id="totalHpp"
+                    >
+                        Rp 0
+                    </div>
 
-                    <!-- LABA -->
-                    <div class="summary-card profit-card">
+                    <div class="stat-change neutral">
+                        Berdasarkan resep produk
+                    </div>
 
-                        <div class="summary-card-top">
+                </div>
 
-                            <div>
-                                <span class="summary-label">
-                                    LABA
-                                </span>
 
-                                <h3 id="totalProfit">
-                                    Rp0
-                                </h3>
+                <!-- PROFIT -->
 
-                                <span
-                                    class="summary-change positive"
-                                    id="profitChange"
-                                >
-                                    ↑ 0%
-                                </span>
-                            </div>
+                <div class="stat-card">
 
-                            <div class="summary-icon dark">
-                                📈
-                            </div>
+                    <div class="stat-top">
 
-                        </div>
+                        <span class="stat-label">
+                            Laba Bersih
+                        </span>
 
-                        <div class="summary-card-bottom">
-
-                            <span>
-                                Laba bersih
-                            </span>
-
-                            <span id="profitMargin">
-                                Margin 0%
-                            </span>
-
+                        <div class="stat-icon green">
+                            📈
                         </div>
 
                     </div>
 
-
-                    <!-- STOK -->
-                    <div class="summary-card stock-card">
-
-                        <div class="summary-card-top">
-
-                            <div>
-                                <span class="summary-label">
-                                    STOK MENIPIS
-                                </span>
-
-                                <h3 id="lowStockCount">
-                                    0
-                                </h3>
-
-                                <span
-                                    class="summary-change warning"
-                                >
-                                    Perlu perhatian
-                                </span>
-                            </div>
-
-                            <div class="summary-icon red">
-                                ⚠️
-                            </div>
-
-                        </div>
-
-                        <div class="summary-card-bottom">
-
-                            <span>
-                                Bahan di bawah minimum
-                            </span>
-
-                            <a
-                                href="ingredients.html"
-                                class="card-link"
-                            >
-                                Lihat semua →
-                            </a>
-
-                        </div>
-
+                    <div
+                        class="stat-value"
+                        id="netProfit"
+                    >
+                        Rp 0
                     </div>
 
-                </section>
-
-
-                <!-- =========================
-                     MAIN DASHBOARD GRID
-                ========================== -->
-                <section class="dashboard-grid">
-
-
-                    <!-- =========================
-                         SALES CHART
-                    ========================== -->
-                    <div class="dashboard-card chart-card">
-
-                        <div class="card-header">
-
-                            <div>
-                                <h3>
-                                    Penjualan 7 Hari
-                                </h3>
-
-                                <p>
-                                    Performa penjualan dalam 7 hari terakhir
-                                </p>
-                            </div>
-
-                            <div class="chart-actions">
-
-                                <select
-                                    id="chartPeriod"
-                                    class="select-control"
-                                >
-                                    <option value="7">
-                                        7 Hari
-                                    </option>
-
-                                    <option value="14">
-                                        14 Hari
-                                    </option>
-
-                                    <option value="30">
-                                        30 Hari
-                                    </option>
-                                </select>
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- Chart -->
-                        <div class="chart-container">
-
-                            <div
-                                class="chart-y-axis"
-                                id="chartYAxis"
-                            >
-                                <span>Rp5jt</span>
-                                <span>Rp4jt</span>
-                                <span>Rp3jt</span>
-                                <span>Rp2jt</span>
-                                <span>Rp1jt</span>
-                                <span>Rp0</span>
-                            </div>
-
-                            <div class="chart-area">
-
-                                <div class="chart-grid-lines">
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                    <span></span>
-                                </div>
-
-                                <svg
-                                    class="sales-chart"
-                                    id="salesChart"
-                                    viewBox="0 0 700 280"
-                                    preserveAspectRatio="none"
-                                    aria-label="Grafik penjualan 7 hari"
-                                >
-                                    <defs>
-
-                                        <linearGradient
-                                            id="chartGradient"
-                                            x1="0"
-                                            x2="0"
-                                            y1="0"
-                                            y2="1"
-                                        >
-                                            <stop
-                                                offset="0%"
-                                                stop-color="#2563eb"
-                                                stop-opacity="0.28"
-                                            />
-
-                                            <stop
-                                                offset="100%"
-                                                stop-color="#2563eb"
-                                                stop-opacity="0"
-                                            />
-                                        </linearGradient>
-
-                                    </defs>
-
-                                    <path
-                                        id="chartAreaPath"
-                                        d=""
-                                        fill="url(#chartGradient)"
-                                    ></path>
-
-                                    <path
-                                        id="chartLinePath"
-                                        d=""
-                                        fill="none"
-                                        stroke="#2563eb"
-                                        stroke-width="4"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    ></path>
-
-                                    <g
-                                        id="chartPoints"
-                                    ></g>
-
-                                </svg>
-
-                                <div
-                                    class="chart-x-axis"
-                                    id="chartXAxis"
-                                >
-                                    <span>Sen</span>
-                                    <span>Sel</span>
-                                    <span>Rab</span>
-                                    <span>Kam</span>
-                                    <span>Jum</span>
-                                    <span>Sab</span>
-                                    <span>Min</span>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- Chart Footer -->
-                        <div class="chart-footer">
-
-                            <div class="chart-legend">
-
-                                <span class="legend-item">
-                                    <span class="legend-dot blue"></span>
-                                    Penjualan
-                                </span>
-
-                            </div>
-
-                            <div class="chart-total">
-
-                                <span>
-                                    Total 7 hari
-                                </span>
-
-                                <strong id="chartTotal">
-                                    Rp0
-                                </strong>
-
-                            </div>
-
-                        </div>
-
+                    <div class="stat-change positive">
+                        Profit setelah pengeluaran
                     </div>
 
+                </div>
 
-                    <!-- =========================
-                         LOW STOCK
-                    ========================== -->
-                    <div class="dashboard-card stock-alert-card">
+            </div>
 
-                        <div class="card-header">
 
-                            <div>
-                                <h3>
-                                    ⚠ Stok Menipis
-                                </h3>
+            <!-- CHART + TOP PRODUCTS -->
 
-                                <p>
-                                    Bahan yang perlu segera dibeli
-                                </p>
-                            </div>
+            <div class="dashboard-grid">
 
-                            <a
-                                href="ingredients.html"
-                                class="view-all-link"
-                            >
-                                Lihat semua
-                            </a>
+                <!-- SALES CHART -->
 
-                        </div>
-
-
-                        <div
-                            class="stock-list"
-                            id="lowStockList"
-                        >
-
-                            <!-- Default loading state -->
-                            <div class="loading-state">
-                                <div class="loading-spinner"></div>
-                                <span>
-                                    Memuat data stok...
-                                </span>
-                            </div>
-
-                        </div>
-
-
-                        <div class="stock-card-footer">
-
-                            <a
-                                href="ingredients.html"
-                                class="primary-button full-width"
-                            >
-                                📦 Kelola Stok
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-                <!-- =========================
-                     SECOND DASHBOARD ROW
-                ========================== -->
-                <section class="dashboard-grid secondary-grid">
-
-
-                    <!-- =========================
-                         RECENT SALES
-                    ========================== -->
-                    <div class="dashboard-card recent-sales-card">
-
-                        <div class="card-header">
-
-                            <div>
-                                <h3>
-                                    Penjualan Terbaru
-                                </h3>
-
-                                <p>
-                                    Transaksi penjualan terbaru
-                                </p>
-                            </div>
-
-                            <a
-                                href="sales.html"
-                                class="view-all-link"
-                            >
-                                Lihat semua
-                            </a>
-
-                        </div>
-
-
-                        <div class="table-wrapper">
-
-                            <table class="data-table">
-
-                                <thead>
-                                    <tr>
-                                        <th>No. Transaksi</th>
-                                        <th>Produk</th>
-                                        <th>Platform</th>
-                                        <th>Total</th>
-                                        <th>Status</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody id="recentSalesTable">
-
-                                    <tr>
-                                        <td colspan="5">
-                                            <div class="empty-state">
-                                                Belum ada transaksi.
-                                            </div>
-                                        </td>
-                                    </tr>
-
-                                </tbody>
-
-                            </table>
-
-                        </div>
-
-                    </div>
-
-
-                    <!-- =========================
-                         QUICK ACTION
-                    ========================== -->
-                    <div class="dashboard-card quick-action-card">
-
-                        <div class="card-header">
-
-                            <div>
-                                <h3>
-                                    Aksi Cepat
-                                </h3>
-
-                                <p>
-                                    Kelola data dengan cepat
-                                </p>
-                            </div>
-
-                        </div>
-
-
-                        <div class="quick-actions">
-
-                            <a
-                                href="sales.html"
-                                class="quick-action"
-                            >
-                                <span class="quick-action-icon blue">
-                                    🧾
-                                </span>
-
-                                <span>
-                                    <strong>
-                                        Input Penjualan
-                                    </strong>
-
-                                    <small>
-                                        Tambah transaksi baru
-                                    </small>
-                                </span>
-
-                                <span class="arrow">
-                                    →
-                                </span>
-                            </a>
-
-
-                            <a
-                                href="products.html"
-                                class="quick-action"
-                            >
-                                <span class="quick-action-icon purple">
-                                    📦
-                                </span>
-
-                                <span>
-                                    <strong>
-                                        Kelola Produk
-                                    </strong>
-
-                                    <small>
-                                        Tambah atau edit produk
-                                    </small>
-                                </span>
-
-                                <span class="arrow">
-                                    →
-                                </span>
-                            </a>
-
-
-                            <a
-                                href="ingredients.html"
-                                class="quick-action"
-                            >
-                                <span class="quick-action-icon orange">
-                                    🥩
-                                </span>
-
-                                <span>
-                                    <strong>
-                                        Kelola Bahan
-                                    </strong>
-
-                                    <small>
-                                        Update stok dan harga
-                                    </small>
-                                </span>
-
-                                <span class="arrow">
-                                    →
-                                </span>
-                            </a>
-
-
-                            <a
-                                href="reports.html"
-                                class="quick-action"
-                            >
-                                <span class="quick-action-icon green">
-                                    📊
-                                </span>
-
-                                <span>
-                                    <strong>
-                                        Lihat Laporan
-                                    </strong>
-
-                                    <small>
-                                        Analisis performa bisnis
-                                    </small>
-                                </span>
-
-                                <span class="arrow">
-                                    →
-                                </span>
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </section>
-
-
-                <!-- =========================
-                     BUSINESS SUMMARY
-                ========================== -->
-                <section class="dashboard-card business-summary-card">
+                <div class="card">
 
                     <div class="card-header">
 
-                        <div>
-                            <h3>
-                                Ringkasan Bisnis
-                            </h3>
+                        <div class="card-title">
+                            Grafik Penjualan
+                        </div>
 
-                            <p>
-                                Informasi performa bisnis periode berjalan
-                            </p>
+                        <a
+                            href="reports.html"
+                            class="card-action"
+                        >
+                            Lihat laporan →
+                        </a>
+
+                    </div>
+
+
+                    <div
+                        class="chart"
+                        id="salesChart"
+                    >
+
+                        <div class="chart-column">
+                            <div
+                                class="bar"
+                                style="height:35%"
+                            ></div>
+                            <span class="chart-label">Sen</span>
+                        </div>
+
+                        <div class="chart-column">
+                            <div
+                                class="bar"
+                                style="height:55%"
+                            ></div>
+                            <span class="chart-label">Sel</span>
+                        </div>
+
+                        <div class="chart-column">
+                            <div
+                                class="bar"
+                                style="height:45%"
+                            ></div>
+                            <span class="chart-label">Rab</span>
+                        </div>
+
+                        <div class="chart-column">
+                            <div
+                                class="bar"
+                                style="height:75%"
+                            ></div>
+                            <span class="chart-label">Kam</span>
+                        </div>
+
+                        <div class="chart-column">
+                            <div
+                                class="bar"
+                                style="height:65%"
+                            ></div>
+                            <span class="chart-label">Jum</span>
+                        </div>
+
+                        <div class="chart-column">
+                            <div
+                                class="bar"
+                                style="height:90%"
+                            ></div>
+                            <span class="chart-label">Sab</span>
+                        </div>
+
+                        <div class="chart-column">
+                            <div
+                                class="bar"
+                                style="height:70%"
+                            ></div>
+                            <span class="chart-label">Min</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- TOP PRODUCTS -->
+
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <div class="card-title">
+                            Produk Terlaris
+                        </div>
+
+                        <a
+                            href="products.html"
+                            class="card-action"
+                        >
+                            Semua →
+                        </a>
+
+                    </div>
+
+
+                    <div id="topProducts">
+
+                        <div class="product-item">
+
+                            <div class="product-info">
+
+                                <div class="product-image">
+                                    🍚
+                                </div>
+
+                                <div>
+
+                                    <div class="product-name">
+                                        Belum ada data
+                                    </div>
+
+                                    <div class="product-qty">
+                                        -
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="product-sales">
+                                Rp 0
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- STOCK + TRANSACTIONS -->
+
+            <div class="dashboard-grid">
+
+                <!-- STOCK -->
+
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <div class="card-title">
+                            Status Stok Bahan Baku
+                        </div>
+
+                        <a
+                            href="ingredients.html"
+                            class="card-action"
+                        >
+                            Kelola stok →
+                        </a>
+
+                    </div>
+
+
+                    <div id="stockList">
+
+                        <div class="stock-item">
+
+                            <div class="stock-head">
+
+                                <span class="stock-name">
+                                    Belum ada data bahan
+                                </span>
+
+                                <span class="stock-value">
+                                    -
+                                </span>
+
+                            </div>
+
+                            <div class="progress">
+
+                                <div
+                                    class="progress-bar progress-green"
+                                    style="width:0%"
+                                ></div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- QUICK INFO -->
+
+                <div class="card">
+
+                    <div class="card-header">
+
+                        <div class="card-title">
+                            Ringkasan Stok
                         </div>
 
                     </div>
 
 
-                    <div class="business-summary-grid">
+                    <div class="product-item">
 
-                        <div class="business-stat">
+                        <div class="product-info">
 
-                            <span class="business-stat-icon">
-                                🛒
-                            </span>
-
-                            <div>
-                                <span>
-                                    Total Transaksi
-                                </span>
-
-                                <strong id="totalTransactions">
-                                    0
-                                </strong>
-                            </div>
-
-                        </div>
-
-
-                        <div class="business-stat">
-
-                            <span class="business-stat-icon">
+                            <div class="product-image">
                                 📦
-                            </span>
-
-                            <div>
-                                <span>
-                                    Total Produk
-                                </span>
-
-                                <strong id="totalProducts">
-                                    0
-                                </strong>
                             </div>
 
-                        </div>
-
-
-                        <div class="business-stat">
-
-                            <span class="business-stat-icon">
-                                🥩
-                            </span>
-
                             <div>
-                                <span>
+
+                                <div class="product-name">
                                     Total Bahan
-                                </span>
+                                </div>
 
-                                <strong id="totalIngredients">
-                                    0
-                                </strong>
+                                <div class="product-qty">
+                                    Semua bahan baku
+                                </div>
+
                             </div>
 
                         </div>
 
-
-                        <div class="business-stat">
-
-                            <span class="business-stat-icon">
-                                🚚
-                            </span>
-
-                            <div>
-                                <span>
-                                    Supplier Aktif
-                                </span>
-
-                                <strong id="totalSuppliers">
-                                    0
-                                </strong>
-                            </div>
-
+                        <div
+                            class="product-sales"
+                            id="totalIngredients"
+                        >
+                            0
                         </div>
 
                     </div>
 
-                </section>
 
+                    <div class="product-item">
+
+                        <div class="product-info">
+
+                            <div class="product-image">
+                                ⚠️
+                            </div>
+
+                            <div>
+
+                                <div class="product-name">
+                                    Stok Menipis
+                                </div>
+
+                                <div class="product-qty">
+                                    Perlu diperhatikan
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div
+                            class="product-sales"
+                            id="lowStock"
+                            style="color:#dc2626;"
+                        >
+                            0
+                        </div>
+
+                    </div>
+
+
+                    <div class="product-item">
+
+                        <div class="product-info">
+
+                            <div class="product-image">
+                                🛒
+                            </div>
+
+                            <div>
+
+                                <div class="product-name">
+                                    Total Produk
+                                </div>
+
+                                <div class="product-qty">
+                                    Produk / menu aktif
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div
+                            class="product-sales"
+                            id="totalProducts"
+                        >
+                            0
+                        </div>
+
+                    </div>
+
+                </div>
 
             </div>
 
 
-            <!-- =========================
-                 FOOTER
-            ========================== -->
-            <footer class="footer">
+            <!-- TRANSACTIONS -->
 
-                <span>
-                    © <span id="currentYear"></span>
-                    Food Monitoring
-                </span>
+            <div class="card table-card">
 
-                <span>
-                    Sistem Monitoring Bisnis Kuliner
-                </span>
+                <div class="card-header">
 
-            </footer>
+                    <div class="card-title">
+                        Transaksi Terbaru
+                    </div>
 
-        </main>
+                    <a
+                        href="sales.html"
+                        class="card-action"
+                    >
+                        Semua transaksi →
+                    </a>
 
-    </div>
+                </div>
 
 
-    <!-- =========================
-         NOTIFICATION PANEL
-    ========================== -->
-    <div
-        class="notification-panel"
-        id="notificationPanel"
-        aria-hidden="true"
-    >
+                <div class="table-wrapper">
 
-        <div class="notification-header">
+                    <table>
 
-            <div>
-                <h3>
-                    Notifikasi
-                </h3>
+                        <thead>
 
-                <span id="notificationCount">
-                    0 notifikasi
-                </span>
+                            <tr>
+
+                                <th>
+                                    ID
+                                </th>
+
+                                <th>
+                                    TANGGAL
+                                </th>
+
+                                <th>
+                                    CHANNEL
+                                </th>
+
+                                <th>
+                                    TOTAL
+                                </th>
+
+                                <th>
+                                    PEMBAYARAN
+                                </th>
+
+                                <th>
+                                    STATUS
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="recentTransactions">
+
+                            <tr>
+
+                                <td colspan="6"
+                                    style="text-align:center;color:#9ca3af;padding:30px;"
+                                >
+                                    Belum ada transaksi.
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
             </div>
 
-            <button
-                type="button"
-                id="closeNotification"
-                class="panel-close"
-                aria-label="Tutup notifikasi"
-            >
-                ×
-            </button>
-
-        </div>
+        </section>
 
 
-        <div
-            class="notification-list"
-            id="notificationList"
-        >
+        <footer>
+            Food Monitoring © 2026
+        </footer>
 
-            <div class="empty-notification">
-                <span>🔔</span>
+    </main>
 
-                <strong>
-                    Tidak ada notifikasi
-                </strong>
-
-                <small>
-                    Semua kondisi terlihat baik.
-                </small>
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 
-    <!-- =========================
-         TOAST
-    ========================== -->
-    <div
-        class="toast-container"
-        id="toastContainer"
-        aria-live="polite"
-    ></div>
+<script>
+
+    /* =========================
+       FORMAT RUPIAH
+    ========================== */
+
+    function formatRupiah(value) {
+
+        value = Number(value) || 0;
+
+        return new Intl.NumberFormat(
+            'id-ID',
+            {
+                style: 'currency',
+                currency: 'IDR',
+                maximumFractionDigits: 0
+            }
+        ).format(value);
+
+    }
 
 
-    <!-- =========================
-         JAVASCRIPT
-    ========================== -->
-    <script src="js/dashboard.js"></script>
+    /* =========================
+       DATE
+    ========================== */
+
+    function updateDate() {
+
+        const now = new Date();
+
+        const date = now.toLocaleDateString(
+            'id-ID',
+            {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }
+        );
+
+        document.getElementById(
+            'currentDate'
+        ).textContent = date;
+
+    }
+
+
+    /* =========================
+       PERIOD FILTER
+    ========================== */
+
+    function changePeriod(period, button) {
+
+        document
+            .querySelectorAll('.filter-btn')
+            .forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+        button.classList.add('active');
+
+        console.log(
+            'Period:',
+            period
+        );
+
+        /*
+            Nanti di sini kita panggil:
+
+            GET /api/dashboard?period=today
+            GET /api/dashboard?period=week
+            GET /api/dashboard?period=month
+
+            dari server.js
+        */
+
+        loadDashboard(period);
+
+    }
+
+
+    /* =========================
+       DASHBOARD API
+    ========================== */
+
+    async function loadDashboard(period = 'today') {
+
+        /*
+            Untuk sementara menggunakan data kosong.
+
+            Setelah server.js selesai,
+            bagian ini akan diganti menjadi:
+
+            const response = await fetch(
+                `/api/dashboard?period=${period}`
+            );
+
+            const data = await response.json();
+
+            updateDashboard(data);
+        */
+
+        console.log(
+            'Loading dashboard:',
+            period
+        );
+
+    }
+
+
+    /* =========================
+       UPDATE DASHBOARD
+    ========================== */
+
+    function updateDashboard(data) {
+
+        if (!data) return;
+
+
+        document.getElementById(
+            'totalSales'
+        ).textContent =
+            formatRupiah(data.totalSales);
+
+
+        document.getElementById(
+            'totalExpenses'
+        ).textContent =
+            formatRupiah(data.totalExpenses);
+
+
+        document.getElementById(
+            'totalHpp'
+        ).textContent =
+            formatRupiah(data.totalHpp);
+
+
+        document.getElementById(
+            'netProfit'
+        ).textContent =
+            formatRupiah(data.netProfit);
+
+
+        document.getElementById(
+            'totalIngredients'
+        ).textContent =
+            data.totalIngredients || 0;
+
+
+        document.getElementById(
+            'lowStock'
+        ).textContent =
+            data.lowStock || 0;
+
+
+        document.getElementById(
+            'totalProducts'
+        ).textContent =
+            data.totalProducts || 0;
+
+
+        /*
+            Produk terlaris,
+            stok,
+            transaksi terbaru
+            nanti juga di-render dari data API.
+        */
+
+    }
+
+
+    /* =========================
+       MOBILE SIDEBAR
+    ========================== */
+
+    function toggleSidebar() {
+
+        document
+            .getElementById('sidebar')
+            .classList
+            .toggle('show');
+
+    }
+
+
+    /* =========================
+       INITIALIZE
+    ========================== */
+
+    document.addEventListener(
+        'DOMContentLoaded',
+        function () {
+
+            updateDate();
+
+            loadDashboard('today');
+
+        }
+    );
+
+</script>
 
 </body>
 </html>
