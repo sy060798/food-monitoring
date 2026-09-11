@@ -6,219 +6,1155 @@
 
     <title>Food Monitoring - Penjualan</title>
 
-    <meta
-        name="description"
-        content="Kelola transaksi penjualan offline, GrabFood, GoFood, ShopeeFood, diskon, potongan platform, HPP, dan laba."
-    >
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <link rel="stylesheet" href="css/style.css">
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --success: #16a34a;
+            --danger: #dc2626;
+            --warning: #d97706;
+
+            --bg: #f5f7fb;
+            --card: #ffffff;
+            --text: #111827;
+            --muted: #6b7280;
+            --border: #e5e7eb;
+
+            --sidebar: #111827;
+            --sidebar-hover: #1f2937;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        /* =========================
+           APP
+        ========================= */
+
+        .app {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* =========================
+           SIDEBAR
+        ========================= */
+
+        .sidebar {
+            width: 250px;
+            background: var(--sidebar);
+            color: white;
+
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .logo {
+            height: 70px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 22px;
+
+            border-bottom:
+                1px solid rgba(255,255,255,.08);
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+
+            background: var(--primary);
+
+            border-radius: 10px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 20px;
+
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .logo-subtitle {
+            font-size: 10px;
+            color: #9ca3af;
+            margin-top: 2px;
+        }
+
+        .menu {
+            padding: 20px 12px;
+        }
+
+        .menu-title {
+            font-size: 11px;
+            color: #6b7280;
+
+            text-transform: uppercase;
+
+            margin:
+                15px 10px 8px;
+
+            font-weight: bold;
+
+            letter-spacing: .5px;
+        }
+
+        .menu a {
+            display: flex;
+            align-items: center;
+
+            gap: 12px;
+
+            text-decoration: none;
+
+            color: #d1d5db;
+
+            padding: 11px 12px;
+
+            border-radius: 8px;
+
+            margin-bottom: 3px;
+
+            font-size: 14px;
+
+            transition: .2s;
+        }
+
+        .menu a:hover {
+            background: var(--sidebar-hover);
+            color: white;
+        }
+
+        .menu a.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .menu-icon {
+            width: 20px;
+            text-align: center;
+        }
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .main {
+            margin-left: 250px;
+
+            width:
+                calc(100% - 250px);
+
+            min-height: 100vh;
+        }
+
+        /* =========================
+           TOPBAR
+        ========================= */
+
+        .topbar {
+            height: 70px;
+
+            background: white;
+
+            border-bottom:
+                1px solid var(--border);
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 0 28px;
+
+            position: sticky;
+            top: 0;
+
+            z-index: 500;
+        }
+
+        .page-title {
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .page-date {
+            color: var(--muted);
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .notification {
+            width: 38px;
+            height: 38px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 8px;
+
+            background: white;
+
+            cursor: pointer;
+
+            position: relative;
+        }
+
+        .notification-dot {
+            width: 7px;
+            height: 7px;
+
+            background: var(--danger);
+
+            border-radius: 50%;
+
+            position: absolute;
+
+            right: 7px;
+            top: 7px;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .avatar {
+            width: 38px;
+            height: 38px;
+
+            background: #dbeafe;
+
+            color: var(--primary);
+
+            border-radius: 50%;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-weight: bold;
+        }
+
+        .profile-name {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .profile-role {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        /* =========================
+           CONTENT
+        ========================= */
+
+        .content {
+            padding: 28px;
+        }
+
+        .page-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            margin-bottom: 22px;
+        }
+
+        .page-heading h2 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .page-heading p {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        .btn {
+            border: none;
+
+            border-radius: 8px;
+
+            padding:
+                11px 16px;
+
+            cursor: pointer;
+
+            font-size: 13px;
+
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        .btn-danger {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .btn-success {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        /* =========================
+           STATS
+        ========================= */
+
+        .stats {
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, 1fr);
+
+            gap: 16px;
+
+            margin-bottom: 22px;
+        }
+
+        .stat-card {
+            background: white;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 11px;
+
+            padding: 18px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .stat-value {
+            font-size: 22px;
+
+            font-weight: bold;
+
+            margin-top: 9px;
+        }
+
+        /* =========================
+           CARD
+        ========================= */
+
+        .card {
+            background: white;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 11px;
+
+            overflow: hidden;
+        }
+
+        .card-header {
+            padding: 18px 20px;
+
+            border-bottom:
+                1px solid var(--border);
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+        }
+
+        .card-title {
+            font-size: 15px;
+            font-weight: bold;
+        }
+
+        .card-subtitle {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 4px;
+        }
+
+        /* =========================
+           TABLE
+        ========================= */
+
+        .table-wrapper {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #f9fafb;
+
+            color: var(--muted);
+
+            font-size: 11px;
+
+            text-align: left;
+
+            padding: 13px;
+
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 14px 13px;
+
+            border-top:
+                1px solid #f0f0f0;
+
+            font-size: 12px;
+
+            white-space: nowrap;
+        }
+
+        .product-name {
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .product-code {
+            color: var(--muted);
+            font-size: 10px;
+            margin-top: 3px;
+        }
+
+        .badge {
+            display: inline-block;
+
+            padding:
+                5px 9px;
+
+            border-radius: 20px;
+
+            font-size: 10px;
+
+            font-weight: bold;
+        }
+
+        .badge-green {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .badge-yellow {
+            background: #fef3c7;
+            color: #b45309;
+        }
+
+        .badge-red {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .badge-blue {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        .badge-gray {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .action-btn {
+            width: 31px;
+            height: 31px;
+
+            border: none;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+
+            background: #f3f4f6;
+        }
+
+        .action-btn:hover {
+            background: #e5e7eb;
+        }
+
+        /* =========================
+           TOOLBAR
+        ========================= */
+
+        .toolbar {
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            gap: 12px;
+
+            margin-bottom: 18px;
+        }
+
+        .search {
+            flex: 1;
+        }
+
+        .search input,
+        .toolbar select {
+            width: 100%;
+
+            padding:
+                11px 12px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 7px;
+
+            background: white;
+
+            outline: none;
+
+            font-size: 13px;
+        }
+
+        .toolbar select {
+            width: 180px;
+        }
+
+        /* =========================
+           MODAL
+        ========================= */
+
+        .modal-overlay {
+            display: none;
+
+            position: fixed;
+
+            inset: 0;
+
+            background:
+                rgba(0,0,0,.5);
+
+            z-index: 2000;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal {
+            background: white;
+
+            width: 100%;
+
+            max-width: 850px;
+
+            max-height: 92vh;
+
+            overflow-y: auto;
+
+            border-radius: 13px;
+
+            box-shadow:
+                0 20px 50px
+                rgba(0,0,0,.2);
+        }
+
+        .modal-header {
+            padding: 20px;
+
+            border-bottom:
+                1px solid var(--border);
+
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .close {
+            border: none;
+
+            background: none;
+
+            font-size: 22px;
+
+            cursor: pointer;
+
+            color: var(--muted);
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        /* =========================
+           FORM
+        ========================= */
+
+        .form-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 16px;
+        }
+
+        .form-group.full {
+            grid-column:
+                1 / -1;
+        }
+
+        .form-label {
+            display: block;
+
+            font-size: 12px;
+
+            font-weight: bold;
+
+            margin-bottom: 7px;
+        }
+
+        .required {
+            color: var(--danger);
+        }
+
+        .form-control {
+            width: 100%;
+
+            padding:
+                10px 12px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 7px;
+
+            outline: none;
+
+            font-size: 13px;
+
+            background: white;
+        }
+
+        .form-control:focus {
+            border-color:
+                var(--primary);
+        }
+
+        .form-help {
+            font-size: 10px;
+            color: var(--muted);
+            margin-top: 5px;
+        }
+
+        /* =========================
+           CART / DETAIL PENJUALAN
+        ========================= */
+
+        .sale-items {
+            margin-top: 20px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 9px;
+
+            overflow: hidden;
+        }
+
+        .sale-items-header {
+            padding: 13px;
+
+            background: #f9fafb;
+
+            font-size: 12px;
+
+            font-weight: bold;
+        }
+
+        .sale-item {
+            display: grid;
+
+            grid-template-columns:
+                2fr 90px 130px 110px 40px;
+
+            gap: 8px;
+
+            align-items: center;
+
+            padding: 10px;
+
+            border-top:
+                1px solid var(--border);
+        }
+
+        .sale-item select,
+        .sale-item input {
+            width: 100%;
+
+            padding: 9px;
+
+            border:
+                1px solid var(--border);
+
+            border-radius: 6px;
+
+            outline: none;
+
+            font-size: 12px;
+        }
+
+        .sale-item-total {
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        .remove-item {
+            border: none;
+
+            background: #fee2e2;
+
+            color: #b91c1c;
+
+            width: 30px;
+            height: 30px;
+
+            border-radius: 6px;
+
+            cursor: pointer;
+        }
+
+        .add-item {
+            margin-top: 10px;
+        }
+
+        /* =========================
+           TOTAL
+        ========================= */
+
+        .summary {
+            margin-top: 20px;
+
+            display: flex;
+
+            justify-content:
+                flex-end;
+        }
+
+        .summary-box {
+            width: 320px;
+        }
+
+        .summary-row {
+            display: flex;
+
+            justify-content:
+                space-between;
+
+            padding: 7px 0;
+
+            font-size: 12px;
+        }
+
+        .summary-row.total {
+            border-top:
+                1px solid var(--border);
+
+            margin-top: 8px;
+
+            padding-top: 13px;
+
+            font-size: 16px;
+
+            font-weight: bold;
+        }
+
+        .modal-footer {
+            padding:
+                16px 20px;
+
+            border-top:
+                1px solid var(--border);
+
+            display: flex;
+
+            justify-content:
+                flex-end;
+
+            gap: 8px;
+        }
+
+        /* =========================
+           DETAIL
+        ========================= */
+
+        .detail-grid {
+            display: grid;
+
+            grid-template-columns:
+                repeat(2, 1fr);
+
+            gap: 12px;
+
+            margin-bottom: 20px;
+        }
+
+        .detail-box {
+            background: #f9fafb;
+
+            border-radius: 8px;
+
+            padding: 13px;
+        }
+
+        .detail-label {
+            color: var(--muted);
+
+            font-size: 10px;
+
+            margin-bottom: 5px;
+        }
+
+        .detail-value {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        .mobile-menu {
+            display: none;
+
+            border: none;
+
+            background: none;
+
+            font-size: 22px;
+
+            cursor: pointer;
+        }
+
+        @media (max-width: 1050px) {
+
+            .stats {
+                grid-template-columns:
+                    repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 768px) {
+
+            .sidebar {
+                transform:
+                    translateX(-100%);
+
+                transition: .25s;
+            }
+
+            .sidebar.show {
+                transform:
+                    translateX(0);
+            }
+
+            .main {
+                margin-left: 0;
+
+                width: 100%;
+            }
+
+            .mobile-menu {
+                display: block;
+
+                margin-right: 10px;
+            }
+
+            .content {
+                padding: 18px;
+            }
+
+            .topbar {
+                padding: 0 15px;
+            }
+
+            .profile-info {
+                display: none;
+            }
+
+            .page-heading {
+                flex-direction: column;
+
+                align-items:
+                    flex-start;
+
+                gap: 12px;
+            }
+
+            .toolbar {
+                flex-direction:
+                    column;
+            }
+
+            .toolbar select {
+                width: 100%;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .sale-item {
+                grid-template-columns:
+                    1fr 80px;
+            }
+
+            .sale-item-total {
+                grid-column:
+                    1 / 2;
+            }
+
+            .remove-item {
+                grid-column:
+                    2 / 3;
+            }
+
+            .summary {
+                justify-content:
+                    stretch;
+            }
+
+            .summary-box {
+                width: 100%;
+            }
+
+            .detail-grid {
+                grid-template-columns: 1fr;
+            }
+
+        }
+    </style>
 </head>
 
 <body>
 
 <div class="app">
 
-    <!-- =====================================================
+    <!-- =================================================
          SIDEBAR
-    ====================================================== -->
-    <aside class="sidebar" id="sidebar">
+    ================================================== -->
 
-        <div class="sidebar-header">
+    <aside
+        class="sidebar"
+        id="sidebar"
+    >
 
-            <a href="index.html" class="brand">
+        <div class="logo">
 
-                <span class="brand-icon">
-                    🍴
-                </span>
+            <div class="logo-icon">
+                🍴
+            </div>
 
-                <span class="brand-text">
-                    <strong>FOOD</strong>
-                    <small>MONITOR</small>
-                </span>
+            <div>
 
+                <div class="logo-text">
+                    Food Monitoring
+                </div>
+
+                <div class="logo-subtitle">
+                    Business Management
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <nav class="menu">
+
+            <div class="menu-title">
+                Utama
+            </div>
+
+            <a href="index.html">
+                <span class="menu-icon">📊</span>
+                Dashboard
             </a>
 
 
-            <button
-                type="button"
-                class="sidebar-close"
-                id="sidebarClose"
-                aria-label="Tutup menu"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <!-- NAVIGATION -->
-        <nav class="sidebar-nav">
-
-            <div class="nav-section">
-
-                <span class="nav-section-title">
-                    Menu Utama
-                </span>
-
-
-                <a
-                    href="index.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">▦</span>
-                    <span class="nav-text">
-                        Dashboard
-                    </span>
-                </a>
-
-
-                <a
-                    href="products.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">📦</span>
-                    <span class="nav-text">
-                        Produk
-                    </span>
-                </a>
-
-
-                <a
-                    href="ingredients.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">🥩</span>
-                    <span class="nav-text">
-                        Bahan
-                    </span>
-                </a>
-
-
-                <a
-                    href="sales.html"
-                    class="nav-item active"
-                >
-                    <span class="nav-icon">🧾</span>
-                    <span class="nav-text">
-                        Penjualan
-                    </span>
-                </a>
-
-
-                <a
-                    href="reports.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">📊</span>
-                    <span class="nav-text">
-                        Laporan
-                    </span>
-                </a>
-
-
-                <a
-                    href="#"
-                    class="nav-item"
-                    id="historyMenu"
-                >
-                    <span class="nav-icon">📜</span>
-                    <span class="nav-text">
-                        History
-                    </span>
-                </a>
-
-
-                <a
-                    href="#"
-                    class="nav-item"
-                    id="supplierMenu"
-                >
-                    <span class="nav-icon">🚚</span>
-                    <span class="nav-text">
-                        Supplier
-                    </span>
-                </a>
-
-
-                <a
-                    href="#"
-                    class="nav-item"
-                    id="settingsMenu"
-                >
-                    <span class="nav-icon">⚙</span>
-                    <span class="nav-text">
-                        Pengaturan
-                    </span>
-                </a>
-
+            <div class="menu-title">
+                Produk & Stok
             </div>
+
+            <a href="products.html">
+                <span class="menu-icon">🍔</span>
+                Produk / Menu
+            </a>
+
+            <a href="ingredients.html">
+                <span class="menu-icon">📦</span>
+                Bahan Baku
+            </a>
+
+            <a href="suppliers.html">
+                <span class="menu-icon">🚚</span>
+                Supplier
+            </a>
+
+
+            <div class="menu-title">
+                Keuangan
+            </div>
+
+            <a
+                href="sales.html"
+                class="active"
+            >
+                <span class="menu-icon">💰</span>
+                Penjualan
+            </a>
+
+            <a href="expenses.html">
+                <span class="menu-icon">💸</span>
+                Pengeluaran
+            </a>
+
+
+            <div class="menu-title">
+                Analisis
+            </div>
+
+            <a href="reports.html">
+                <span class="menu-icon">📈</span>
+                Laporan
+            </a>
+
+
+            <div class="menu-title">
+                Sistem
+            </div>
+
+            <a href="settings.html">
+                <span class="menu-icon">⚙️</span>
+                Pengaturan
+            </a>
 
         </nav>
-
-
-        <!-- SIDEBAR FOOTER -->
-        <div class="sidebar-footer">
-
-            <div class="system-status">
-
-                <span class="status-dot"></span>
-
-                <span>
-                    Sistem aktif
-                </span>
-
-            </div>
-
-            <small>
-                Food Monitoring v1.0
-            </small>
-
-        </div>
 
     </aside>
 
 
-    <!-- =====================================================
-         MOBILE OVERLAY
-    ====================================================== -->
-    <div
-        class="sidebar-overlay"
-        id="sidebarOverlay"
-    ></div>
-
-
-    <!-- =====================================================
+    <!-- =================================================
          MAIN
-    ====================================================== -->
+    ================================================== -->
+
     <main class="main">
 
+        <!-- TOPBAR -->
 
-        <!-- =================================================
-             TOPBAR
-        ================================================== -->
         <header class="topbar">
 
-            <div class="topbar-left">
+            <div
+                style="
+                    display:flex;
+                    align-items:center;
+                "
+            >
 
                 <button
-                    type="button"
-                    class="menu-toggle"
-                    id="menuToggle"
-                    aria-label="Buka menu"
+                    class="mobile-menu"
+                    onclick="toggleSidebar()"
                 >
                     ☰
                 </button>
 
+                <div>
 
-                <div class="page-title">
-
-                    <h1>
+                    <div class="page-title">
                         Penjualan
-                    </h1>
+                    </div>
 
-                    <p>
-                        Input dan kelola transaksi penjualan
-                    </p>
+                    <div
+                        class="page-date"
+                        id="currentDate"
+                    >
+                        Memuat tanggal...
+                    </div>
 
                 </div>
 
@@ -227,39 +1163,27 @@
 
             <div class="topbar-right">
 
-                <button
-                    type="button"
-                    class="icon-button notification-button"
-                    id="notificationButton"
-                    aria-label="Notifikasi"
-                >
+                <button class="notification">
                     🔔
-
-                    <span
-                        class="notification-badge"
-                        id="notificationBadge"
-                    >
-                        0
-                    </span>
-
+                    <span class="notification-dot"></span>
                 </button>
 
 
-                <div class="admin-profile">
+                <div class="profile">
 
-                    <div class="admin-avatar">
+                    <div class="avatar">
                         A
                     </div>
 
-                    <div class="admin-info">
+                    <div class="profile-info">
 
-                        <strong>
+                        <div class="profile-name">
                             Admin
-                        </strong>
+                        </div>
 
-                        <small>
+                        <div class="profile-role">
                             Administrator
-                        </small>
+                        </div>
 
                     </div>
 
@@ -270,478 +1194,243 @@
         </header>
 
 
-        <!-- =================================================
-             CONTENT
-        ================================================== -->
-        <div class="content">
+        <!-- CONTENT -->
 
+        <section class="content">
 
-            <!-- =================================================
-                 PAGE HEADER
-            ================================================== -->
-            <section class="page-header">
+            <!-- HEADER -->
+
+            <div class="page-heading">
 
                 <div>
-
-                    <div class="breadcrumb">
-
-                        <a href="index.html">
-                            Dashboard
-                        </a>
-
-                        <span>
-                            ›
-                        </span>
-
-                        <span>
-                            Penjualan
-                        </span>
-
-                    </div>
-
 
                     <h2>
                         Penjualan
                     </h2>
 
                     <p>
-                        Catat transaksi dan pantau penjualan dari berbagai platform.
+                        Catat transaksi penjualan dan pantau
+                        omzet usaha.
                     </p>
 
                 </div>
 
 
                 <button
-                    type="button"
-                    class="primary-button"
-                    id="newSaleButton"
+                    class="btn btn-primary"
+                    onclick="openSaleModal()"
                 >
-                    <span>
-                        ＋
-                    </span>
-
-                    Input Penjualan
+                    + Tambah Penjualan
                 </button>
 
-            </section>
+            </div>
 
 
             <!-- =================================================
-                 SUMMARY
+                 STATISTICS
             ================================================== -->
-            <section class="summary-grid sales-summary-grid">
 
+            <div class="stats">
 
-                <!-- TODAY SALES -->
-                <div class="summary-card">
+                <div class="stat-card">
 
-                    <div class="summary-card-top">
-
-                        <div>
-
-                            <span class="summary-label">
-                                PENJUALAN HARI INI
-                            </span>
-
-                            <h3 id="todaySales">
-                                Rp0
-                            </h3>
-
-                            <span
-                                class="summary-change positive"
-                                id="todaySalesChange"
-                            >
-                                ↑ 0%
-                            </span>
-
-                        </div>
-
-
-                        <div class="summary-icon blue">
-                            💰
-                        </div>
-
+                    <div class="stat-label">
+                        Transaksi Hari Ini
                     </div>
 
-
-                    <div class="summary-card-bottom">
-
-                        <span>
-                            Dibanding kemarin
-                        </span>
-
+                    <div
+                        class="stat-value"
+                        id="todayTransactions"
+                    >
+                        0
                     </div>
 
                 </div>
 
 
-                <!-- TRANSACTIONS -->
-                <div class="summary-card">
+                <div class="stat-card">
 
-                    <div class="summary-card-top">
-
-                        <div>
-
-                            <span class="summary-label">
-                                TRANSAKSI HARI INI
-                            </span>
-
-                            <h3 id="todayTransactionCount">
-                                0
-                            </h3>
-
-                            <span class="summary-change neutral">
-                                transaksi
-                            </span>
-
-                        </div>
-
-
-                        <div class="summary-icon purple">
-                            🧾
-                        </div>
-
+                    <div class="stat-label">
+                        Porsi Terjual
                     </div>
 
-
-                    <div class="summary-card-bottom">
-
-                        <span>
-                            Semua platform
-                        </span>
-
+                    <div
+                        class="stat-value"
+                        id="todayItems"
+                    >
+                        0
                     </div>
 
                 </div>
 
 
-                <!-- HPP -->
-                <div class="summary-card">
+                <div class="stat-card">
 
-                    <div class="summary-card-top">
-
-                        <div>
-
-                            <span class="summary-label">
-                                HPP HARI INI
-                            </span>
-
-                            <h3 id="todayHpp">
-                                Rp0
-                            </h3>
-
-                            <span
-                                class="summary-change neutral"
-                                id="todayHppPercentage"
-                            >
-                                0%
-                            </span>
-
-                        </div>
-
-
-                        <div class="summary-icon orange">
-                            🧮
-                        </div>
-
+                    <div class="stat-label">
+                        Omzet Hari Ini
                     </div>
 
-
-                    <div class="summary-card-bottom">
-
-                        <span>
-                            Harga pokok penjualan
-                        </span>
-
+                    <div
+                        class="stat-value"
+                        id="todayRevenue"
+                    >
+                        Rp0
                     </div>
 
                 </div>
 
 
-                <!-- PROFIT -->
-                <div class="summary-card">
+                <div class="stat-card">
 
-                    <div class="summary-card-top">
-
-                        <div>
-
-                            <span class="summary-label">
-                                LABA HARI INI
-                            </span>
-
-                            <h3 id="todayProfit">
-                                Rp0
-                            </h3>
-
-                            <span
-                                class="summary-change positive"
-                                id="todayProfitMargin"
-                            >
-                                Margin 0%
-                            </span>
-
-                        </div>
-
-
-                        <div class="summary-icon dark">
-                            📈
-                        </div>
-
+                    <div class="stat-label">
+                        Rata-rata Transaksi
                     </div>
 
-
-                    <div class="summary-card-bottom">
-
-                        <span>
-                            Setelah potongan platform
-                        </span>
-
+                    <div
+                        class="stat-value"
+                        id="averageTransaction"
+                    >
+                        Rp0
                     </div>
 
                 </div>
 
-            </section>
+            </div>
 
 
             <!-- =================================================
-                 PLATFORM SUMMARY
+                 TOOLBAR
             ================================================== -->
-            <section class="platform-grid">
 
+            <div class="toolbar">
 
-                <!-- OFFLINE -->
-                <div class="platform-card">
+                <div class="search">
 
-                    <div class="platform-icon offline">
-                        🏪
-                    </div>
-
-                    <div class="platform-info">
-
-                        <span>
-                            Offline
-                        </span>
-
-                        <strong id="offlineSales">
-                            Rp0
-                        </strong>
-
-                        <small id="offlineCount">
-                            0 transaksi
-                        </small>
-
-                    </div>
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Cari nomor transaksi atau produk..."
+                        oninput="filterSales()"
+                    >
 
                 </div>
 
 
-                <!-- GRABFOOD -->
-                <div class="platform-card">
+                <select
+                    id="paymentFilter"
+                    onchange="filterSales()"
+                >
 
-                    <div class="platform-icon grab">
-                        🟢
-                    </div>
+                    <option value="">
+                        Semua pembayaran
+                    </option>
 
-                    <div class="platform-info">
+                    <option value="cash">
+                        Cash
+                    </option>
 
-                        <span>
-                            GrabFood
-                        </span>
+                    <option value="transfer">
+                        Transfer
+                    </option>
 
-                        <strong id="grabSales">
-                            Rp0
-                        </strong>
+                    <option value="qris">
+                        QRIS
+                    </option>
 
-                        <small id="grabCount">
-                            0 transaksi
-                        </small>
+                    <option value="ewallet">
+                        E-Wallet
+                    </option>
 
-                    </div>
+                    <option value="other">
+                        Lainnya
+                    </option>
 
-                </div>
-
-
-                <!-- GOFOOD -->
-                <div class="platform-card">
-
-                    <div class="platform-icon gofood">
-                        🟢
-                    </div>
-
-                    <div class="platform-info">
-
-                        <span>
-                            GoFood
-                        </span>
-
-                        <strong id="gofoodSales">
-                            Rp0
-                        </strong>
-
-                        <small id="gofoodCount">
-                            0 transaksi
-                        </small>
-
-                    </div>
-
-                </div>
+                </select>
 
 
-                <!-- SHOPEEFOOD -->
-                <div class="platform-card">
+                <select
+                    id="dateFilter"
+                    onchange="filterSales()"
+                >
 
-                    <div class="platform-icon shopee">
-                        🟠
-                    </div>
+                    <option value="today">
+                        Hari Ini
+                    </option>
 
-                    <div class="platform-info">
+                    <option value="all">
+                        Semua
+                    </option>
 
-                        <span>
-                            ShopeeFood
-                        </span>
+                    <option value="week">
+                        7 Hari
+                    </option>
 
-                        <strong id="shopeeSales">
-                            Rp0
-                        </strong>
+                    <option value="month">
+                        Bulan Ini
+                    </option>
 
-                        <small id="shopeeCount">
-                            0 transaksi
-                        </small>
+                </select>
 
-                    </div>
-
-                </div>
-
-            </section>
+            </div>
 
 
             <!-- =================================================
                  SALES TABLE
             ================================================== -->
-            <section class="dashboard-card">
 
-                <div class="card-header sales-table-header">
+            <div class="card">
+
+                <div class="card-header">
 
                     <div>
 
-                        <h3>
-                            History Penjualan
-                        </h3>
-
-                        <p>
-                            Semua transaksi penjualan terbaru.
-                        </p>
-
-                    </div>
-
-
-                    <div class="table-actions">
-
-                        <!-- SEARCH -->
-                        <div class="search-box">
-
-                            <span class="search-icon">
-                                🔍
-                            </span>
-
-                            <input
-                                type="search"
-                                id="salesSearch"
-                                placeholder="Cari transaksi..."
-                                autocomplete="off"
-                            >
-
+                        <div class="card-title">
+                            Riwayat Penjualan
                         </div>
 
-
-                        <!-- PLATFORM -->
-                        <select
-                            id="salesPlatformFilter"
-                            class="select-control"
-                        >
-
-                            <option value="all">
-                                Semua Platform
-                            </option>
-
-                            <option value="offline">
-                                Offline
-                            </option>
-
-                            <option value="grabfood">
-                                GrabFood
-                            </option>
-
-                            <option value="gofood">
-                                GoFood
-                            </option>
-
-                            <option value="shopeefood">
-                                ShopeeFood
-                            </option>
-
-                        </select>
-
-
-                        <!-- DATE -->
-                        <input
-                            type="date"
-                            id="salesDateFilter"
-                            class="date-control"
-                        >
+                        <div class="card-subtitle">
+                            Semua transaksi yang tercatat
+                        </div>
 
                     </div>
 
                 </div>
 
 
-                <!-- TABLE -->
                 <div class="table-wrapper">
 
-                    <table class="data-table sales-table">
+                    <table>
 
                         <thead>
 
                             <tr>
 
                                 <th>
-                                    No. Transaksi
+                                    TRANSAKSI
                                 </th>
 
                                 <th>
-                                    Tanggal
+                                    WAKTU
                                 </th>
 
                                 <th>
-                                    Produk
+                                    PRODUK
                                 </th>
 
                                 <th>
-                                    Platform
+                                    QTY
                                 </th>
 
                                 <th>
-                                    Subtotal
+                                    PEMBAYARAN
                                 </th>
 
                                 <th>
-                                    Diskon
+                                    TOTAL
                                 </th>
 
                                 <th>
-                                    Potongan
-                                </th>
-
-                                <th>
-                                    Total Bersih
-                                </th>
-
-                                <th>
-                                    Laba
-                                </th>
-
-                                <th class="text-right">
-                                    Aksi
+                                    AKSI
                                 </th>
 
                             </tr>
@@ -749,21 +1438,26 @@
                         </thead>
 
 
-                        <tbody id="salesTableBody">
+                        <tbody id="salesTable">
 
                             <tr>
 
-                                <td colspan="10">
+                                <td
+                                    colspan="7"
+                                    style="
+                                        text-align:center;
+                                        padding:40px;
+                                        color:#9ca3af;
+                                    "
+                                >
 
-                                    <div class="loading-state">
+                                    Belum ada transaksi.
 
-                                        <div class="loading-spinner"></div>
+                                    <br><br>
 
-                                        <span>
-                                            Memuat transaksi...
-                                        </span>
-
-                                    </div>
+                                    Klik
+                                    <b>+ Tambah Penjualan</b>
+                                    untuk mencatat transaksi.
 
                                 </td>
 
@@ -775,88 +1469,20 @@
 
                 </div>
 
+            </div>
 
-                <!-- FOOTER -->
-                <div class="table-footer">
-
-                    <div class="table-info">
-
-                        Menampilkan
-
-                        <strong id="salesShowingFrom">
-                            0
-                        </strong>
-
-                        -
-
-                        <strong id="salesShowingTo">
-                            0
-                        </strong>
-
-                        dari
-
-                        <strong id="salesTotalItems">
-                            0
-                        </strong>
-
-                        transaksi
-
-                    </div>
+        </section>
 
 
-                    <div class="pagination">
-
-                        <button
-                            type="button"
-                            class="pagination-button"
-                            id="salesPrevPage"
-                            disabled
-                        >
-                            ‹
-                        </button>
-
-
-                        <span
-                            class="pagination-current"
-                            id="salesCurrentPage"
-                        >
-                            1
-                        </span>
-
-
-                        <button
-                            type="button"
-                            class="pagination-button"
-                            id="salesNextPage"
-                        >
-                            ›
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-        </div>
-
-
-        <!-- =================================================
-             FOOTER
-        ================================================== -->
-        <footer class="footer">
-
-            <span>
-                ©
-                <span id="currentYear"></span>
-                Food Monitoring
-            </span>
-
-            <span>
-                Sistem Monitoring Bisnis Kuliner
-            </span>
-
+        <footer
+            style="
+                text-align:center;
+                color:#6b7280;
+                font-size:11px;
+                padding:20px;
+            "
+        >
+            Food Monitoring © 2026
         </footer>
 
     </main>
@@ -865,698 +1491,25 @@
 
 
 <!-- =========================================================
-     INPUT SALES MODAL
+     MODAL TAMBAH PENJUALAN
 ========================================================= -->
+
 <div
     class="modal-overlay"
     id="saleModal"
-    aria-hidden="true"
 >
 
-    <div
-        class="modal modal-extra-large"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="saleModalTitle"
-    >
-
-
-        <!-- MODAL HEADER -->
-        <div class="modal-header">
-
-            <div>
-
-                <h3 id="saleModalTitle">
-                    Input Penjualan
-                </h3>
-
-                <p>
-                    Masukkan detail transaksi penjualan.
-                </p>
-
-            </div>
-
-
-            <button
-                type="button"
-                class="modal-close"
-                id="closeSaleModal"
-                aria-label="Tutup"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <!-- FORM -->
-        <form id="saleForm">
-
-            <div class="modal-body">
-
-
-                <input
-                    type="hidden"
-                    id="saleId"
-                    name="id"
-                >
-
-
-                <!-- =================================================
-                     TRANSACTION INFORMATION
-                ================================================== -->
-                <div class="form-section">
-
-                    <div class="form-section-title">
-
-                        <span class="form-section-icon">
-                            🧾
-                        </span>
-
-                        <div>
-
-                            <h4>
-                                Informasi Transaksi
-                            </h4>
-
-                            <p>
-                                Tentukan tanggal dan platform penjualan.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-grid">
-
-
-                        <!-- DATE -->
-                        <div class="form-group">
-
-                            <label for="saleDate">
-
-                                Tanggal
-
-                                <span class="required">
-                                    *
-                                </span>
-
-                            </label>
-
-                            <input
-                                type="date"
-                                id="saleDate"
-                                name="date"
-                                required
-                            >
-
-                        </div>
-
-
-                        <!-- TIME -->
-                        <div class="form-group">
-
-                            <label for="saleTime">
-                                Jam
-                            </label>
-
-                            <input
-                                type="time"
-                                id="saleTime"
-                                name="time"
-                            >
-
-                        </div>
-
-
-                        <!-- PLATFORM -->
-                        <div class="form-group">
-
-                            <label for="salePlatform">
-
-                                Platform
-
-                                <span class="required">
-                                    *
-                                </span>
-
-                            </label>
-
-                            <select
-                                id="salePlatform"
-                                name="platform"
-                                required
-                            >
-
-                                <option value="">
-                                    Pilih platform
-                                </option>
-
-                                <option value="offline">
-                                    Offline
-                                </option>
-
-                                <option value="grabfood">
-                                    GrabFood
-                                </option>
-
-                                <option value="gofood">
-                                    GoFood
-                                </option>
-
-                                <option value="shopeefood">
-                                    ShopeeFood
-                                </option>
-
-                            </select>
-
-                        </div>
-
-
-                        <!-- ORDER ID -->
-                        <div class="form-group">
-
-                            <label for="saleOrderNumber">
-                                No. Pesanan
-                            </label>
-
-                            <input
-                                type="text"
-                                id="saleOrderNumber"
-                                name="orderNumber"
-                                placeholder="Contoh: ORD-001"
-                            >
-
-                        </div>
-
-
-                        <!-- CUSTOMER -->
-                        <div class="form-group">
-
-                            <label for="saleCustomer">
-                                Nama Pembeli
-                            </label>
-
-                            <input
-                                type="text"
-                                id="saleCustomer"
-                                name="customer"
-                                placeholder="Opsional"
-                            >
-
-                        </div>
-
-
-                        <!-- PAYMENT -->
-                        <div class="form-group">
-
-                            <label for="salePayment">
-                                Metode Pembayaran
-                            </label>
-
-                            <select
-                                id="salePayment"
-                                name="payment"
-                            >
-
-                                <option value="">
-                                    Pilih pembayaran
-                                </option>
-
-                                <option value="cash">
-                                    Cash
-                                </option>
-
-                                <option value="qris">
-                                    QRIS
-                                </option>
-
-                                <option value="transfer">
-                                    Transfer
-                                </option>
-
-                                <option value="ewallet">
-                                    E-Wallet
-                                </option>
-
-                                <option value="platform">
-                                    Pembayaran Platform
-                                </option>
-
-                            </select>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =================================================
-                     PRODUCTS
-                ================================================== -->
-                <div class="form-section">
-
-                    <div class="form-section-title">
-
-                        <span class="form-section-icon">
-                            📦
-                        </span>
-
-                        <div>
-
-                            <h4>
-                                Produk Terjual
-                            </h4>
-
-                            <p>
-                                Tambahkan produk yang dibeli pelanggan.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="sale-products-container">
-
-
-                        <div class="sale-products-header">
-
-                            <strong>
-                                Detail Produk
-                            </strong>
-
-
-                            <button
-                                type="button"
-                                class="secondary-button"
-                                id="addSaleProduct"
-                            >
-                                ＋ Tambah Produk
-                            </button>
-
-                        </div>
-
-
-                        <div class="sale-products-table-wrapper">
-
-                            <table class="data-table sale-products-table">
-
-                                <thead>
-
-                                    <tr>
-
-                                        <th>
-                                            Produk
-                                        </th>
-
-                                        <th width="120">
-                                            Harga
-                                        </th>
-
-                                        <th width="100">
-                                            Qty
-                                        </th>
-
-                                        <th width="150">
-                                            Subtotal
-                                        </th>
-
-                                        <th width="60">
-                                        </th>
-
-                                    </tr>
-
-                                </thead>
-
-
-                                <tbody id="saleProductsBody">
-
-                                    <tr class="sale-product-empty">
-
-                                        <td colspan="5">
-
-                                            <div class="empty-state">
-
-                                                <span>
-                                                    📦
-                                                </span>
-
-                                                <strong>
-                                                    Belum ada produk
-                                                </strong>
-
-                                                <small>
-                                                    Klik "Tambah Produk" untuk memasukkan produk.
-                                                </small>
-
-                                            </div>
-
-                                        </td>
-
-                                    </tr>
-
-                                </tbody>
-
-                            </table>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =================================================
-                     DISCOUNT & PLATFORM FEE
-                ================================================== -->
-                <div class="form-section">
-
-                    <div class="form-section-title">
-
-                        <span class="form-section-icon">
-                            💸
-                        </span>
-
-                        <div>
-
-                            <h4>
-                                Diskon & Potongan
-                            </h4>
-
-                            <p>
-                                Catat diskon pembeli dan potongan dari platform.
-                            </p>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="form-grid">
-
-
-                        <!-- CUSTOMER DISCOUNT TYPE -->
-                        <div class="form-group">
-
-                            <label for="customerDiscountType">
-                                Tipe Diskon Pembeli
-                            </label>
-
-                            <select
-                                id="customerDiscountType"
-                                name="customerDiscountType"
-                            >
-
-                                <option value="nominal">
-                                    Nominal (Rp)
-                                </option>
-
-                                <option value="percentage">
-                                    Persentase (%)
-                                </option>
-
-                            </select>
-
-                        </div>
-
-
-                        <!-- CUSTOMER DISCOUNT -->
-                        <div class="form-group">
-
-                            <label for="customerDiscount">
-                                Diskon Pembeli
-                            </label>
-
-                            <input
-                                type="number"
-                                id="customerDiscount"
-                                name="customerDiscount"
-                                min="0"
-                                step="1"
-                                value="0"
-                                placeholder="0"
-                            >
-
-                        </div>
-
-
-                        <!-- PLATFORM FEE TYPE -->
-                        <div class="form-group">
-
-                            <label for="platformFeeType">
-                                Tipe Potongan Platform
-                            </label>
-
-                            <select
-                                id="platformFeeType"
-                                name="platformFeeType"
-                            >
-
-                                <option value="nominal">
-                                    Nominal (Rp)
-                                </option>
-
-                                <option value="percentage">
-                                    Persentase (%)
-                                </option>
-
-                            </select>
-
-                        </div>
-
-
-                        <!-- PLATFORM FEE -->
-                        <div class="form-group">
-
-                            <label for="platformFee">
-                                Potongan Platform
-                            </label>
-
-                            <input
-                                type="number"
-                                id="platformFee"
-                                name="platformFee"
-                                min="0"
-                                step="1"
-                                value="0"
-                                placeholder="0"
-                            >
-
-                        </div>
-
-
-                        <!-- PLATFORM FEE NOTE -->
-                        <div class="form-group form-group-full">
-
-                            <label for="platformFeeNote">
-                                Keterangan Potongan
-                            </label>
-
-                            <input
-                                type="text"
-                                id="platformFeeNote"
-                                name="platformFeeNote"
-                                placeholder="Contoh: Komisi platform 20%"
-                            >
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =================================================
-                     SALE SUMMARY
-                ================================================== -->
-                <div class="sale-summary">
-
-                    <div class="sale-summary-left">
-
-                        <div class="summary-line">
-
-                            <span>
-                                Subtotal
-                            </span>
-
-                            <strong id="saleSubtotal">
-                                Rp0
-                            </strong>
-
-                        </div>
-
-
-                        <div class="summary-line">
-
-                            <span>
-                                Diskon Pembeli
-                            </span>
-
-                            <strong
-                                class="negative"
-                                id="saleDiscount"
-                            >
-                                - Rp0
-                            </strong>
-
-                        </div>
-
-
-                        <div class="summary-line total">
-
-                            <span>
-                                Total Penjualan
-                            </span>
-
-                            <strong id="saleGrandTotal">
-                                Rp0
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-
-                    <div class="sale-summary-right">
-
-                        <div class="summary-line">
-
-                            <span>
-                                HPP
-                            </span>
-
-                            <strong id="saleHpp">
-                                Rp0
-                            </strong>
-
-                        </div>
-
-
-                        <div class="summary-line">
-
-                            <span>
-                                Potongan Platform
-                            </span>
-
-                            <strong
-                                class="negative"
-                                id="salePlatformFee"
-                            >
-                                - Rp0
-                            </strong>
-
-                        </div>
-
-
-                        <div class="summary-line profit">
-
-                            <span>
-                                Laba Bersih
-                            </span>
-
-                            <strong id="saleNetProfit">
-                                Rp0
-                            </strong>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =================================================
-                     NOTE
-                ================================================== -->
-                <div class="form-group form-group-full">
-
-                    <label for="saleNote">
-                        Catatan Transaksi
-                    </label>
-
-                    <textarea
-                        id="saleNote"
-                        name="note"
-                        rows="3"
-                        placeholder="Catatan tambahan..."
-                    ></textarea>
-
-                </div>
-
-
-            </div>
-
-
-            <!-- =================================================
-                 MODAL FOOTER
-            ================================================== -->
-            <div class="modal-footer">
-
-                <button
-                    type="button"
-                    class="secondary-button"
-                    id="cancelSaleForm"
-                >
-                    Batal
-                </button>
-
-
-                <button
-                    type="submit"
-                    class="primary-button"
-                    id="saveSaleButton"
-                >
-                    💾 Simpan Penjualan
-                </button>
-
-            </div>
-
-        </form>
-
-    </div>
-
-</div>
-
-
-<!-- =========================================================
-     SALE DETAIL MODAL
-========================================================= -->
-<div
-    class="modal-overlay"
-    id="saleDetailModal"
-    aria-hidden="true"
->
-
-    <div
-        class="modal modal-large"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="saleDetailTitle"
-    >
+    <div class="modal">
 
         <div class="modal-header">
 
-            <div>
-
-                <h3 id="saleDetailTitle">
-                    Detail Penjualan
-                </h3>
-
-                <p id="saleDetailSubtitle">
-                    -
-                </p>
-
+            <div class="modal-title">
+                Tambah Penjualan
             </div>
 
-
             <button
-                type="button"
-                class="modal-close"
-                id="closeSaleDetailModal"
-                aria-label="Tutup"
+                class="close"
+                onclick="closeSaleModal()"
             >
                 ×
             </button>
@@ -1566,20 +1519,188 @@
 
         <div class="modal-body">
 
+            <div class="form-grid">
+
+                <!-- TANGGAL -->
+
+                <div class="form-group">
+
+                    <label class="form-label">
+
+                        Tanggal & Waktu
+                        <span class="required">*</span>
+
+                    </label>
+
+                    <input
+                        type="datetime-local"
+                        id="saleDate"
+                        class="form-control"
+                    >
+
+                </div>
+
+
+                <!-- PAYMENT -->
+
+                <div class="form-group">
+
+                    <label class="form-label">
+
+                        Metode Pembayaran
+                        <span class="required">*</span>
+
+                    </label>
+
+                    <select
+                        id="paymentMethod"
+                        class="form-control"
+                    >
+
+                        <option value="cash">
+                            Cash
+                        </option>
+
+                        <option value="transfer">
+                            Transfer
+                        </option>
+
+                        <option value="qris">
+                            QRIS
+                        </option>
+
+                        <option value="ewallet">
+                            E-Wallet
+                        </option>
+
+                        <option value="other">
+                            Lainnya
+                        </option>
+
+                    </select>
+
+                </div>
+
+            </div>
+
+
+            <!-- =================================================
+                 ITEMS
+            ================================================== -->
+
+            <div class="sale-items">
+
+                <div class="sale-items-header">
+
+                    Produk yang Terjual
+
+                </div>
+
+
+                <div id="saleItemsContainer">
+
+                    <!-- ITEM AKAN DITAMBAHKAN JS -->
+
+                </div>
+
+            </div>
+
+
+            <button
+                class="btn btn-secondary add-item"
+                onclick="addSaleItem()"
+            >
+                + Tambah Produk
+            </button>
+
+
+            <!-- =================================================
+                 DISCOUNT & SUMMARY
+            ================================================== -->
+
             <div
-                class="sale-detail-content"
-                id="saleDetailContent"
+                class="form-grid"
+                style="margin-top:20px;"
             >
 
-                <!-- Diisi oleh sales.js -->
+                <div class="form-group">
 
-                <div class="loading-state">
+                    <label class="form-label">
+                        Diskon
+                    </label>
 
-                    <div class="loading-spinner"></div>
+                    <input
+                        type="number"
+                        id="discount"
+                        class="form-control"
+                        min="0"
+                        step="1"
+                        value="0"
+                        oninput="calculateSaleTotal()"
+                    >
 
-                    <span>
-                        Memuat detail transaksi...
-                    </span>
+                </div>
+
+
+                <div class="form-group">
+
+                    <label class="form-label">
+                        Catatan
+                    </label>
+
+                    <input
+                        type="text"
+                        id="saleNotes"
+                        class="form-control"
+                        placeholder="Catatan transaksi..."
+                    >
+
+                </div>
+
+            </div>
+
+
+            <div class="summary">
+
+                <div class="summary-box">
+
+                    <div class="summary-row">
+
+                        <span>
+                            Subtotal
+                        </span>
+
+                        <strong id="saleSubtotal">
+                            Rp0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Diskon
+                        </span>
+
+                        <strong id="saleDiscount">
+                            Rp0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-row total">
+
+                        <span>
+                            TOTAL
+                        </span>
+
+                        <span id="saleTotal">
+                            Rp0
+                        </span>
+
+                    </div>
 
                 </div>
 
@@ -1591,9 +1712,67 @@
         <div class="modal-footer">
 
             <button
-                type="button"
-                class="secondary-button"
-                id="closeSaleDetailButton"
+                class="btn btn-secondary"
+                onclick="closeSaleModal()"
+            >
+                Batal
+            </button>
+
+            <button
+                class="btn btn-primary"
+                onclick="saveSale()"
+            >
+                Simpan Penjualan
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     MODAL DETAIL
+========================================================= -->
+
+<div
+    class="modal-overlay"
+    id="detailModal"
+>
+
+    <div class="modal">
+
+        <div class="modal-header">
+
+            <div class="modal-title">
+                Detail Transaksi
+            </div>
+
+            <button
+                class="close"
+                onclick="closeDetailModal()"
+            >
+                ×
+            </button>
+
+        </div>
+
+
+        <div class="modal-body">
+
+            <div
+                id="saleDetailContent"
+            ></div>
+
+        </div>
+
+
+        <div class="modal-footer">
+
+            <button
+                class="btn btn-secondary"
+                onclick="closeDetailModal()"
             >
                 Tutup
             </button>
@@ -1605,159 +1784,1844 @@
 </div>
 
 
-<!-- =========================================================
-     DELETE SALE MODAL
-========================================================= -->
-<div
-    class="modal-overlay"
-    id="deleteSaleModal"
-    aria-hidden="true"
->
+<script>
 
-    <div
-        class="modal modal-small"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="deleteSaleTitle"
-    >
+    /* =====================================================
+       DATA
+    ====================================================== */
 
-        <div class="modal-body delete-confirmation">
+    let sales = [];
 
-            <div class="delete-icon">
-                🗑️
+    let products = [];
+
+    let saleItemCounter = 0;
+
+
+    /* =====================================================
+       PAYMENT LABEL
+    ====================================================== */
+
+    const paymentLabels = {
+
+        cash:
+            'Cash',
+
+        transfer:
+            'Transfer',
+
+        qris:
+            'QRIS',
+
+        ewallet:
+            'E-Wallet',
+
+        other:
+            'Lainnya'
+
+    };
+
+
+    /* =====================================================
+       DATE
+    ====================================================== */
+
+    function updateDate() {
+
+        const now =
+            new Date();
+
+
+        document.getElementById(
+            'currentDate'
+        ).textContent =
+            now.toLocaleDateString(
+                'id-ID',
+                {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                }
+            );
+
+    }
+
+
+    /* =====================================================
+       SIDEBAR
+    ====================================================== */
+
+    function toggleSidebar() {
+
+        document
+            .getElementById('sidebar')
+            .classList
+            .toggle('show');
+
+    }
+
+
+    /* =====================================================
+       CURRENT DATETIME
+    ====================================================== */
+
+    function getCurrentDateTimeLocal() {
+
+        const now =
+            new Date();
+
+
+        const offset =
+            now.getTimezoneOffset();
+
+
+        const local =
+            new Date(
+                now.getTime() -
+                offset * 60000
+            );
+
+
+        return local
+            .toISOString()
+            .slice(
+                0,
+                16
+            );
+
+    }
+
+
+    /* =====================================================
+       OPEN SALE MODAL
+    ====================================================== */
+
+    function openSaleModal() {
+
+        document
+            .getElementById(
+                'saleModal'
+            )
+            .classList
+            .add('show');
+
+
+        document.getElementById(
+            'saleDate'
+        ).value =
+            getCurrentDateTimeLocal();
+
+
+        document.getElementById(
+            'paymentMethod'
+        ).value =
+            'cash';
+
+
+        document.getElementById(
+            'discount'
+        ).value =
+            0;
+
+
+        document.getElementById(
+            'saleNotes'
+        ).value =
+            '';
+
+
+        document.getElementById(
+            'saleItemsContainer'
+        ).innerHTML =
+            '';
+
+
+        saleItemCounter = 0;
+
+
+        addSaleItem();
+
+        calculateSaleTotal();
+
+    }
+
+
+    /* =====================================================
+       CLOSE SALE MODAL
+    ====================================================== */
+
+    function closeSaleModal() {
+
+        document
+            .getElementById(
+                'saleModal'
+            )
+            .classList
+            .remove('show');
+
+    }
+
+
+    /* =====================================================
+       ADD SALE ITEM
+    ====================================================== */
+
+    function addSaleItem() {
+
+        saleItemCounter++;
+
+
+        const id =
+            saleItemCounter;
+
+
+        const container =
+            document.getElementById(
+                'saleItemsContainer'
+            );
+
+
+        const item =
+            document.createElement(
+                'div'
+            );
+
+
+        item.className =
+            'sale-item';
+
+
+        item.dataset.itemId =
+            id;
+
+
+        item.innerHTML = `
+
+            <select
+                class="product-select"
+                onchange="productChanged(${id})"
+            >
+
+                <option value="">
+                    Pilih produk...
+                </option>
+
+                ${products.map(
+                    product => `
+
+                        <option
+                            value="${product.id}"
+                            data-price="${product.price}"
+                        >
+
+                            ${escapeHtml(
+                                product.name
+                            )}
+
+                            —
+                            ${formatRupiah(
+                                product.price
+                            )}
+
+                        </option>
+
+                    `
+                ).join('')}
+
+            </select>
+
+
+            <input
+                type="number"
+                class="quantity-input"
+                min="1"
+                value="1"
+                onchange="calculateSaleTotal()"
+                oninput="calculateSaleTotal()"
+                title="Jumlah"
+            >
+
+
+            <input
+                type="number"
+                class="price-input"
+                min="0"
+                step="1"
+                value="0"
+                onchange="calculateSaleTotal()"
+                oninput="calculateSaleTotal()"
+                title="Harga jual"
+            >
+
+
+            <div class="sale-item-total">
+                Rp0
             </div>
 
 
-            <h3 id="deleteSaleTitle">
-                Hapus Transaksi?
-            </h3>
-
-
-            <p>
-
-                Transaksi
-
-                <strong id="deleteSaleNumber">
-                    -
-                </strong>
-
-                akan dihapus.
-
-            </p>
-
-
-            <p class="warning-text">
-
-                Stok bahan yang terkait akan dikembalikan
-                apabila transaksi sudah memotong stok.
-
-            </p>
-
-        </div>
-
-
-        <div class="modal-footer">
-
             <button
-                type="button"
-                class="secondary-button"
-                id="cancelDeleteSale"
+                class="remove-item"
+                onclick="removeSaleItem(${id})"
+                title="Hapus"
             >
-                Batal
+                ×
             </button>
 
-
-            <button
-                type="button"
-                class="danger-button"
-                id="confirmDeleteSale"
-            >
-                Hapus Transaksi
-            </button>
-
-        </div>
-
-    </div>
-
-</div>
+        `;
 
 
-<!-- =========================================================
-     NOTIFICATION PANEL
-========================================================= -->
-<div
-    class="notification-panel"
-    id="notificationPanel"
-    aria-hidden="true"
->
+        container.appendChild(
+            item
+        );
 
-    <div class="notification-header">
-
-        <div>
-
-            <h3>
-                Notifikasi
-            </h3>
-
-            <span id="notificationCount">
-                0 notifikasi
-            </span>
-
-        </div>
+    }
 
 
-        <button
-            type="button"
-            class="panel-close"
-            id="closeNotification"
-            aria-label="Tutup notifikasi"
-        >
-            ×
-        </button>
+    /* =====================================================
+       PRODUCT CHANGED
+    ====================================================== */
 
-    </div>
+    function productChanged(
+        itemId
+    ) {
 
-
-    <div
-        class="notification-list"
-        id="notificationList"
-    >
-
-        <div class="empty-notification">
-
-            <span>
-                🔔
-            </span>
-
-            <strong>
-                Tidak ada notifikasi
-            </strong>
-
-            <small>
-                Semua kondisi terlihat baik.
-            </small>
-
-        </div>
-
-    </div>
-
-</div>
+        const item =
+            document.querySelector(
+                `.sale-item[data-item-id="${itemId}"]`
+            );
 
 
-<!-- =========================================================
-     TOAST
-========================================================= -->
-<div
-    class="toast-container"
-    id="toastContainer"
-    aria-live="polite"
-></div>
+        if (!item) return;
 
 
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
-<script src="js/sales.js"></script>
+        const select =
+            item.querySelector(
+                '.product-select'
+            );
+
+
+        const priceInput =
+            item.querySelector(
+                '.price-input'
+            );
+
+
+        const option =
+            select.options[
+                select.selectedIndex
+            ];
+
+
+        if (
+            option &&
+            option.dataset.price
+        ) {
+
+            priceInput.value =
+                Number(
+                    option.dataset.price
+                ) || 0;
+
+        } else {
+
+            priceInput.value =
+                0;
+
+        }
+
+
+        calculateSaleTotal();
+
+    }
+
+
+    /* =====================================================
+       REMOVE ITEM
+    ====================================================== */
+
+    function removeSaleItem(
+        itemId
+    ) {
+
+        const item =
+            document.querySelector(
+                `.sale-item[data-item-id="${itemId}"]`
+            );
+
+
+        if (item) {
+
+            item.remove();
+
+        }
+
+
+        calculateSaleTotal();
+
+    }
+
+
+    /* =====================================================
+       CALCULATE TOTAL
+    ====================================================== */
+
+    function calculateSaleTotal() {
+
+        const items =
+            document.querySelectorAll(
+                '.sale-item'
+            );
+
+
+        let subtotal = 0;
+
+
+        items.forEach(
+            item => {
+
+                const quantity =
+                    Number(
+                        item.querySelector(
+                            '.quantity-input'
+                        ).value
+                    ) || 0;
+
+
+                const price =
+                    Number(
+                        item.querySelector(
+                            '.price-input'
+                        ).value
+                    ) || 0;
+
+
+                const total =
+                    quantity *
+                    price;
+
+
+                subtotal +=
+                    total;
+
+
+                item.querySelector(
+                    '.sale-item-total'
+                ).textContent =
+                    formatRupiah(
+                        total
+                    );
+
+            }
+        );
+
+
+        const discount =
+            Number(
+                document.getElementById(
+                    'discount'
+                ).value
+            ) || 0;
+
+
+        const finalTotal =
+            Math.max(
+                0,
+                subtotal -
+                discount
+            );
+
+
+        document.getElementById(
+            'saleSubtotal'
+        ).textContent =
+            formatRupiah(
+                subtotal
+            );
+
+
+        document.getElementById(
+            'saleDiscount'
+        ).textContent =
+            formatRupiah(
+                discount
+            );
+
+
+        document.getElementById(
+            'saleTotal'
+        ).textContent =
+            formatRupiah(
+                finalTotal
+            );
+
+    }
+
+
+    /* =====================================================
+       SAVE SALE
+    ====================================================== */
+
+    function saveSale() {
+
+        const date =
+            document.getElementById(
+                'saleDate'
+            ).value;
+
+
+        const paymentMethod =
+            document.getElementById(
+                'paymentMethod'
+            ).value;
+
+
+        const discount =
+            Number(
+                document.getElementById(
+                    'discount'
+                ).value
+            ) || 0;
+
+
+        const notes =
+            document.getElementById(
+                'saleNotes'
+            ).value.trim();
+
+
+        if (!date) {
+
+            alert(
+                'Tanggal transaksi wajib diisi.'
+            );
+
+            return;
+
+        }
+
+
+        const itemElements =
+            document.querySelectorAll(
+                '.sale-item'
+            );
+
+
+        if (!itemElements.length) {
+
+            alert(
+                'Tambahkan minimal satu produk.'
+            );
+
+            return;
+
+        }
+
+
+        const items = [];
+
+
+        itemElements.forEach(
+            item => {
+
+                const productId =
+                    item.querySelector(
+                        '.product-select'
+                    ).value;
+
+
+                const quantity =
+                    Number(
+                        item.querySelector(
+                            '.quantity-input'
+                        ).value
+                    ) || 0;
+
+
+                const price =
+                    Number(
+                        item.querySelector(
+                            '.price-input'
+                        ).value
+                    ) || 0;
+
+
+                if (
+                    productId &&
+                    quantity > 0
+                ) {
+
+                    const product =
+                        products.find(
+                            p =>
+                                String(p.id) ===
+                                String(productId)
+                        );
+
+
+                    items.push({
+
+                        productId,
+
+                        productName:
+                            product
+                                ? product.name
+                                : 'Produk',
+
+                        quantity,
+
+                        price,
+
+                        subtotal:
+                            quantity *
+                            price
+
+                    });
+
+                }
+
+            }
+        );
+
+
+        if (!items.length) {
+
+            alert(
+                'Pilih minimal satu produk.'
+            );
+
+            return;
+
+        }
+
+
+        const subtotal =
+            items.reduce(
+                (
+                    total,
+                    item
+                ) =>
+                    total +
+                    item.subtotal,
+                0
+            );
+
+
+        if (
+            discount >
+            subtotal
+        ) {
+
+            alert(
+                'Diskon tidak boleh lebih besar dari subtotal.'
+            );
+
+            return;
+
+        }
+
+
+        const total =
+            subtotal -
+            discount;
+
+
+        const sale = {
+
+            id:
+                generateTransactionId(),
+
+            date,
+
+            paymentMethod,
+
+            items,
+
+            subtotal,
+
+            discount,
+
+            total,
+
+            notes,
+
+            createdAt:
+                new Date().toISOString()
+
+        };
+
+
+        sales.unshift(
+            sale
+        );
+
+
+        renderSales();
+
+        updateStats();
+
+        closeSaleModal();
+
+
+        /*
+            =================================================
+            NANTI TERHUBUNG KE SERVER.JS
+            =================================================
+
+            POST /api/sales
+
+            body:
+
+            {
+                date,
+                paymentMethod,
+                items,
+                subtotal,
+                discount,
+                total,
+                notes
+            }
+
+
+            SERVER.JS AKAN:
+
+            1. Validasi transaksi
+            2. Simpan sales
+            3. Simpan sale_items
+            4. Ambil recipe_items dari produk
+            5. Hitung kebutuhan bahan
+            6. Kurangi stok ingredients
+            7. Simpan stock_movements
+            8. Hitung HPP
+            9. Simpan / update profit
+            10. Commit transaction
+
+
+            Contoh:
+
+            Terjual 10 Ayam Geprek
+
+            recipe:
+
+            Beras 150 gram
+            Ayam 80 gram
+            Telur 1 pcs
+            Bawang 10 gram
+            Minyak 15 ml
+
+
+            maka server menghitung:
+
+            Beras
+            150 x 10
+            = 1.500 gram
+
+            Ayam
+            80 x 10
+            = 800 gram
+
+            Telur
+            1 x 10
+            = 10 pcs
+
+            Bawang
+            10 x 10
+            = 100 gram
+
+            Minyak
+            15 x 10
+            = 150 ml
+
+
+            lalu stok otomatis dikurangi.
+
+        */
+
+    }
+
+
+    /* =====================================================
+       GENERATE TRANSACTION ID
+    ====================================================== */
+
+    function generateTransactionId() {
+
+        const now =
+            new Date();
+
+
+        const year =
+            now.getFullYear();
+
+
+        const month =
+            String(
+                now.getMonth() + 1
+            ).padStart(
+                2,
+                '0'
+            );
+
+
+        const day =
+            String(
+                now.getDate()
+            ).padStart(
+                2,
+                '0'
+            );
+
+
+        const random =
+            Math.floor(
+                1000 +
+                Math.random() *
+                9000
+            );
+
+
+        return `TRX-${year}${month}${day}-${random}`;
+
+    }
+
+
+    /* =====================================================
+       RENDER SALES
+    ====================================================== */
+
+    function renderSales(
+        data = sales
+    ) {
+
+        const tbody =
+            document.getElementById(
+                'salesTable'
+            );
+
+
+        if (!data.length) {
+
+            tbody.innerHTML = `
+
+                <tr>
+
+                    <td
+                        colspan="7"
+                        style="
+                            text-align:center;
+                            padding:40px;
+                            color:#9ca3af;
+                        "
+                    >
+
+                        Tidak ada transaksi.
+
+                    </td>
+
+                </tr>
+
+            `;
+
+            return;
+
+        }
+
+
+        tbody.innerHTML =
+            data.map(
+                sale => {
+
+                    const totalQty =
+                        sale.items.reduce(
+                            (
+                                total,
+                                item
+                            ) =>
+                                total +
+                                Number(
+                                    item.quantity
+                                ),
+                            0
+                        );
+
+
+                    const productNames =
+                        sale.items
+                            .map(
+                                item =>
+                                    item.productName
+                            )
+                            .join(
+                                ', '
+                            );
+
+
+                    return `
+
+                        <tr>
+
+                            <td>
+
+                                <div class="product-name">
+                                    ${escapeHtml(
+                                        sale.id
+                                    )}
+                                </div>
+
+                            </td>
+
+
+                            <td>
+
+                                ${formatDateTime(
+                                    sale.date
+                                )}
+
+                            </td>
+
+
+                            <td>
+
+                                <div
+                                    style="
+                                        max-width:250px;
+                                        overflow:hidden;
+                                        text-overflow:ellipsis;
+                                    "
+                                >
+
+                                    ${escapeHtml(
+                                        productNames
+                                    )}
+
+                                </div>
+
+                            </td>
+
+
+                            <td>
+
+                                ${formatNumber(
+                                    totalQty
+                                )}
+
+                            </td>
+
+
+                            <td>
+
+                                <span
+                                    class="
+                                        badge
+                                        badge-blue
+                                    "
+                                >
+
+                                    ${paymentLabels[
+                                        sale.paymentMethod
+                                    ] || 'Lainnya'}
+
+                                </span>
+
+                            </td>
+
+
+                            <td>
+
+                                <strong>
+                                    ${formatRupiah(
+                                        sale.total
+                                    )}
+                                </strong>
+
+                            </td>
+
+
+                            <td>
+
+                                <div class="action-buttons">
+
+                                    <button
+                                        class="action-btn"
+                                        title="Detail"
+                                        onclick="
+                                            showSaleDetail(
+                                                '${sale.id}'
+                                            )
+                                        "
+                                    >
+                                        👁️
+                                    </button>
+
+
+                                    <button
+                                        class="action-btn"
+                                        title="Hapus"
+                                        onclick="
+                                            deleteSale(
+                                                '${sale.id}'
+                                            )
+                                        "
+                                    >
+                                        🗑️
+                                    </button>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+
+                    `;
+
+                }
+            ).join('');
+
+    }
+
+
+    /* =====================================================
+       FILTER
+    ====================================================== */
+
+    function filterSales() {
+
+        const search =
+            document.getElementById(
+                'searchInput'
+            ).value
+                .toLowerCase()
+                .trim();
+
+
+        const payment =
+            document.getElementById(
+                'paymentFilter'
+            ).value;
+
+
+        const dateFilter =
+            document.getElementById(
+                'dateFilter'
+            ).value;
+
+
+        const now =
+            new Date();
+
+
+        const filtered =
+            sales.filter(
+                sale => {
+
+                    const text =
+                        (
+                            sale.id +
+                            ' ' +
+                            sale.items
+                                .map(
+                                    item =>
+                                        item.productName
+                                )
+                                .join(' ')
+                        )
+                            .toLowerCase();
+
+
+                    const matchesSearch =
+                        !search ||
+                        text.includes(
+                            search
+                        );
+
+
+                    const matchesPayment =
+                        !payment ||
+                        sale.paymentMethod ===
+                            payment;
+
+
+                    const saleDate =
+                        new Date(
+                            sale.date
+                        );
+
+
+                    let matchesDate =
+                        true;
+
+
+                    if (
+                        dateFilter ===
+                        'today'
+                    ) {
+
+                        matchesDate =
+                            saleDate
+                                .toDateString() ===
+                            now.toDateString();
+
+                    }
+
+
+                    if (
+                        dateFilter ===
+                        'week'
+                    ) {
+
+                        const weekAgo =
+                            new Date(
+                                now
+                            );
+
+
+                        weekAgo.setDate(
+                            now.getDate() -
+                            7
+                        );
+
+
+                        matchesDate =
+                            saleDate >=
+                            weekAgo;
+
+                    }
+
+
+                    if (
+                        dateFilter ===
+                        'month'
+                    ) {
+
+                        matchesDate =
+                            saleDate
+                                .getMonth() ===
+                                now.getMonth() &&
+                            saleDate
+                                .getFullYear() ===
+                                now.getFullYear();
+
+                    }
+
+
+                    return (
+                        matchesSearch &&
+                        matchesPayment &&
+                        matchesDate
+                    );
+
+                }
+            );
+
+
+        renderSales(
+            filtered
+        );
+
+    }
+
+
+    /* =====================================================
+       STATS
+    ====================================================== */
+
+    function updateStats() {
+
+        const now =
+            new Date();
+
+
+        const todaySales =
+            sales.filter(
+                sale => {
+
+                    const date =
+                        new Date(
+                            sale.date
+                        );
+
+
+                    return (
+                        date.toDateString() ===
+                        now.toDateString()
+                    );
+
+                }
+            );
+
+
+        const transactions =
+            todaySales.length;
+
+
+        const items =
+            todaySales.reduce(
+                (
+                    total,
+                    sale
+                ) => {
+
+                    return (
+                        total +
+                        sale.items.reduce(
+                            (
+                                sum,
+                                item
+                            ) =>
+                                sum +
+                                Number(
+                                    item.quantity
+                                ),
+                            0
+                        )
+                    );
+
+                },
+                0
+            );
+
+
+        const revenue =
+            todaySales.reduce(
+                (
+                    total,
+                    sale
+                ) =>
+                    total +
+                    Number(
+                        sale.total
+                    ),
+                0
+            );
+
+
+        const average =
+            transactions
+                ? revenue /
+                  transactions
+                : 0;
+
+
+        document.getElementById(
+            'todayTransactions'
+        ).textContent =
+            formatNumber(
+                transactions
+            );
+
+
+        document.getElementById(
+            'todayItems'
+        ).textContent =
+            formatNumber(
+                items
+            );
+
+
+        document.getElementById(
+            'todayRevenue'
+        ).textContent =
+            formatRupiah(
+                revenue
+            );
+
+
+        document.getElementById(
+            'averageTransaction'
+        ).textContent =
+            formatRupiah(
+                average
+            );
+
+    }
+
+
+    /* =====================================================
+       DETAIL
+    ====================================================== */
+
+    function showSaleDetail(
+        id
+    ) {
+
+        const sale =
+            sales.find(
+                item =>
+                    item.id === id
+            );
+
+
+        if (!sale) return;
+
+
+        const container =
+            document.getElementById(
+                'saleDetailContent'
+            );
+
+
+        container.innerHTML = `
+
+            <div class="detail-grid">
+
+                <div class="detail-box">
+
+                    <div class="detail-label">
+                        Nomor Transaksi
+                    </div>
+
+                    <div class="detail-value">
+                        ${escapeHtml(
+                            sale.id
+                        )}
+                    </div>
+
+                </div>
+
+
+                <div class="detail-box">
+
+                    <div class="detail-label">
+                        Waktu
+                    </div>
+
+                    <div class="detail-value">
+                        ${formatDateTime(
+                            sale.date
+                        )}
+                    </div>
+
+                </div>
+
+
+                <div class="detail-box">
+
+                    <div class="detail-label">
+                        Pembayaran
+                    </div>
+
+                    <div class="detail-value">
+
+                        ${paymentLabels[
+                            sale.paymentMethod
+                        ] || 'Lainnya'}
+
+                    </div>
+
+                </div>
+
+
+                <div class="detail-box">
+
+                    <div class="detail-label">
+                        Catatan
+                    </div>
+
+                    <div class="detail-value">
+
+                        ${escapeHtml(
+                            sale.notes ||
+                            '-'
+                        )}
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="sale-items">
+
+                <div class="sale-items-header">
+
+                    Produk
+
+                </div>
+
+
+                ${sale.items.map(
+                    item => `
+
+                        <div
+                            style="
+                                display:grid;
+                                grid-template-columns:2fr 80px 120px 130px;
+                                gap:10px;
+                                padding:12px;
+                                border-top:1px solid #eee;
+                                font-size:12px;
+                            "
+                        >
+
+                            <div>
+                                ${escapeHtml(
+                                    item.productName
+                                )}
+                            </div>
+
+                            <div>
+                                ${formatNumber(
+                                    item.quantity
+                                )}
+                            </div>
+
+                            <div>
+                                ${formatRupiah(
+                                    item.price
+                                )}
+                            </div>
+
+                            <div>
+                                <strong>
+                                    ${formatRupiah(
+                                        item.subtotal
+                                    )}
+                                </strong>
+                            </div>
+
+                        </div>
+
+                    `
+                ).join('')}
+
+            </div>
+
+
+            <div class="summary">
+
+                <div class="summary-box">
+
+                    <div class="summary-row">
+
+                        <span>
+                            Subtotal
+                        </span>
+
+                        <strong>
+                            ${formatRupiah(
+                                sale.subtotal
+                            )}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-row">
+
+                        <span>
+                            Diskon
+                        </span>
+
+                        <strong>
+                            ${formatRupiah(
+                                sale.discount
+                            )}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="summary-row total">
+
+                        <span>
+                            TOTAL
+                        </span>
+
+                        <span>
+                            ${formatRupiah(
+                                sale.total
+                            )}
+                        </span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        `;
+
+
+        document
+            .getElementById(
+                'detailModal'
+            )
+            .classList
+            .add('show');
+
+    }
+
+
+    /* =====================================================
+       CLOSE DETAIL
+    ====================================================== */
+
+    function closeDetailModal() {
+
+        document
+            .getElementById(
+                'detailModal'
+            )
+            .classList
+            .remove('show');
+
+    }
+
+
+    /* =====================================================
+       DELETE SALE
+    ====================================================== */
+
+    function deleteSale(
+        id
+    ) {
+
+        const sale =
+            sales.find(
+                item =>
+                    item.id === id
+            );
+
+
+        if (!sale) return;
+
+
+        const confirmed =
+            confirm(
+                `Hapus transaksi ${sale.id}?`
+            );
+
+
+        if (!confirmed) return;
+
+
+        sales =
+            sales.filter(
+                item =>
+                    item.id !== id
+            );
+
+
+        renderSales();
+
+        updateStats();
+
+
+        /*
+            PENTING:
+
+            Nanti penghapusan transaksi
+            harus dilakukan di server.js.
+
+            Jika transaksi sudah mengurangi stok,
+            server harus membuat reversal:
+
+            sales
+               ↓
+            sale_items
+               ↓
+            recipe_items
+               ↓
+            stock_movements
+
+            Jadi stok dikembalikan
+            ketika transaksi dibatalkan.
+
+            Jangan hanya DELETE sales.
+        */
+
+    }
+
+
+    /* =====================================================
+       LOAD PRODUCTS
+    ====================================================== */
+
+    async function loadProducts() {
+
+        /*
+            NANTI:
+
+            const response =
+                await fetch(
+                    '/api/products'
+                );
+
+            products =
+                await response.json();
+
+        */
+
+
+        /*
+            DATA CONTOH SEMENTARA
+
+            HAPUS BAGIAN INI
+            ketika API sudah aktif.
+        */
+
+        products = [
+
+            {
+                id: 1,
+
+                name:
+                    'Ayam Geprek',
+
+                price:
+                    18000
+
+            },
+
+            {
+                id: 2,
+
+                name:
+                    'Nasi Ayam',
+
+                price:
+                    15000
+
+            },
+
+            {
+                id: 3,
+
+                name:
+                    'Mie Ayam',
+
+                price:
+                    14000
+
+            }
+
+        ];
+
+    }
+
+
+    /* =====================================================
+       LOAD SALES
+    ====================================================== */
+
+    async function loadSales() {
+
+        /*
+            NANTI:
+
+            const response =
+                await fetch(
+                    '/api/sales'
+                );
+
+            sales =
+                await response.json();
+
+        */
+
+
+        renderSales();
+
+        updateStats();
+
+    }
+
+
+    /* =====================================================
+       FORMAT RUPIAH
+    ====================================================== */
+
+    function formatRupiah(
+        value
+    ) {
+
+        return new Intl.NumberFormat(
+            'id-ID',
+            {
+                style:
+                    'currency',
+
+                currency:
+                    'IDR',
+
+                maximumFractionDigits:
+                    0
+            }
+        ).format(
+            Number(value) || 0
+        );
+
+    }
+
+
+    /* =====================================================
+       FORMAT NUMBER
+    ====================================================== */
+
+    function formatNumber(
+        value
+    ) {
+
+        return new Intl.NumberFormat(
+            'id-ID',
+            {
+                maximumFractionDigits:
+                    3
+            }
+        ).format(
+            Number(value) || 0
+        );
+
+    }
+
+
+    /* =====================================================
+       FORMAT DATE
+    ====================================================== */
+
+    function formatDateTime(
+        value
+    ) {
+
+        const date =
+            new Date(
+                value
+            );
+
+
+        if (
+            Number.isNaN(
+                date.getTime()
+            )
+        ) {
+
+            return '-';
+
+        }
+
+
+        return date.toLocaleString(
+            'id-ID',
+            {
+                day:
+                    '2-digit',
+
+                month:
+                    '2-digit',
+
+                year:
+                    'numeric',
+
+                hour:
+                    '2-digit',
+
+                minute:
+                    '2-digit'
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       ESCAPE HTML
+    ====================================================== */
+
+    function escapeHtml(
+        value
+    ) {
+
+        return String(
+            value
+        )
+            .replace(
+                /&/g,
+                '&amp;'
+            )
+            .replace(
+                /</g,
+                '&lt;'
+            )
+            .replace(
+                />/g,
+                '&gt;'
+            )
+            .replace(
+                /"/g,
+                '&quot;'
+            )
+            .replace(
+                /'/g,
+                '&#039;'
+            );
+
+    }
+
+
+    /* =====================================================
+       INITIALIZE
+    ====================================================== */
+
+    document.addEventListener(
+        'DOMContentLoaded',
+        async function () {
+
+            updateDate();
+
+            await loadProducts();
+
+            await loadSales();
+
+        }
+    );
+
+
+    /* =====================================================
+       CLOSE MODALS CLICK OUTSIDE
+    ====================================================== */
+
+    document
+        .getElementById(
+            'saleModal'
+        )
+        .addEventListener(
+            'click',
+            function(event) {
+
+                if (
+                    event.target ===
+                    this
+                ) {
+
+                    closeSaleModal();
+
+                }
+
+            }
+        );
+
+
+    document
+        .getElementById(
+            'detailModal'
+        )
+        .addEventListener(
+            'click',
+            function(event) {
+
+                if (
+                    event.target ===
+                    this
+                ) {
+
+                    closeDetailModal();
+
+                }
+
+            }
+        );
+
+</script>
 
 </body>
 </html>
