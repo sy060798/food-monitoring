@@ -6,185 +6,830 @@
 
     <title>Food Monitoring - Produk</title>
 
-    <meta
-        name="description"
-        content="Kelola produk, harga jual, status produk, dan resep Food Monitoring."
-    >
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <link rel="stylesheet" href="css/style.css">
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --success: #16a34a;
+            --danger: #dc2626;
+            --warning: #d97706;
+
+            --bg: #f5f7fb;
+            --card: #ffffff;
+            --text: #111827;
+            --muted: #6b7280;
+            --border: #e5e7eb;
+
+            --sidebar: #111827;
+            --sidebar-hover: #1f2937;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+        }
+
+        /* =========================
+           APP
+        ========================== */
+
+        .app {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* =========================
+           SIDEBAR
+        ========================== */
+
+        .sidebar {
+            width: 250px;
+            background: var(--sidebar);
+            color: white;
+            position: fixed;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .logo {
+            height: 70px;
+            display: flex;
+            align-items: center;
+            padding: 0 22px;
+            border-bottom: 1px solid rgba(255,255,255,.08);
+        }
+
+        .logo-icon {
+            width: 38px;
+            height: 38px;
+            background: var(--primary);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .logo-subtitle {
+            font-size: 10px;
+            color: #9ca3af;
+            margin-top: 2px;
+        }
+
+        .menu {
+            padding: 20px 12px;
+        }
+
+        .menu-title {
+            font-size: 11px;
+            color: #6b7280;
+            text-transform: uppercase;
+            margin: 15px 10px 8px;
+            font-weight: bold;
+        }
+
+        .menu a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: #d1d5db;
+            padding: 11px 12px;
+            border-radius: 8px;
+            margin-bottom: 3px;
+            font-size: 14px;
+            transition: .2s;
+        }
+
+        .menu a:hover {
+            background: var(--sidebar-hover);
+            color: white;
+        }
+
+        .menu a.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .menu-icon {
+            width: 20px;
+            text-align: center;
+        }
+
+        /* =========================
+           MAIN
+        ========================== */
+
+        .main {
+            margin-left: 250px;
+            width: calc(100% - 250px);
+            min-height: 100vh;
+        }
+
+        /* =========================
+           TOPBAR
+        ========================== */
+
+        .topbar {
+            height: 70px;
+            background: white;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 28px;
+            position: sticky;
+            top: 0;
+            z-index: 500;
+        }
+
+        .page-title {
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        .page-date {
+            color: var(--muted);
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .topbar-right {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .notification {
+            width: 38px;
+            height: 38px;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: white;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .notification-dot {
+            width: 7px;
+            height: 7px;
+            background: var(--danger);
+            border-radius: 50%;
+            position: absolute;
+            right: 7px;
+            top: 7px;
+        }
+
+        .profile {
+            display: flex;
+            align-items: center;
+            gap: 9px;
+        }
+
+        .avatar {
+            width: 38px;
+            height: 38px;
+            background: #dbeafe;
+            color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        .profile-name {
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .profile-role {
+            font-size: 11px;
+            color: var(--muted);
+            margin-top: 2px;
+        }
+
+        /* =========================
+           CONTENT
+        ========================== */
+
+        .content {
+            padding: 28px;
+        }
+
+        .page-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 22px;
+        }
+
+        .page-heading h2 {
+            font-size: 22px;
+            margin-bottom: 5px;
+        }
+
+        .page-heading p {
+            font-size: 13px;
+            color: var(--muted);
+        }
+
+        .btn {
+            border: none;
+            border-radius: 8px;
+            padding: 11px 16px;
+            cursor: pointer;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+        }
+
+        .btn-secondary {
+            background: #f3f4f6;
+            color: #374151;
+        }
+
+        .btn-danger {
+            background: #fee2e2;
+            color: #b91c1c;
+        }
+
+        .btn-success {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        /* =========================
+           STATS
+        ========================== */
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-bottom: 22px;
+        }
+
+        .stat-card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 11px;
+            padding: 18px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--muted);
+        }
+
+        .stat-value {
+            font-size: 23px;
+            font-weight: bold;
+            margin-top: 9px;
+        }
+
+        /* =========================
+           TOOLBAR
+        ========================== */
+
+        .toolbar {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 11px;
+            padding: 15px;
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            margin-bottom: 18px;
+        }
+
+        .search-box {
+            flex: 1;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            padding: 11px 13px;
+            outline: none;
+            font-size: 13px;
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary);
+        }
+
+        .select {
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            padding: 10px 13px;
+            background: white;
+            min-width: 160px;
+            outline: none;
+            font-size: 13px;
+        }
+
+        /* =========================
+           TABLE
+        ========================== */
+
+        .card {
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 11px;
+            overflow: hidden;
+        }
+
+        .table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #f9fafb;
+            color: var(--muted);
+            font-size: 11px;
+            text-align: left;
+            padding: 13px;
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 14px 13px;
+            border-top: 1px solid #f0f0f0;
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        .product-name {
+            font-weight: bold;
+            font-size: 13px;
+        }
+
+        .product-code {
+            color: var(--muted);
+            font-size: 10px;
+            margin-top: 3px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 9px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .badge-green {
+            background: #dcfce7;
+            color: #15803d;
+        }
+
+        .badge-gray {
+            background: #f3f4f6;
+            color: #4b5563;
+        }
+
+        .badge-blue {
+            background: #dbeafe;
+            color: #1d4ed8;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+        }
+
+        .action-btn {
+            width: 31px;
+            height: 31px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            background: #f3f4f6;
+        }
+
+        .action-btn:hover {
+            background: #e5e7eb;
+        }
+
+        /* =========================
+           MODAL
+        ========================== */
+
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,.5);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.show {
+            display: flex;
+        }
+
+        .modal {
+            background: white;
+            width: 100%;
+            max-width: 850px;
+            max-height: 92vh;
+            overflow-y: auto;
+            border-radius: 13px;
+            box-shadow: 0 20px 50px rgba(0,0,0,.2);
+        }
+
+        .modal-header {
+            padding: 20px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .modal-title {
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .close {
+            border: none;
+            background: none;
+            font-size: 22px;
+            cursor: pointer;
+            color: var(--muted);
+        }
+
+        .modal-body {
+            padding: 20px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 4px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        .required {
+            color: var(--danger);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            outline: none;
+            font-size: 13px;
+        }
+
+        .form-control:focus {
+            border-color: var(--primary);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        /* =========================
+           RECIPE
+        ========================== */
+
+        .recipe-section {
+            margin-top: 25px;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+        }
+
+        .recipe-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .recipe-title {
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .recipe-description {
+            font-size: 11px;
+            color: var(--muted);
+            margin-bottom: 15px;
+        }
+
+        .recipe-table {
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .recipe-table table {
+            width: 100%;
+        }
+
+        .recipe-table input,
+        .recipe-table select {
+            width: 100%;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            padding: 8px;
+            font-size: 12px;
+            outline: none;
+        }
+
+        .recipe-table th {
+            padding: 10px;
+        }
+
+        .recipe-table td {
+            padding: 7px;
+        }
+
+        .remove-row {
+            border: none;
+            background: #fee2e2;
+            color: #dc2626;
+            width: 30px;
+            height: 30px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .empty-recipe {
+            padding: 25px;
+            text-align: center;
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        /* =========================
+           MODAL FOOTER
+        ========================== */
+
+        .modal-footer {
+            padding: 16px 20px;
+            border-top: 1px solid var(--border);
+            display: flex;
+            justify-content: flex-end;
+            gap: 8px;
+        }
+
+        /* =========================
+           MOBILE
+        ========================== */
+
+        .mobile-menu {
+            display: none;
+            border: none;
+            background: none;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 1000px) {
+
+            .stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media (max-width: 768px) {
+
+            .sidebar {
+                transform: translateX(-100%);
+                transition: .25s;
+            }
+
+            .sidebar.show {
+                transform: translateX(0);
+            }
+
+            .main {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .mobile-menu {
+                display: block;
+                margin-right: 10px;
+            }
+
+            .content {
+                padding: 18px;
+            }
+
+            .topbar {
+                padding: 0 15px;
+            }
+
+            .profile-info {
+                display: none;
+            }
+
+            .page-heading {
+                align-items: flex-start;
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .toolbar {
+                flex-direction: column;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
 <div class="app">
 
-    <!-- =====================================================
+    <!-- =========================
          SIDEBAR
-    ====================================================== -->
+    ========================== -->
+
     <aside class="sidebar" id="sidebar">
 
-        <div class="sidebar-header">
+        <div class="logo">
 
-            <a href="index.html" class="brand">
-                <span class="brand-icon">🍴</span>
+            <div class="logo-icon">
+                🍴
+            </div>
 
-                <span class="brand-text">
-                    <strong>FOOD</strong>
-                    <small>MONITOR</small>
-                </span>
+            <div>
+                <div class="logo-text">
+                    Food Monitoring
+                </div>
+
+                <div class="logo-subtitle">
+                    Business Management
+                </div>
+            </div>
+
+        </div>
+
+        <nav class="menu">
+
+            <div class="menu-title">
+                Utama
+            </div>
+
+            <a href="index.html">
+                <span class="menu-icon">📊</span>
+                Dashboard
             </a>
 
-            <button
-                type="button"
-                class="sidebar-close"
-                id="sidebarClose"
-                aria-label="Tutup menu"
-            >
-                ×
-            </button>
-
-        </div>
-
-
-        <nav class="sidebar-nav">
-
-            <div class="nav-section">
-
-                <span class="nav-section-title">
-                    Menu Utama
-                </span>
-
-
-                <a href="index.html" class="nav-item">
-                    <span class="nav-icon">▦</span>
-                    <span class="nav-text">Dashboard</span>
-                </a>
-
-
-                <a
-                    href="products.html"
-                    class="nav-item active"
-                >
-                    <span class="nav-icon">📦</span>
-                    <span class="nav-text">Produk</span>
-                </a>
-
-
-                <a
-                    href="ingredients.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">🥩</span>
-                    <span class="nav-text">Bahan</span>
-                </a>
-
-
-                <a
-                    href="sales.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">🧾</span>
-                    <span class="nav-text">Penjualan</span>
-                </a>
-
-
-                <a
-                    href="reports.html"
-                    class="nav-item"
-                >
-                    <span class="nav-icon">📊</span>
-                    <span class="nav-text">Laporan</span>
-                </a>
-
-
-                <a
-                    href="#"
-                    class="nav-item"
-                    id="historyMenu"
-                >
-                    <span class="nav-icon">📜</span>
-                    <span class="nav-text">History</span>
-                </a>
-
-
-                <a
-                    href="#"
-                    class="nav-item"
-                    id="supplierMenu"
-                >
-                    <span class="nav-icon">🚚</span>
-                    <span class="nav-text">Supplier</span>
-                </a>
-
-
-                <a
-                    href="#"
-                    class="nav-item"
-                    id="settingsMenu"
-                >
-                    <span class="nav-icon">⚙</span>
-                    <span class="nav-text">Pengaturan</span>
-                </a>
-
+            <div class="menu-title">
+                Produk & Stok
             </div>
+
+            <a href="products.html" class="active">
+                <span class="menu-icon">🍔</span>
+                Produk / Menu
+            </a>
+
+            <a href="ingredients.html">
+                <span class="menu-icon">📦</span>
+                Bahan Baku
+            </a>
+
+            <a href="suppliers.html">
+                <span class="menu-icon">🚚</span>
+                Supplier
+            </a>
+
+            <div class="menu-title">
+                Keuangan
+            </div>
+
+            <a href="sales.html">
+                <span class="menu-icon">💰</span>
+                Penjualan
+            </a>
+
+            <a href="expenses.html">
+                <span class="menu-icon">💸</span>
+                Pengeluaran
+            </a>
+
+            <div class="menu-title">
+                Analisis
+            </div>
+
+            <a href="reports.html">
+                <span class="menu-icon">📈</span>
+                Laporan
+            </a>
+
+            <div class="menu-title">
+                Sistem
+            </div>
+
+            <a href="settings.html">
+                <span class="menu-icon">⚙️</span>
+                Pengaturan
+            </a>
 
         </nav>
-
-
-        <div class="sidebar-footer">
-
-            <div class="system-status">
-                <span class="status-dot"></span>
-                <span>Sistem aktif</span>
-            </div>
-
-            <small>
-                Food Monitoring v1.0
-            </small>
-
-        </div>
 
     </aside>
 
 
-    <!-- =====================================================
-         MOBILE OVERLAY
-    ====================================================== -->
-    <div
-        class="sidebar-overlay"
-        id="sidebarOverlay"
-    ></div>
-
-
-    <!-- =====================================================
+    <!-- =========================
          MAIN
-    ====================================================== -->
+    ========================== -->
+
     <main class="main">
 
+        <!-- TOPBAR -->
 
-        <!-- =================================================
-             TOPBAR
-        ================================================== -->
         <header class="topbar">
 
-            <div class="topbar-left">
+            <div style="display:flex;align-items:center;">
 
                 <button
-                    type="button"
-                    class="menu-toggle"
-                    id="menuToggle"
-                    aria-label="Buka menu"
+                    class="mobile-menu"
+                    onclick="toggleSidebar()"
                 >
                     ☰
                 </button>
 
-                <div class="page-title">
+                <div>
 
-                    <h1>Produk</h1>
+                    <div class="page-title">
+                        Produk / Menu
+                    </div>
 
-                    <p>
-                        Kelola produk dan resep makanan
-                    </p>
+                    <div
+                        class="page-date"
+                        id="currentDate"
+                    >
+                        Memuat tanggal...
+                    </div>
 
                 </div>
 
@@ -193,38 +838,26 @@
 
             <div class="topbar-right">
 
-                <button
-                    type="button"
-                    class="icon-button notification-button"
-                    id="notificationButton"
-                    aria-label="Notifikasi"
-                >
+                <button class="notification">
                     🔔
-
-                    <span
-                        class="notification-badge"
-                        id="notificationBadge"
-                    >
-                        0
-                    </span>
+                    <span class="notification-dot"></span>
                 </button>
 
+                <div class="profile">
 
-                <div class="admin-profile">
-
-                    <div class="admin-avatar">
+                    <div class="avatar">
                         A
                     </div>
 
-                    <div class="admin-info">
+                    <div class="profile-info">
 
-                        <strong>
+                        <div class="profile-name">
                             Admin
-                        </strong>
+                        </div>
 
-                        <small>
+                        <div class="profile-role">
                             Administrator
-                        </small>
+                        </div>
 
                     </div>
 
@@ -235,322 +868,190 @@
         </header>
 
 
-        <!-- =================================================
-             CONTENT
-        ================================================== -->
-        <div class="content">
+        <!-- CONTENT -->
 
+        <section class="content">
 
-            <!-- =================================================
-                 PAGE HEADER
-            ================================================== -->
-            <section class="page-header">
+            <!-- PAGE HEADER -->
+
+            <div class="page-heading">
 
                 <div>
 
-                    <div class="breadcrumb">
-                        <a href="index.html">
-                            Dashboard
-                        </a>
-
-                        <span>›</span>
-
-                        <span>Produk</span>
-                    </div>
-
                     <h2>
-                        Daftar Produk
+                        Produk / Menu
                     </h2>
 
                     <p>
-                        Tambahkan dan kelola produk yang dijual.
+                        Kelola produk, harga jual, kategori, dan resep bahan baku.
                     </p>
 
                 </div>
 
-
                 <button
-                    type="button"
-                    class="primary-button"
-                    id="addProductButton"
+                    class="btn btn-primary"
+                    onclick="openProductModal()"
                 >
-                    <span>＋</span>
-                    Tambah Produk
+                    + Tambah Produk
                 </button>
 
-            </section>
+            </div>
 
 
-            <!-- =================================================
-                 PRODUCT SUMMARY
-            ================================================== -->
-            <section class="summary-grid product-summary-grid">
+            <!-- STAT -->
 
+            <div class="stats">
 
-                <div class="summary-card">
+                <div class="stat-card">
 
-                    <div class="summary-card-top">
-
-                        <div>
-
-                            <span class="summary-label">
-                                TOTAL PRODUK
-                            </span>
-
-                            <h3 id="totalProductCount">
-                                0
-                            </h3>
-
-                        </div>
-
-                        <div class="summary-icon blue">
-                            📦
-                        </div>
-
+                    <div class="stat-label">
+                        Total Produk
                     </div>
 
-                    <div class="summary-card-bottom">
-
-                        <span>
-                            Semua produk
-                        </span>
-
+                    <div
+                        class="stat-value"
+                        id="totalProducts"
+                    >
+                        0
                     </div>
 
                 </div>
 
 
-                <div class="summary-card">
+                <div class="stat-card">
 
-                    <div class="summary-card-top">
-
-                        <div>
-
-                            <span class="summary-label">
-                                PRODUK AKTIF
-                            </span>
-
-                            <h3 id="activeProductCount">
-                                0
-                            </h3>
-
-                        </div>
-
-                        <div class="summary-icon green">
-                            ✓
-                        </div>
-
+                    <div class="stat-label">
+                        Produk Aktif
                     </div>
 
-                    <div class="summary-card-bottom">
-
-                        <span>
-                            Sedang dijual
-                        </span>
-
+                    <div
+                        class="stat-value"
+                        id="activeProducts"
+                    >
+                        0
                     </div>
 
                 </div>
 
 
-                <div class="summary-card">
+                <div class="stat-card">
 
-                    <div class="summary-card-top">
-
-                        <div>
-
-                            <span class="summary-label">
-                                PRODUK NONAKTIF
-                            </span>
-
-                            <h3 id="inactiveProductCount">
-                                0
-                            </h3>
-
-                        </div>
-
-                        <div class="summary-icon red">
-                            ×
-                        </div>
-
+                    <div class="stat-label">
+                        Dengan Resep
                     </div>
 
-                    <div class="summary-card-bottom">
-
-                        <span>
-                            Tidak dijual
-                        </span>
-
+                    <div
+                        class="stat-value"
+                        id="productsWithRecipe"
+                    >
+                        0
                     </div>
 
                 </div>
 
 
-                <div class="summary-card">
+                <div class="stat-card">
 
-                    <div class="summary-card-top">
-
-                        <div>
-
-                            <span class="summary-label">
-                                RATA-RATA HARGA
-                            </span>
-
-                            <h3 id="averageProductPrice">
-                                Rp0
-                            </h3>
-
-                        </div>
-
-                        <div class="summary-icon orange">
-                            💰
-                        </div>
-
+                    <div class="stat-label">
+                        Tanpa Resep
                     </div>
 
-                    <div class="summary-card-bottom">
-
-                        <span>
-                            Harga jual produk
-                        </span>
-
+                    <div
+                        class="stat-value"
+                        id="productsWithoutRecipe"
+                    >
+                        0
                     </div>
 
                 </div>
 
-            </section>
+            </div>
 
 
-            <!-- =================================================
-                 PRODUCT TABLE CARD
-            ================================================== -->
-            <section class="dashboard-card">
+            <!-- SEARCH -->
 
+            <div class="toolbar">
 
-                <!-- TABLE HEADER -->
-                <div class="card-header product-table-header">
+                <div class="search-box">
 
-                    <div>
-
-                        <h3>
-                            Daftar Produk
-                        </h3>
-
-                        <p>
-                            Kelola informasi produk, harga, dan resep.
-                        </p>
-
-                    </div>
-
-
-                    <div class="table-actions">
-
-                        <!-- Search -->
-                        <div class="search-box">
-
-                            <span class="search-icon">
-                                🔍
-                            </span>
-
-                            <input
-                                type="search"
-                                id="productSearch"
-                                placeholder="Cari produk..."
-                                autocomplete="off"
-                            >
-
-                        </div>
-
-
-                        <!-- Filter -->
-                        <select
-                            id="productStatusFilter"
-                            class="select-control"
-                        >
-                            <option value="all">
-                                Semua Status
-                            </option>
-
-                            <option value="active">
-                                Aktif
-                            </option>
-
-                            <option value="inactive">
-                                Nonaktif
-                            </option>
-                        </select>
-
-                    </div>
+                    <input
+                        type="text"
+                        id="searchInput"
+                        placeholder="Cari nama produk atau SKU..."
+                        oninput="filterProducts()"
+                    >
 
                 </div>
 
+                <select
+                    class="select"
+                    id="categoryFilter"
+                    onchange="filterProducts()"
+                >
 
-                <!-- TABLE -->
+                    <option value="">
+                        Semua kategori
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- TABLE -->
+
+            <div class="card">
+
                 <div class="table-wrapper">
 
-                    <table class="data-table product-table">
+                    <table>
 
                         <thead>
 
                             <tr>
 
-                                <th width="60">
-                                    #
+                                <th>
+                                    PRODUK
                                 </th>
 
                                 <th>
-                                    Produk
+                                    KATEGORI
                                 </th>
 
                                 <th>
-                                    Kategori
+                                    HARGA JUAL
                                 </th>
 
                                 <th>
-                                    Harga Jual
+                                    RESEP
                                 </th>
 
                                 <th>
-                                    HPP
+                                    STATUS
                                 </th>
 
                                 <th>
-                                    Margin
-                                </th>
-
-                                <th>
-                                    Status
-                                </th>
-
-                                <th class="text-right">
-                                    Aksi
+                                    AKSI
                                 </th>
 
                             </tr>
 
                         </thead>
 
-
-                        <tbody id="productTableBody">
-
-                            <!--
-                                Data produk akan diisi
-                                oleh products.js
-                            -->
+                        <tbody id="productTable">
 
                             <tr>
 
-                                <td colspan="8">
+                                <td
+                                    colspan="6"
+                                    style="text-align:center;padding:40px;color:#9ca3af;"
+                                >
+                                    Belum ada produk.
+                                    <br><br>
 
-                                    <div class="loading-state">
-
-                                        <div class="loading-spinner"></div>
-
-                                        <span>
-                                            Memuat data produk...
-                                        </span>
-
-                                    </div>
+                                    Klik
+                                    <b>+ Tambah Produk</b>
+                                    untuk mulai.
 
                                 </td>
 
@@ -562,88 +1063,18 @@
 
                 </div>
 
+            </div>
 
-                <!-- =================================================
-                     TABLE FOOTER / PAGINATION
-                ================================================== -->
-                <div class="table-footer">
-
-                    <div class="table-info">
-
-                        Menampilkan
-                        <strong id="productShowingFrom">
-                            0
-                        </strong>
-
-                        -
-                        <strong id="productShowingTo">
-                            0
-                        </strong>
-
-                        dari
-                        <strong id="productTotalItems">
-                            0
-                        </strong>
-
-                        produk
-
-                    </div>
+        </section>
 
 
-                    <div
-                        class="pagination"
-                        id="productPagination"
-                    >
-
-                        <button
-                            type="button"
-                            class="pagination-button"
-                            id="productPrevPage"
-                            disabled
-                        >
-                            ‹
-                        </button>
-
-                        <span
-                            class="pagination-current"
-                            id="productCurrentPage"
-                        >
-                            1
-                        </span>
-
-                        <button
-                            type="button"
-                            class="pagination-button"
-                            id="productNextPage"
-                        >
-                            ›
-                        </button>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-        </div>
-
-
-        <!-- =================================================
-             FOOTER
-        ================================================== -->
-        <footer class="footer">
-
-            <span>
-                ©
-                <span id="currentYear"></span>
-                Food Monitoring
-            </span>
-
-            <span>
-                Sistem Monitoring Bisnis Kuliner
-            </span>
-
+        <footer style="
+            text-align:center;
+            color:#6b7280;
+            font-size:11px;
+            padding:20px;
+        ">
+            Food Monitoring © 2026
         </footer>
 
     </main>
@@ -651,43 +1082,30 @@
 </div>
 
 
-<!-- =========================================================
+<!-- =====================================================
      PRODUCT MODAL
-========================================================= -->
+====================================================== -->
+
 <div
     class="modal-overlay"
     id="productModal"
-    aria-hidden="true"
 >
 
-    <div
-        class="modal modal-large"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="productModalTitle"
-    >
+    <div class="modal">
 
+        <!-- HEADER -->
 
-        <!-- MODAL HEADER -->
         <div class="modal-header">
 
-            <div>
-
-                <h3 id="productModalTitle">
+            <div class="modal-title">
+                <span id="modalTitle">
                     Tambah Produk
-                </h3>
-
-                <p>
-                    Masukkan informasi produk.
-                </p>
-
+                </span>
             </div>
 
             <button
-                type="button"
-                class="modal-close"
-                id="closeProductModal"
-                aria-label="Tutup"
+                class="close"
+                onclick="closeProductModal()"
             >
                 ×
             </button>
@@ -695,518 +1113,240 @@
         </div>
 
 
-        <!-- MODAL BODY -->
-        <form id="productForm">
+        <!-- BODY -->
 
-            <div class="modal-body">
+        <div class="modal-body">
 
+            <form id="productForm">
 
-                <!-- Hidden ID -->
                 <input
                     type="hidden"
                     id="productId"
-                    name="id"
                 >
 
 
-                <!-- =================================================
-                     BASIC INFORMATION
-                ================================================== -->
-                <div class="form-section">
+                <!-- BASIC INFO -->
 
-                    <div class="form-section-title">
+                <div class="form-grid">
 
-                        <span class="form-section-icon">
-                            📦
-                        </span>
+                    <div class="form-group">
 
-                        <div>
+                        <label class="form-label">
+                            Nama Produk
+                            <span class="required">*</span>
+                        </label>
 
-                            <h4>
-                                Informasi Produk
-                            </h4>
-
-                            <p>
-                                Informasi dasar produk yang dijual.
-                            </p>
-
-                        </div>
+                        <input
+                            type="text"
+                            id="productName"
+                            class="form-control"
+                            placeholder="Contoh: Nasi Goreng Ayam"
+                            required
+                        >
 
                     </div>
 
 
-                    <div class="form-grid">
+                    <div class="form-group">
 
+                        <label class="form-label">
+                            SKU / Kode Produk
+                        </label>
 
-                        <!-- Nama -->
-                        <div class="form-group form-group-full">
-
-                            <label for="productName">
-                                Nama Produk
-                                <span class="required">*</span>
-                            </label>
-
-                            <input
-                                type="text"
-                                id="productName"
-                                name="name"
-                                placeholder="Contoh: Nasi Ayam Geprek"
-                                required
-                            >
-
-                        </div>
-
-
-                        <!-- Kategori -->
-                        <div class="form-group">
-
-                            <label for="productCategory">
-                                Kategori
-                            </label>
-
-                            <select
-                                id="productCategory"
-                                name="category"
-                            >
-
-                                <option value="">
-                                    Pilih kategori
-                                </option>
-
-                                <option value="makanan">
-                                    Makanan
-                                </option>
-
-                                <option value="minuman">
-                                    Minuman
-                                </option>
-
-                                <option value="snack">
-                                    Snack
-                                </option>
-
-                                <option value="paket">
-                                    Paket
-                                </option>
-
-                                <option value="lainnya">
-                                    Lainnya
-                                </option>
-
-                            </select>
-
-                        </div>
-
-
-                        <!-- Satuan -->
-                        <div class="form-group">
-
-                            <label for="productUnit">
-                                Satuan
-                            </label>
-
-                            <select
-                                id="productUnit"
-                                name="unit"
-                            >
-
-                                <option value="pcs">
-                                    Pcs
-                                </option>
-
-                                <option value="porsi">
-                                    Porsi
-                                </option>
-
-                                <option value="gelas">
-                                    Gelas
-                                </option>
-
-                                <option value="botol">
-                                    Botol
-                                </option>
-
-                                <option value="paket">
-                                    Paket
-                                </option>
-
-                            </select>
-
-                        </div>
-
-
-                        <!-- Harga -->
-                        <div class="form-group">
-
-                            <label for="productPrice">
-                                Harga Jual
-                                <span class="required">*</span>
-                            </label>
-
-                            <div class="input-prefix">
-
-                                <span>
-                                    Rp
-                                </span>
-
-                                <input
-                                    type="number"
-                                    id="productPrice"
-                                    name="price"
-                                    min="0"
-                                    step="100"
-                                    placeholder="0"
-                                    required
-                                >
-
-                            </div>
-
-                        </div>
-
-
-                        <!-- Status -->
-                        <div class="form-group">
-
-                            <label for="productStatus">
-                                Status
-                            </label>
-
-                            <select
-                                id="productStatus"
-                                name="status"
-                            >
-
-                                <option value="active">
-                                    Aktif
-                                </option>
-
-                                <option value="inactive">
-                                    Nonaktif
-                                </option>
-
-                            </select>
-
-                        </div>
-
-
-                        <!-- Deskripsi -->
-                        <div class="form-group form-group-full">
-
-                            <label for="productDescription">
-                                Deskripsi
-                            </label>
-
-                            <textarea
-                                id="productDescription"
-                                name="description"
-                                rows="3"
-                                placeholder="Deskripsi produk..."
-                            ></textarea>
-
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <!-- =================================================
-                     RECIPE
-                ================================================== -->
-                <div class="form-section">
-
-                    <div class="form-section-title">
-
-                        <span class="form-section-icon">
-                            🥩
-                        </span>
-
-                        <div>
-
-                            <h4>
-                                Resep Produk
-                            </h4>
-
-                            <p>
-                                Tentukan bahan yang digunakan untuk satu produk.
-                            </p>
-
-                        </div>
+                        <input
+                            type="text"
+                            id="productSku"
+                            class="form-control"
+                            placeholder="Contoh: NG-001"
+                        >
 
                     </div>
 
 
-                    <div class="recipe-container">
+                    <div class="form-group">
 
+                        <label class="form-label">
+                            Kategori
+                        </label>
 
-                        <div class="recipe-header">
+                        <select
+                            id="productCategory"
+                            class="form-control"
+                        >
 
-                            <div>
-                                <strong>
-                                    Bahan Resep
-                                </strong>
+                            <option value="">
+                                Pilih kategori
+                            </option>
 
-                                <small>
-                                    HPP akan dihitung berdasarkan bahan yang digunakan.
-                                </small>
-                            </div>
+                            <option value="Makanan">
+                                Makanan
+                            </option>
 
+                            <option value="Minuman">
+                                Minuman
+                            </option>
 
-                            <button
-                                type="button"
-                                class="secondary-button"
-                                id="addRecipeItem"
-                            >
-                                ＋ Tambah Bahan
-                            </button>
+                            <option value="Snack">
+                                Snack
+                            </option>
 
-                        </div>
+                            <option value="Dessert">
+                                Dessert
+                            </option>
 
+                            <option value="Frozen Food">
+                                Frozen Food
+                            </option>
 
-                        <div class="recipe-table-wrapper">
+                            <option value="Paket">
+                                Paket
+                            </option>
 
-                            <table class="data-table recipe-table">
+                            <option value="Lainnya">
+                                Lainnya
+                            </option>
 
-                                <thead>
-
-                                    <tr>
-
-                                        <th>
-                                            Bahan
-                                        </th>
-
-                                        <th width="150">
-                                            Jumlah
-                                        </th>
-
-                                        <th width="130">
-                                            Satuan
-                                        </th>
-
-                                        <th width="160">
-                                            Estimasi Biaya
-                                        </th>
-
-                                        <th width="60">
-                                        </th>
-
-                                    </tr>
-
-                                </thead>
-
-
-                                <tbody id="recipeTableBody">
-
-                                    <tr class="recipe-empty">
-
-                                        <td colspan="5">
-
-                                            <div class="empty-state">
-
-                                                <span>
-                                                    🥩
-                                                </span>
-
-                                                <strong>
-                                                    Belum ada bahan
-                                                </strong>
-
-                                                <small>
-                                                    Tambahkan bahan untuk membuat resep.
-                                                </small>
-
-                                            </div>
-
-                                        </td>
-
-                                    </tr>
-
-                                </tbody>
-
-                            </table>
-
-                        </div>
-
-
-                        <!-- HPP PREVIEW -->
-                        <div class="hpp-preview">
-
-                            <div>
-
-                                <span>
-                                    Estimasi HPP
-                                </span>
-
-                                <small>
-                                    Biaya bahan per produk
-                                </small>
-
-                            </div>
-
-                            <strong id="recipeHpp">
-                                Rp0
-                            </strong>
-
-                        </div>
+                        </select>
 
                     </div>
 
-                </div>
 
+                    <div class="form-group">
 
-                <!-- =================================================
-                     PROFIT PREVIEW
-                ================================================== -->
-                <div class="profit-preview">
-
-                    <div class="profit-preview-item">
-
-                        <span>
+                        <label class="form-label">
                             Harga Jual
-                        </span>
+                            <span class="required">*</span>
+                        </label>
 
-                        <strong id="previewSellingPrice">
-                            Rp0
-                        </strong>
-
-                    </div>
-
-
-                    <div class="profit-preview-item">
-
-                        <span>
-                            HPP
-                        </span>
-
-                        <strong id="previewHpp">
-                            Rp0
-                        </strong>
+                        <input
+                            type="number"
+                            id="productPrice"
+                            class="form-control"
+                            min="0"
+                            step="1"
+                            placeholder="25000"
+                            required
+                        >
 
                     </div>
 
 
-                    <div class="profit-preview-item highlight">
+                    <div class="form-group full">
 
-                        <span>
-                            Estimasi Laba
-                        </span>
+                        <label class="form-label">
+                            Deskripsi
+                        </label>
 
-                        <strong id="previewProfit">
-                            Rp0
-                        </strong>
-
-                    </div>
-
-
-                    <div class="profit-preview-item">
-
-                        <span>
-                            Margin
-                        </span>
-
-                        <strong id="previewMargin">
-                            0%
-                        </strong>
+                        <textarea
+                            id="productDescription"
+                            class="form-control"
+                            placeholder="Deskripsi produk..."
+                        ></textarea>
 
                     </div>
 
                 </div>
 
 
-            </div>
+                <!-- RECIPE -->
+
+                <div class="recipe-section">
+
+                    <div class="recipe-header">
+
+                        <div class="recipe-title">
+                            Komposisi / Resep
+                        </div>
+
+                        <button
+                            type="button"
+                            class="btn btn-success"
+                            onclick="addRecipeRow()"
+                        >
+                            + Tambah Bahan
+                        </button>
+
+                    </div>
+
+                    <div class="recipe-description">
+
+                        Masukkan kebutuhan bahan secara manual
+                        untuk <b>1 porsi / 1 unit produk</b>.
+                        Sistem akan menggunakan data ini untuk
+                        menghitung pemakaian stok dan HPP.
+
+                    </div>
 
 
-            <!-- =================================================
-                 MODAL FOOTER
-            ================================================== -->
-            <div class="modal-footer">
+                    <div class="recipe-table">
 
-                <button
-                    type="button"
-                    class="secondary-button"
-                    id="cancelProductForm"
-                >
-                    Batal
-                </button>
+                        <table>
 
-                <button
-                    type="submit"
-                    class="primary-button"
-                    id="saveProductButton"
-                >
-                    <span>
-                        💾
-                    </span>
+                            <thead>
 
-                    Simpan Produk
-                </button>
+                                <tr>
 
-            </div>
+                                    <th style="width:42%;">
+                                        Bahan Baku
+                                    </th>
 
-        </form>
+                                    <th style="width:25%;">
+                                        Jumlah / Produk
+                                    </th>
 
-    </div>
+                                    <th style="width:20%;">
+                                        Satuan
+                                    </th>
 
-</div>
+                                    <th style="width:13%;">
+                                        Aksi
+                                    </th>
 
+                                </tr>
 
-<!-- =========================================================
-     DELETE CONFIRMATION MODAL
-========================================================= -->
-<div
-    class="modal-overlay"
-    id="deleteProductModal"
-    aria-hidden="true"
->
+                            </thead>
 
-    <div
-        class="modal modal-small"
-        role="dialog"
-        aria-modal="true"
-        aria-labelledby="deleteProductTitle"
-    >
+                            <tbody id="recipeTable">
 
-        <div class="modal-body delete-confirmation">
+                            </tbody>
 
-            <div class="delete-icon">
-                🗑️
-            </div>
+                        </table>
 
-            <h3 id="deleteProductTitle">
-                Hapus Produk?
-            </h3>
+                        <div
+                            class="empty-recipe"
+                            id="emptyRecipe"
+                        >
+                            Belum ada bahan.
+                            Klik <b>+ Tambah Bahan</b> untuk memasukkan
+                            komposisi produk.
 
-            <p>
-                Produk
-                <strong id="deleteProductName">
-                    -
-                </strong>
-                akan dihapus dari sistem.
-            </p>
+                        </div>
 
-            <p class="warning-text">
-                Tindakan ini tidak dapat dibatalkan.
-            </p>
+                    </div>
+
+                </div>
+
+            </form>
 
         </div>
 
 
+        <!-- FOOTER -->
+
         <div class="modal-footer">
 
             <button
-                type="button"
-                class="secondary-button"
-                id="cancelDeleteProduct"
+                class="btn btn-secondary"
+                onclick="closeProductModal()"
             >
                 Batal
             </button>
 
             <button
-                type="button"
-                class="danger-button"
-                id="confirmDeleteProduct"
+                class="btn btn-primary"
+                onclick="saveProduct()"
             >
-                Hapus Produk
+                Simpan Produk
             </button>
 
         </div>
@@ -1216,81 +1356,1157 @@
 </div>
 
 
-<!-- =========================================================
-     NOTIFICATION PANEL
-========================================================= -->
-<div
-    class="notification-panel"
-    id="notificationPanel"
-    aria-hidden="true"
->
+<script>
 
-    <div class="notification-header">
+    /* =====================================================
+       DATA SEMENTARA
+       NANTI DIGANTI DENGAN API server.js
+    ====================================================== */
 
-        <div>
+    let products = [];
 
-            <h3>
-                Notifikasi
-            </h3>
+    let ingredients = [];
 
-            <span id="notificationCount">
-                0 notifikasi
-            </span>
-
-        </div>
-
-        <button
-            type="button"
-            class="panel-close"
-            id="closeNotification"
-            aria-label="Tutup notifikasi"
-        >
-            ×
-        </button>
-
-    </div>
+    let editingProductId = null;
 
 
-    <div
-        class="notification-list"
-        id="notificationList"
-    >
+    /* =====================================================
+       DATE
+    ====================================================== */
 
-        <div class="empty-notification">
+    function updateDate() {
 
-            <span>
-                🔔
-            </span>
+        const now = new Date();
 
-            <strong>
-                Tidak ada notifikasi
-            </strong>
+        document.getElementById(
+            'currentDate'
+        ).textContent = now.toLocaleDateString(
+            'id-ID',
+            {
+                weekday: 'long',
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }
+        );
 
-            <small>
-                Semua kondisi terlihat baik.
-            </small>
-
-        </div>
-
-    </div>
-
-</div>
+    }
 
 
-<!-- =========================================================
-     TOAST
-========================================================= -->
-<div
-    class="toast-container"
-    id="toastContainer"
-    aria-live="polite"
-></div>
+    /* =====================================================
+       SIDEBAR
+    ====================================================== */
+
+    function toggleSidebar() {
+
+        document
+            .getElementById('sidebar')
+            .classList
+            .toggle('show');
+
+    }
 
 
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
-<script src="js/products.js"></script>
+    /* =====================================================
+       MODAL
+    ====================================================== */
+
+    function openProductModal(product = null) {
+
+        document
+            .getElementById('productModal')
+            .classList
+            .add('show');
+
+
+        document
+            .getElementById('productForm')
+            .reset();
+
+
+        document
+            .getElementById('recipeTable')
+            .innerHTML = '';
+
+
+        updateRecipeEmptyState();
+
+
+        if (product) {
+
+            editingProductId = product.id;
+
+            document.getElementById(
+                'modalTitle'
+            ).textContent = 'Edit Produk';
+
+
+            document.getElementById(
+                'productId'
+            ).value = product.id;
+
+
+            document.getElementById(
+                'productName'
+            ).value = product.name || '';
+
+
+            document.getElementById(
+                'productSku'
+            ).value = product.sku || '';
+
+
+            document.getElementById(
+                'productCategory'
+            ).value = product.category || '';
+
+
+            document.getElementById(
+                'productPrice'
+            ).value = product.price || '';
+
+
+            document.getElementById(
+                'productDescription'
+            ).value = product.description || '';
+
+
+            if (product.recipe) {
+
+                product.recipe.forEach(
+                    recipe => {
+
+                        addRecipeRow(recipe);
+
+                    }
+                );
+
+            }
+
+        } else {
+
+            editingProductId = null;
+
+            document.getElementById(
+                'modalTitle'
+            ).textContent = 'Tambah Produk';
+
+        }
+
+    }
+
+
+    function closeProductModal() {
+
+        document
+            .getElementById('productModal')
+            .classList
+            .remove('show');
+
+        editingProductId = null;
+
+    }
+
+
+    /* =====================================================
+       RECIPE
+    ====================================================== */
+
+    function addRecipeRow(recipe = null) {
+
+        const tbody =
+            document.getElementById(
+                'recipeTable'
+            );
+
+
+        const row =
+            document.createElement('tr');
+
+
+        row.innerHTML = `
+
+            <td>
+
+                <select
+                    class="ingredient-select"
+                    required
+                >
+
+                    <option value="">
+                        Pilih bahan
+                    </option>
+
+                    ${ingredients.map(
+                        ingredient => `
+
+                            <option
+                                value="${ingredient.id}"
+                                data-unit="${ingredient.unit}"
+                                ${recipe &&
+                                recipe.ingredientId == ingredient.id
+                                    ? 'selected'
+                                    : ''}
+                            >
+                                ${escapeHtml(ingredient.name)}
+                            </option>
+
+                        `
+                    ).join('')}
+
+                </select>
+
+            </td>
+
+
+            <td>
+
+                <input
+                    type="number"
+                    class="recipe-quantity"
+                    min="0"
+                    step="0.001"
+                    value="${recipe ? recipe.quantity : ''}"
+                    placeholder="Contoh: 150"
+                    required
+                >
+
+            </td>
+
+
+            <td>
+
+                <input
+                    type="text"
+                    class="recipe-unit"
+                    value="${recipe ? recipe.unit : ''}"
+                    placeholder="gram"
+                    readonly
+                >
+
+            </td>
+
+
+            <td>
+
+                <button
+                    type="button"
+                    class="remove-row"
+                    onclick="removeRecipeRow(this)"
+                >
+                    ×
+                </button>
+
+            </td>
+
+        `;
+
+
+        tbody.appendChild(row);
+
+
+        const select =
+            row.querySelector(
+                '.ingredient-select'
+            );
+
+
+        const unitInput =
+            row.querySelector(
+                '.recipe-unit'
+            );
+
+
+        select.addEventListener(
+            'change',
+            function () {
+
+                const selected =
+                    this.options[
+                        this.selectedIndex
+                    ];
+
+                unitInput.value =
+                    selected.dataset.unit || '';
+
+            }
+        );
+
+
+        if (recipe) {
+
+            const selected =
+                select.options[
+                    select.selectedIndex
+                ];
+
+            unitInput.value =
+                recipe.unit ||
+                selected.dataset.unit ||
+                '';
+
+        }
+
+
+        updateRecipeEmptyState();
+
+    }
+
+
+    function removeRecipeRow(button) {
+
+        button
+            .closest('tr')
+            .remove();
+
+        updateRecipeEmptyState();
+
+    }
+
+
+    function updateRecipeEmptyState() {
+
+        const table =
+            document.getElementById(
+                'recipeTable'
+            );
+
+        const empty =
+            document.getElementById(
+                'emptyRecipe'
+            );
+
+
+        empty.style.display =
+            table.children.length === 0
+                ? 'block'
+                : 'none';
+
+    }
+
+
+    /* =====================================================
+       SAVE PRODUCT
+    ====================================================== */
+
+    function saveProduct() {
+
+        const name =
+            document.getElementById(
+                'productName'
+            ).value.trim();
+
+
+        const sku =
+            document.getElementById(
+                'productSku'
+            ).value.trim();
+
+
+        const category =
+            document.getElementById(
+                'productCategory'
+            ).value;
+
+
+        const price =
+            Number(
+                document.getElementById(
+                    'productPrice'
+                ).value
+            );
+
+
+        const description =
+            document.getElementById(
+                'productDescription'
+            ).value.trim();
+
+
+        if (!name) {
+
+            alert(
+                'Nama produk wajib diisi.'
+            );
+
+            return;
+
+        }
+
+
+        if (!price || price < 0) {
+
+            alert(
+                'Harga jual belum benar.'
+            );
+
+            return;
+
+        }
+
+
+        const recipe = [];
+
+
+        document
+            .querySelectorAll(
+                '#recipeTable tr'
+            )
+            .forEach(row => {
+
+                const ingredient =
+                    row.querySelector(
+                        '.ingredient-select'
+                    );
+
+                const quantity =
+                    row.querySelector(
+                        '.recipe-quantity'
+                    );
+
+                const unit =
+                    row.querySelector(
+                        '.recipe-unit'
+                    );
+
+
+                if (
+                    ingredient.value &&
+                    quantity.value
+                ) {
+
+                    recipe.push({
+
+                        ingredientId:
+                            Number(
+                                ingredient.value
+                            ),
+
+                        quantity:
+                            Number(
+                                quantity.value
+                            ),
+
+                        unit:
+                            unit.value
+
+                    });
+
+                }
+
+            });
+
+
+        const product = {
+
+            id:
+                editingProductId ||
+                Date.now(),
+
+            name,
+
+            sku,
+
+            category,
+
+            price,
+
+            description,
+
+            recipe,
+
+            active: true,
+
+            createdAt:
+                new Date().toISOString()
+
+        };
+
+
+        if (editingProductId) {
+
+            const index =
+                products.findIndex(
+                    item =>
+                        item.id ===
+                        editingProductId
+                );
+
+
+            if (index !== -1) {
+
+                products[index] =
+                    product;
+
+            }
+
+        } else {
+
+            products.push(product);
+
+        }
+
+
+        renderProducts();
+
+        updateStats();
+
+        closeProductModal();
+
+
+        /*
+            NANTI DI SINI:
+
+            await fetch('/api/products', {
+                method: 'POST',
+                headers: {
+                    'Content-Type':
+                        'application/json'
+                },
+                body:
+                    JSON.stringify(product)
+            });
+
+        */
+
+    }
+
+
+    /* =====================================================
+       RENDER PRODUCTS
+    ====================================================== */
+
+    function renderProducts(
+        data = products
+    ) {
+
+        const tbody =
+            document.getElementById(
+                'productTable'
+            );
+
+
+        if (!data.length) {
+
+            tbody.innerHTML = `
+
+                <tr>
+
+                    <td
+                        colspan="6"
+                        style="
+                            text-align:center;
+                            padding:40px;
+                            color:#9ca3af;
+                        "
+                    >
+                        Tidak ada produk ditemukan.
+
+                    </td>
+
+                </tr>
+
+            `;
+
+            return;
+
+        }
+
+
+        tbody.innerHTML =
+            data.map(product => `
+
+                <tr>
+
+                    <td>
+
+                        <div class="product-name">
+                            ${escapeHtml(product.name)}
+                        </div>
+
+                        <div class="product-code">
+                            ${escapeHtml(product.sku || '-')}
+                        </div>
+
+                    </td>
+
+
+                    <td>
+
+                        <span class="badge badge-blue">
+                            ${escapeHtml(
+                                product.category ||
+                                'Tanpa kategori'
+                            )}
+                        </span>
+
+                    </td>
+
+
+                    <td>
+
+                        <b>
+                            ${formatRupiah(
+                                product.price
+                            )}
+                        </b>
+
+                    </td>
+
+
+                    <td>
+
+                        ${
+                            product.recipe &&
+                            product.recipe.length
+
+                            ? `
+                                <span class="badge badge-green">
+                                    ${product.recipe.length}
+                                    bahan
+                                </span>
+                            `
+
+                            : `
+                                <span class="badge badge-gray">
+                                    Belum ada
+                                </span>
+                            `
+                        }
+
+                    </td>
+
+
+                    <td>
+
+                        ${
+                            product.active !== false
+
+                            ? `
+                                <span class="badge badge-green">
+                                    Aktif
+                                </span>
+                            `
+
+                            : `
+                                <span class="badge badge-gray">
+                                    Nonaktif
+                                </span>
+                            `
+                        }
+
+                    </td>
+
+
+                    <td>
+
+                        <div class="action-buttons">
+
+                            <button
+                                class="action-btn"
+                                title="Edit"
+                                onclick="editProduct(${product.id})"
+                            >
+                                ✏️
+                            </button>
+
+                            <button
+                                class="action-btn"
+                                title="Lihat resep"
+                                onclick="viewRecipe(${product.id})"
+                            >
+                                📋
+                            </button>
+
+                            <button
+                                class="action-btn"
+                                title="Hapus"
+                                onclick="deleteProduct(${product.id})"
+                            >
+                                🗑️
+                            </button>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+            `).join('');
+
+    }
+
+
+    /* =====================================================
+       EDIT
+    ====================================================== */
+
+    function editProduct(id) {
+
+        const product =
+            products.find(
+                item =>
+                    item.id === id
+            );
+
+
+        if (!product) return;
+
+
+        openProductModal(product);
+
+    }
+
+
+    /* =====================================================
+       DELETE
+    ====================================================== */
+
+    function deleteProduct(id) {
+
+        const product =
+            products.find(
+                item =>
+                    item.id === id
+            );
+
+
+        if (!product) return;
+
+
+        const confirmDelete =
+            confirm(
+                `Hapus produk "${product.name}"?`
+            );
+
+
+        if (!confirmDelete) return;
+
+
+        products =
+            products.filter(
+                item =>
+                    item.id !== id
+            );
+
+
+        renderProducts();
+
+        updateStats();
+
+
+        /*
+            NANTI:
+
+            DELETE /api/products/:id
+        */
+
+    }
+
+
+    /* =====================================================
+       VIEW RECIPE
+    ====================================================== */
+
+    function viewRecipe(id) {
+
+        const product =
+            products.find(
+                item =>
+                    item.id === id
+            );
+
+
+        if (!product) return;
+
+
+        if (
+            !product.recipe ||
+            !product.recipe.length
+        ) {
+
+            alert(
+                'Produk ini belum memiliki resep.'
+            );
+
+            return;
+
+        }
+
+
+        let message =
+            `Resep ${product.name}\n\n`;
+
+
+        product.recipe.forEach(
+            (recipe, index) => {
+
+                const ingredient =
+                    ingredients.find(
+                        item =>
+                            item.id ===
+                            recipe.ingredientId
+                    );
+
+
+                message +=
+                    `${index + 1}. ` +
+                    `${ingredient
+                        ? ingredient.name
+                        : 'Bahan'} - ` +
+                    `${recipe.quantity} ` +
+                    `${recipe.unit}\n`;
+
+            }
+        );
+
+
+        alert(message);
+
+    }
+
+
+    /* =====================================================
+       SEARCH & FILTER
+    ====================================================== */
+
+    function filterProducts() {
+
+        const search =
+            document.getElementById(
+                'searchInput'
+            ).value
+                .toLowerCase()
+                .trim();
+
+
+        const category =
+            document.getElementById(
+                'categoryFilter'
+            ).value;
+
+
+        const filtered =
+            products.filter(product => {
+
+                const matchesSearch =
+                    !search ||
+                    product.name
+                        .toLowerCase()
+                        .includes(search) ||
+                    (
+                        product.sku || ''
+                    )
+                        .toLowerCase()
+                        .includes(search);
+
+
+                const matchesCategory =
+                    !category ||
+                    product.category ===
+                        category;
+
+
+                return (
+                    matchesSearch &&
+                    matchesCategory
+                );
+
+            });
+
+
+        renderProducts(filtered);
+
+    }
+
+
+    /* =====================================================
+       STATS
+    ====================================================== */
+
+    function updateStats() {
+
+        const total =
+            products.length;
+
+
+        const active =
+            products.filter(
+                product =>
+                    product.active !== false
+            ).length;
+
+
+        const withRecipe =
+            products.filter(
+                product =>
+                    product.recipe &&
+                    product.recipe.length > 0
+            ).length;
+
+
+        const withoutRecipe =
+            total - withRecipe;
+
+
+        document.getElementById(
+            'totalProducts'
+        ).textContent = total;
+
+
+        document.getElementById(
+            'activeProducts'
+        ).textContent = active;
+
+
+        document.getElementById(
+            'productsWithRecipe'
+        ).textContent = withRecipe;
+
+
+        document.getElementById(
+            'productsWithoutRecipe'
+        ).textContent =
+            withoutRecipe;
+
+    }
+
+
+    /* =====================================================
+       CATEGORY FILTER
+    ====================================================== */
+
+    function loadCategories() {
+
+        const select =
+            document.getElementById(
+                'categoryFilter'
+            );
+
+
+        const categories = [
+            ...new Set(
+                products
+                    .map(
+                        product =>
+                            product.category
+                    )
+                    .filter(Boolean)
+            )
+        ];
+
+
+        select.innerHTML = `
+
+            <option value="">
+                Semua kategori
+            </option>
+
+            ${
+                categories.map(
+                    category => `
+
+                        <option
+                            value="${escapeHtml(category)}"
+                        >
+                            ${escapeHtml(category)}
+                        </option>
+
+                    `
+                ).join('')
+            }
+
+        `;
+
+    }
+
+
+    /* =====================================================
+       FORMAT RUPIAH
+    ====================================================== */
+
+    function formatRupiah(value) {
+
+        return new Intl.NumberFormat(
+            'id-ID',
+            {
+                style: 'currency',
+                currency: 'IDR',
+                maximumFractionDigits: 0
+            }
+        ).format(
+            Number(value) || 0
+        );
+
+    }
+
+
+    /* =====================================================
+       ESCAPE HTML
+    ====================================================== */
+
+    function escapeHtml(value) {
+
+        return String(value)
+            .replace(
+                /&/g,
+                '&amp;'
+            )
+            .replace(
+                /</g,
+                '&lt;'
+            )
+            .replace(
+                />/g,
+                '&gt;'
+            )
+            .replace(
+                /"/g,
+                '&quot;'
+            )
+            .replace(
+                /'/g,
+                '&#039;'
+            );
+
+    }
+
+
+    /* =====================================================
+       LOAD INGREDIENTS
+    ====================================================== */
+
+    async function loadIngredients() {
+
+        /*
+            NANTI DARI SERVER:
+
+            const response =
+                await fetch(
+                    '/api/ingredients'
+                );
+
+            ingredients =
+                await response.json();
+
+        */
+
+        /*
+            DATA CONTOH UNTUK SEKARANG.
+            NANTI BOLEH DIHAPUS SAAT
+            API SERVER SUDAH AKTIF.
+        */
+
+        ingredients = [
+
+            {
+                id: 1,
+                name: 'Beras',
+                unit: 'gram'
+            },
+
+            {
+                id: 2,
+                name: 'Ayam',
+                unit: 'gram'
+            },
+
+            {
+                id: 3,
+                name: 'Telur',
+                unit: 'pcs'
+            },
+
+            {
+                id: 4,
+                name: 'Bawang',
+                unit: 'gram'
+            },
+
+            {
+                id: 5,
+                name: 'Minyak',
+                unit: 'ml'
+            }
+
+        ];
+
+    }
+
+
+    /* =====================================================
+       LOAD PRODUCTS
+    ====================================================== */
+
+    async function loadProducts() {
+
+        /*
+            NANTI DIGANTI:
+
+            const response =
+                await fetch(
+                    '/api/products'
+                );
+
+            products =
+                await response.json();
+
+            renderProducts();
+            updateStats();
+            loadCategories();
+
+        */
+
+        renderProducts();
+
+        updateStats();
+
+        loadCategories();
+
+    }
+
+
+    /* =====================================================
+       INITIALIZE
+    ====================================================== */
+
+    document.addEventListener(
+        'DOMContentLoaded',
+        async function () {
+
+            updateDate();
+
+            await loadIngredients();
+
+            await loadProducts();
+
+        }
+    );
+
+
+    /* =====================================================
+       CLOSE MODAL WHEN CLICK OUTSIDE
+    ====================================================== */
+
+    document
+        .getElementById('productModal')
+        .addEventListener(
+            'click',
+            function (event) {
+
+                if (
+                    event.target ===
+                    this
+                ) {
+
+                    closeProductModal();
+
+                }
+
+            }
+        );
+
+</script>
 
 </body>
 </html>
